@@ -2211,11 +2211,28 @@ function refresh(){
     return pendingSummary(p);
   }
 
-  function viewPendingDetail(id){
-    const p=(db.pendingRequests||[]).find(x=>x.id===id);
-    if(!p) return;
+  
+  
+  window.__approvalDetailFixed=true;
+  window.ensureApprovalDetailPanel=function(){
+    let panel=byId('approvalDetailPanel');
+    if(panel) return panel;
 
-    const panel=byId('approvalDetailPanel');
+    const card=byId('pendingApprovalCard') || byId('dashboard') || document.body;
+    panel=document.createElement('div');
+    panel.id='approvalDetailPanel';
+    panel.className='approval-detail-card hidden';
+    panel.innerHTML=`<div class="card-head"><div><h2>Chi tiết dữ liệu chờ duyệt</h2><p class="muted">Admin kiểm tra toàn bộ thông tin quản lý đã nhập trước khi duyệt.</p></div><button type="button" class="btn-light" onclick="closePendingDetail()">Đóng chi tiết</button></div><div id="approvalDetailContent"></div>`;
+    card.appendChild(panel);
+    return panel;
+  }
+
+
+  window.viewPendingDetail=function(id){
+    const p=(db.pendingRequests||[]).find(x=>x.id===id);
+    if(!p){ alert('Không tìm thấy dữ liệu chờ duyệt này.'); return; }
+
+    const panel=ensureApprovalDetailPanel();
     const box=byId('approvalDetailContent');
     if(!panel||!box) return;
 
@@ -2260,7 +2277,7 @@ function refresh(){
     panel.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
-  function closePendingDetail(){
+  window.closePendingDetail=function(){
     const panel=byId('approvalDetailPanel');
     if(panel) panel.classList.add('hidden');
   }
@@ -2276,8 +2293,8 @@ function refresh(){
     }
     tbody.innerHTML=list.map(p=>{
       const actions=p.status==='pending'
-        ? `<div class="actions"><button type="button" class="btn-light" onclick="viewPendingDetail('${safe(p.id)}')">Xem chi tiết</button><button type="button" class="btn-light" onclick="viewPendingDetail('${safe(p.id)}')">Xem chi tiết</button><button type="button" class="btn-ok" onclick="approvePending('${safe(p.id)}')">Duyệt</button><button type="button" class="btn-danger" onclick="rejectPending('${safe(p.id)}')">Từ chối</button></div>`
-        : `<span class="muted">Đã xử lý</span>`;
+        ? `<div class="actions"><button type="button" class="btn-light" onclick="viewPendingDetail('${safe(p.id)}')">Xem chi tiết</button><button type="button" class="btn-ok" onclick="approvePending('${safe(p.id)}')">Duyệt</button><button type="button" class="btn-danger" onclick="rejectPending('${safe(p.id)}')">Từ chối</button></div>`
+        : `<div class="actions"><button type="button" class="btn-light" onclick="viewPendingDetail('${safe(p.id)}')">Xem lại</button></div>`;
       const badge=p.status==='pending'
         ? '<span class="badge partial">Chờ duyệt</span>'
         : p.status==='approved'
@@ -5350,6 +5367,37 @@ function refresh(){
  Ghi chú 0291: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
 -->
 <div id="realToast" class="toast-real"></div>
+
+<!--
+ FIX APPROVAL DETAIL BUTTON
+ FIX NOTE 0001: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0002: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0003: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0004: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0005: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0006: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0007: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0008: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0009: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0010: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0011: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0012: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0013: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0014: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0015: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0016: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0017: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0018: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0019: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0020: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0021: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0022: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0023: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0024: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0025: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0026: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0027: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+-->
 </body></html>`);
     win.document.close();
   }
@@ -8056,5 +8104,36 @@ function refresh(){
  Ghi chú 0291: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
 -->
 <div id="realToast" class="toast-real"></div>
+
+<!--
+ FIX APPROVAL DETAIL BUTTON
+ FIX NOTE 0001: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0002: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0003: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0004: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0005: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0006: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0007: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0008: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0009: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0010: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0011: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0012: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0013: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0014: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0015: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0016: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0017: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0018: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0019: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0020: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0021: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0022: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0023: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0024: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0025: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0026: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+ FIX NOTE 0027: Đã sửa nút Xem chi tiết bằng cách gắn viewPendingDetail và closePendingDetail vào window.
+-->
 </body>
 </html>
