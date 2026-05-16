@@ -957,6 +957,47 @@
       }
     }
 
+
+    .manager-feedback-box {
+      border: 1px solid #c7d2fe;
+      background: #eef2ff;
+      color: #3730a3;
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 8px;
+      font-weight: 800;
+    }
+
+    .manager-detail-json {
+      background: #020617;
+      color: #dbeafe;
+      border-radius: 14px;
+      padding: 12px;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+      max-height: 280px;
+      overflow: auto;
+      margin-top: 10px;
+    }
+
+    .manager-status-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .manager-status-summary .mini-card {
+      background: #ffffff;
+    }
+
+    @media(max-width:700px) {
+      .manager-status-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media(max-width:1050px){.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr 1fr}}
     @media(max-width:680px){.top,.card-head{flex-direction:column;align-items:stretch}.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr}.hero-main,.hero-side,.card,.section{padding:16px}table{min-width:760px}}
     @media print{.top,.hero,.lookup,.admin-section,.result-actions{display:none!important}body{background:white}.app{width:100%;padding:0}.section{box-shadow:none;border:0;page-break-inside:avoid}th,td{font-size:11px;padding:6px}}
@@ -1136,7 +1177,7 @@
         <div class="table">
           <table>
             <thead><tr><th>Ngày gửi</th><th>Loại</th><th>Nội dung</th><th>Trạng thái</th><th>Ngày xử lý</th></tr></thead>
-            <tbody id="managerPendingStatusList"><tr><td colspan="5" class="center">Chưa có dữ liệu đã gửi.</td></tr></tbody>
+            <tbody id="managerPendingStatusList"><tr><td colspan="6" class="center">Chưa có dữ liệu đã gửi.</td></tr></tbody>
           </table>
         </div>
       </div>
@@ -1319,6 +1360,7 @@
           <button type="button" class="btn-light" onclick="renderPendingList()">Tải lại danh sách duyệt</button>
         </div>
 
+        <div id="managerPendingStatusSummary" class="manager-status-summary"></div>
         <div class="table">
           <table>
             <thead>
@@ -1943,6 +1985,7 @@ function refresh(){
     clearMsg('managerLoginMsg');
     setRoleUI();
     refresh();
+    renderManagerPendingStatus();
 
     if(typeof logAction==='function'){
       logAction('Đăng nhập quản lý','Tài khoản quản lý',m.name+' đăng nhập từ trang quản lý','manager');
@@ -2039,7 +2082,7 @@ function refresh(){
       data:data,
       status:'pending',
       managerCode:currentManager?currentManager.code:'',
-      managerName:currentManager?currentManager.name:'',
+      managerName:currentManager?(currentManager.name+' ('+currentManager.code+')'):'',
       createdAt:new Date().toISOString(),
       decidedAt:'',
       decidedBy:'',
@@ -5668,14 +5711,111 @@ function refresh(){
     return '<span class="badge status-pill-pending">Chờ duyệt</span>';
   }
 
+  
+  function managerRequestMatchesCurrent(p){
+    if(!currentManager) return false;
+    const code=String(currentManager.code||'');
+    const name=String(currentManager.name||'');
+    return (
+      String(p.managerCode||'')===code ||
+      String(p.managerName||'').includes(code) ||
+      String(p.managerName||'').includes(name)
+    );
+  }
+
+  function managerStatusBadge(status){
+    if(status==='approved') return '<span class="badge status-pill-approved">Đã duyệt</span>';
+    if(status==='rejected') return '<span class="badge status-pill-rejected">Từ chối</span>';
+    return '<span class="badge status-pill-pending">Chờ duyệt</span>';
+  }
+
+  function managerStatusDetail(id){
+    const p=(db.pendingRequests||[]).find(x=>x.id===id);
+    if(!p){
+      alert('Không tìm thấy dữ liệu này.');
+      return;
+    }
+
+    const title=pendingTypeText(p.type)+' - '+pendingSummary(p);
+    const reason=p.status==='rejected'&&p.rejectReason ? '\n\nLÝ DO TỪ CHỐI:\n'+p.rejectReason : '';
+    const decided=p.decidedAt ? '\n\nNGÀY XỬ LÝ:\n'+new Date(p.decidedAt).toLocaleString('vi-VN') : '';
+    const raw=JSON.stringify(p.data||{},null,2);
+
+    const win=window.open('','_blank');
+    if(!win){
+      alert(title+reason+decided+'\n\nDỮ LIỆU ĐÃ GỬI:\n'+raw);
+      return;
+    }
+
+    win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Chi tiết dữ liệu đã gửi</title><style>
+      body{font-family:Arial,sans-serif;background:#f8fafc;color:#0f172a;margin:24px}
+      .card{background:white;border:1px solid #e2e8f0;border-radius:18px;padding:18px;box-shadow:0 12px 30px rgba(15,23,42,.08)}
+      pre{background:#020617;color:#dbeafe;border-radius:14px;padding:14px;white-space:pre-wrap;overflow:auto}
+      .reason{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;border-radius:14px;padding:12px;font-weight:700}
+      .ok{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;border-radius:14px;padding:12px;font-weight:700}
+      .pending{background:#fffbeb;color:#92400e;border:1px solid #fde68a;border-radius:14px;padding:12px;font-weight:700}
+    </style></head><body><div class="card">
+      <h1>Chi tiết dữ liệu đã gửi</h1>
+      <p><b>${safe(title)}</b></p>
+      <p>Trạng thái: ${p.status==='approved'?'Đã duyệt':p.status==='rejected'?'Từ chối':'Chờ duyệt'}</p>
+      ${p.status==='rejected'&&p.rejectReason?`<div class="reason"><b>Lý do Admin từ chối:</b><br>${safe(p.rejectReason)}</div>`:''}
+      ${p.status==='approved'?`<div class="ok">Admin đã duyệt dữ liệu này. Cư dân đã có thể xem nếu là dữ liệu hiển thị cho cư dân.</div>`:''}
+      ${p.status==='pending'?`<div class="pending">Dữ liệu đang chờ Admin duyệt.</div>`:''}
+      <h2>Dữ liệu đã gửi</h2>
+      <pre>${safe(raw)}</pre>
+    </div></body></html>`);
+    win.document.close();
+  }
+
+  window.managerStatusDetail=managerStatusDetail;
+
   function renderManagerPendingStatus(){
     const tbody=byId('managerPendingStatusList');
     if(!tbody) return;
-    const code=currentManager?currentManager.code:'';
-    const rows=(db.pendingRequests||[]).filter(p=>p.managerCode===code).sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
-    if(!rows.length){tbody.innerHTML='<tr><td colspan="5" class="center">Chưa có dữ liệu đã gửi.</td></tr>';return;}
-    tbody.innerHTML=rows.map(p=>`<tr><td>${p.createdAt?new Date(p.createdAt).toLocaleString('vi-VN'):'-'}</td><td>${pendingTypeText(p.type)}</td><td>${safe(pendingSummary(p))}</td><td>${statusBadgeHtml(p.status)}${p.status==='rejected'&&p.rejectReason?`<div class="reject-reason-box"><b>Lý do:</b> ${safe(p.rejectReason)}</div>`:''}</td><td>${p.decidedAt?new Date(p.decidedAt).toLocaleString('vi-VN'):'-'}</td></tr>`).join('');
+
+    const all=(db.pendingRequests||[]);
+    const rows=all
+      .filter(managerRequestMatchesCurrent)
+      .sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
+
+    const summaryBox=byId('managerPendingStatusSummary');
+    if(summaryBox){
+      const pending=rows.filter(x=>x.status==='pending').length;
+      const approved=rows.filter(x=>x.status==='approved').length;
+      const rejected=rows.filter(x=>x.status==='rejected').length;
+      summaryBox.innerHTML=`
+        <div class="mini-card"><label>Chờ duyệt</label><b>${pending}</b></div>
+        <div class="mini-card"><label>Đã duyệt</label><b>${approved}</b></div>
+        <div class="mini-card"><label>Từ chối</label><b>${rejected}</b></div>
+      `;
+    }
+
+    if(!rows.length){
+      tbody.innerHTML='<tr><td colspan="6" class="center">Chưa có dữ liệu đã gửi. Khi quản lý bấm lưu hồ sơ/chỉ số hoặc nhập Excel, dữ liệu sẽ hiện tại đây.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML=rows.map(p=>{
+      const feedback = p.status==='rejected' && p.rejectReason
+        ? `<div class="reject-reason-box"><b>Lý do Admin từ chối:</b><br>${safe(p.rejectReason)}</div>`
+        : p.status==='approved'
+          ? `<div class="manager-feedback-box">Admin đã duyệt dữ liệu này.</div>`
+          : `<div class="manager-feedback-box">Đang chờ Admin kiểm tra và duyệt.</div>`;
+
+      return `<tr>
+        <td>${p.createdAt?new Date(p.createdAt).toLocaleString('vi-VN'):'-'}</td>
+        <td>${pendingTypeText(p.type)}</td>
+        <td>${safe(pendingSummary(p))}</td>
+        <td>${managerStatusBadge(p.status)}${feedback}</td>
+        <td>${p.decidedAt?new Date(p.decidedAt).toLocaleString('vi-VN'):'-'}</td>
+        <td><button type="button" class="btn-light" onclick="managerStatusDetail('${safe(p.id)}')">Xem dữ liệu</button></td>
+      </tr>`;
+    }).join('');
   }
+
+  window.renderManagerPendingStatus=renderManagerPendingStatus;
+
+
 
   function exNeed(){if(!window.XLSX){alert('Không tải được thư viện Excel. Hãy kiểm tra mạng.');return false;}return true;}
   function exKey(t){return String(t||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]/g,'');}
