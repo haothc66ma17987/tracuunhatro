@@ -421,10 +421,118 @@
       font-weight: 900;
     }
 
+
+    .excel-card {
+      border: 1px solid #bfdbfe;
+      background: linear-gradient(180deg, #eff6ff, #ffffff);
+    }
+
+    .print-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .print-action {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #ffffff;
+      padding: 14px;
+    }
+
+    .print-action h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+    }
+
+    .excel-help {
+      border: 1px dashed #93c5fd;
+      background: #eff6ff;
+      color: #1e3a8a;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+    @media(max-width:900px) {
+      .print-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:620px) {
+      .print-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    .audit-card {
+      border: 1px solid #c7d2fe;
+      background: linear-gradient(180deg, #eef2ff, #ffffff);
+    }
+
+    .audit-filter {
+      display: grid;
+      grid-template-columns: 1fr 180px 180px 180px;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .audit-action {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      background: #e0f2fe;
+      color: #075985;
+      border: 1px solid #bae6fd;
+    }
+
+    .audit-actor-admin {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .audit-actor-manager {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .audit-actor-resident {
+      background: #fce7f3;
+      color: #9d174d;
+      border: 1px solid #fbcfe8;
+    }
+
+    .audit-detail {
+      max-width: 520px;
+      white-space: normal;
+      color: #334155;
+    }
+
+    @media(max-width:900px) {
+      .audit-filter {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:620px) {
+      .audit-filter {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media(max-width:1050px){.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr 1fr}}
     @media(max-width:680px){.top,.card-head{flex-direction:column;align-items:stretch}.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr}.hero-main,.hero-side,.card,.section{padding:16px}table{min-width:760px}}
     @media print{.top,.hero,.lookup,.admin-section,.result-actions{display:none!important}body{background:white}.app{width:100%;padding:0}.section{box-shadow:none;border:0;page-break-inside:avoid}th,td{font-size:11px;padding:6px}}
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 <main class="app">
@@ -534,6 +642,7 @@
         <a href="#residentList">Danh sách</a>
         <a href="#billList">Lịch sử</a>
         <a href="#importJsonBox">Sao lưu</a>
+        <a href="#auditHistoryCard">Lịch sử thao tác</a>
         <span class="admin-only-watermark" id="roleBadge">Khu vực quản trị</span>
       </nav>
 
@@ -554,7 +663,268 @@
       </div>
 
 
-      <div class="card admin-only-ui">
+
+      <div class="card manager-card admin-only-ui" id="managerAccountCard">
+        <div class="card-head">
+          <div>
+            <h2>Tạo tài khoản quản lý</h2>
+            <p class="muted">Chỉ Admin mới thấy mục này. Quản lý chỉ được nhập hồ sơ cư dân và chỉ số/chốt tiền, sau đó phải chờ Admin duyệt.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="newManager()">Tạo quản lý mới</button>
+        </div>
+
+        <form id="managerForm">
+          <div class="grid5">
+            <div>
+              <label>Mã quản lý *</label>
+              <input id="mCode" placeholder="VD: QL001">
+            </div>
+
+            <div>
+              <label>Họ tên quản lý *</label>
+              <input id="mName" placeholder="VD: Nguyễn Văn Quản Lý">
+            </div>
+
+            <div>
+              <label>Số điện thoại</label>
+              <input id="mPhone" placeholder="VD: 0900000000">
+            </div>
+
+            <div>
+              <label>Email</label>
+              <input id="mEmail" placeholder="VD: quanly@example.com">
+            </div>
+
+            <div>
+              <label>Trạng thái</label>
+              <select id="mStatus">
+                <option value="active">Đang hoạt động</option>
+                <option value="locked">Tạm khóa</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Tài khoản quản lý *</label>
+              <input id="mUsername" placeholder="VD: ql001">
+            </div>
+
+            <div>
+              <label>Mật khẩu quản lý *</label>
+              <input id="mPassword" placeholder="VD: 123456">
+            </div>
+
+            <div>
+              <label>Mã nhà trọ *</label>
+              <input id="mMotelCode" placeholder="VD: NT001">
+            </div>
+
+            <div>
+              <label>Tên dãy trọ *</label>
+              <input id="mMotelName" placeholder="VD: Dãy trọ A">
+            </div>
+
+            <div>
+              <label>Khu vực phụ trách</label>
+              <input id="mArea" placeholder="VD: Tầng 1, Dãy A">
+            </div>
+
+            <div class="full">
+              <label>Địa chỉ nhà trọ</label>
+              <textarea id="mMotelAddress" placeholder="Nhập địa chỉ nhà trọ/dãy trọ"></textarea>
+            </div>
+
+            <div class="full">
+              <label>Ghi chú quản lý</label>
+              <textarea id="mNote" placeholder="Ghi chú thêm nếu có"></textarea>
+            </div>
+          </div>
+
+          <div class="actions" style="margin-top:18px">
+            <button type="submit">Lưu tài khoản quản lý</button>
+            <button type="button" class="btn-light" onclick="newManager()">Làm mới</button>
+            <button type="button" class="btn-danger" onclick="deleteCurrentManager()">Xóa quản lý đang sửa</button>
+          </div>
+
+          <div id="managerFormMsg" class="msg"></div>
+        </form>
+
+        <div class="table" style="margin-top:16px">
+          <table>
+            <thead>
+              <tr>
+                <th>Mã QL</th>
+                <th>Họ tên</th>
+                <th>Tài khoản</th>
+                <th>Mã nhà trọ</th>
+                <th>Tên dãy trọ</th>
+                <th>Khu vực</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="managerList">
+              <tr>
+                <td colspan="8" class="center">Chưa có quản lý.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card pending-card admin-only-ui" id="pendingApprovalCard">
+        <div class="card-head">
+          <div>
+            <h2>Duyệt dữ liệu từ quản lý</h2>
+            <p class="muted">Dữ liệu do quản lý nhập sẽ ở trạng thái chờ duyệt. Chỉ khi Admin duyệt thì cư dân mới xem được.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="renderPendingList()">Tải lại danh sách duyệt</button>
+        </div>
+
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Ngày gửi</th>
+                <th>Quản lý</th>
+                <th>Loại dữ liệu</th>
+                <th>Nội dung</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="pendingList">
+              <tr>
+                <td colspan="6" class="center">Chưa có dữ liệu chờ duyệt.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card manager-role-ui role-hidden" id="managerWorkingCard">
+        <h2>Khu vực tài khoản quản lý</h2>
+        <p class="manager-only-note">
+          Bạn đang đăng nhập bằng tài khoản quản lý. Bạn chỉ được nhập thông tin cư dân và chỉ số/chốt tiền.
+          Khi bấm lưu, dữ liệu sẽ chuyển sang trạng thái <b>Chờ Admin duyệt</b>; cư dân chưa thấy cho đến khi Admin duyệt.
+        </p>
+
+        <div class="dashboard-grid">
+          <div class="dash-card">
+            <span>Quản lý</span>
+            <strong id="managerDashName">-</strong>
+          </div>
+
+          <div class="dash-card">
+            <span>Mã nhà trọ</span>
+            <strong id="managerDashMotelCode">-</strong>
+          </div>
+
+          <div class="dash-card">
+            <span>Tên dãy trọ</span>
+            <strong id="managerDashMotelName">-</strong>
+          </div>
+
+          <div class="dash-card">
+            <span>Chờ duyệt</span>
+            <strong id="managerDashPending">0</strong>
+          </div>
+        </div>
+      </div>
+
+
+      
+      <div class="card excel-card admin-only-ui" id="excelPrintCard">
+        <div class="card-head">
+          <div>
+            <h2>Excel / Xuất / In báo cáo</h2>
+            <p class="muted">Admin có thể nhập dữ liệu từ Excel, xuất dữ liệu ra Excel và in thông tin cư dân, phiếu thu, tài khoản cư dân, thông tin quản lý.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="downloadAllTemplates()">Tải file mẫu Excel</button>
+        </div>
+
+        <div class="grid3">
+          <div>
+            <label>Nhập cư dân từ Excel</label>
+            <input id="importResidentExcel" type="file" accept=".xlsx,.xls,.csv">
+          </div>
+
+          <div>
+            <label>Chế độ nhập cư dân</label>
+            <select id="importResidentMode">
+              <option value="upsert">Thêm mới + cập nhật nếu trùng mã</option>
+              <option value="insertOnly">Chỉ thêm mới</option>
+              <option value="replaceAll">Xóa cư dân cũ rồi nhập lại</option>
+            </select>
+          </div>
+
+          <div style="align-self:end">
+            <button type="button" onclick="importResidentsExcel()">Cập nhật cư dân từ Excel</button>
+          </div>
+
+          <div>
+            <label>Nhập quản lý từ Excel</label>
+            <input id="importManagerExcel" type="file" accept=".xlsx,.xls,.csv">
+          </div>
+
+          <div>
+            <label>Chế độ nhập quản lý</label>
+            <select id="importManagerMode">
+              <option value="upsert">Thêm mới + cập nhật nếu trùng mã</option>
+              <option value="insertOnly">Chỉ thêm mới</option>
+              <option value="replaceAll">Xóa quản lý cũ rồi nhập lại</option>
+            </select>
+          </div>
+
+          <div style="align-self:end">
+            <button type="button" onclick="importManagersExcel()">Cập nhật quản lý từ Excel</button>
+          </div>
+        </div>
+
+        <div class="excel-help">
+          File Excel cư dân có thể gồm: maCuDan, hoTen, ngaySinh, soDienThoai, soCCCD, taiKhoanCuDan, matKhauCuDan, maPhong, tenPhong, giaPhong, soXe, phiGiuXe, nganHang, soTaiKhoan, chuTaiKhoan.
+        </div>
+
+        <div class="print-grid">
+          <div class="print-action">
+            <h3>Xuất Excel</h3>
+            <p class="muted">Xuất toàn bộ dữ liệu đang có.</p>
+            <div class="actions">
+              <button type="button" onclick="exportAllExcel()">Xuất tất cả</button>
+              <button type="button" class="btn-light" onclick="exportResidentAccountsExcel()">Tài khoản cư dân</button>
+              <button type="button" class="btn-light" onclick="exportManagersExcel()">Tài khoản quản lý</button>
+            </div>
+          </div>
+
+          <div class="print-action">
+            <h3>In thông tin cư dân</h3>
+            <p class="muted">In danh sách và hồ sơ cư dân.</p>
+            <div class="actions">
+              <button type="button" onclick="printResidentInfo()">In cư dân</button>
+            </div>
+          </div>
+
+          <div class="print-action">
+            <h3>In phiếu thu</h3>
+            <p class="muted">In phiếu thu công nợ theo kỳ đã chốt.</p>
+            <div class="actions">
+              <button type="button" onclick="printReceipts()">In phiếu thu</button>
+            </div>
+          </div>
+
+          <div class="print-action">
+            <h3>In tài khoản</h3>
+            <p class="muted">In tài khoản/mật khẩu cư dân và thông tin quản lý.</p>
+            <div class="actions">
+              <button type="button" onclick="printResidentAccounts()">TK cư dân</button>
+              <button type="button" class="btn-light" onclick="printManagerInfo()">QL + TK quản lý</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="excelImportMsg" class="msg"></div>
+      </div>
+
+<div class="card admin-only-ui">
         <div class="card-head">
           <div>
             <h2>0. Đăng thông báo cho cư dân</h2>
@@ -725,7 +1095,66 @@
 
       <div class="card"><div class="card-head"><div><h2>Danh sách cư dân</h2><p class="muted">Cư dân được tạo một lần. Bấm “Chốt tháng” để tạo công nợ kỳ mới.</p></div><button type="button" class="btn-light" onclick="seedDemoData()">Tạo dữ liệu mẫu</button></div><div class="table"><table><thead><tr><th>Ảnh</th><th>Mã</th><th>Họ tên</th><th>Phòng</th><th>SĐT</th><th>CCCD</th><th>Tài khoản</th><th>Số kỳ</th><th>Còn nợ</th><th>Thao tác</th></tr></thead><tbody id="residentList"></tbody></table></div></div>
       <div class="card"><h2>Lịch sử chốt tiền</h2><div class="table"><table><thead><tr><th>Kỳ</th><th>Cư dân</th><th>Phòng</th><th>Điện</th><th>Nước</th><th>Tổng tiền</th><th>Đã thu</th><th>Còn lại</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="billList"></tbody></table></div></div>
-    </div>
+    
+      <div class="card audit-card admin-only-ui" id="auditHistoryCard">
+        <div class="card-head">
+          <div>
+            <h2>Lịch sử thao tác hệ thống</h2>
+            <p class="muted">Lưu lại các thao tác quan trọng: đăng nhập, tạo/sửa/xóa cư dân, chốt tiền, duyệt dữ liệu, nhập/xuất Excel, in báo cáo, đăng thông báo.</p>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn-light" onclick="exportAuditExcel()">Xuất lịch sử Excel</button>
+            <button type="button" class="btn-danger" onclick="clearAuditLog()">Xóa lịch sử</button>
+          </div>
+        </div>
+
+        <div class="audit-filter">
+          <input id="auditSearch" placeholder="Tìm theo nội dung, người thao tác, mã dữ liệu..." oninput="renderAuditLog()">
+          <select id="auditActorFilter" onchange="renderAuditLog()">
+            <option value="">Tất cả người thao tác</option>
+            <option value="admin">Admin</option>
+            <option value="manager">Quản lý</option>
+            <option value="resident">Cư dân/người ở cùng</option>
+            <option value="system">Hệ thống</option>
+          </select>
+          <select id="auditActionFilter" onchange="renderAuditLog()">
+            <option value="">Tất cả thao tác</option>
+            <option value="login">Đăng nhập</option>
+            <option value="resident">Cư dân</option>
+            <option value="bill">Phiếu thu/chốt tiền</option>
+            <option value="manager">Quản lý</option>
+            <option value="approval">Duyệt dữ liệu</option>
+            <option value="notice">Thông báo</option>
+            <option value="excel">Excel</option>
+            <option value="print">In ấn</option>
+            <option value="data">Dữ liệu</option>
+          </select>
+          <button type="button" class="btn-light" onclick="clearAuditFilter()">Xóa lọc</button>
+        </div>
+
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Thời gian</th>
+                <th>Người thao tác</th>
+                <th>Vai trò</th>
+                <th>Thao tác</th>
+                <th>Đối tượng</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody id="auditLogList">
+              <tr>
+                <td colspan="6" class="center">Chưa có lịch sử thao tác.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+</div>
   </section>
 </main>
 <script>
@@ -733,12 +1162,12 @@
   'use strict';
   const STORAGE_KEY='smart_stay_one_file_v1';
   const debtNames=['Giá tiền phòng','Chỉ số điện','Chỉ số nước','Mạng/Internet','Phí dịch vụ','Phí thuê tủ lạnh','Phí thuê máy lạnh','Phí thuê bếp từ','Phí thuê máy lọc','Phí giữ xe','Phụ thu khác'];
-  let db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[]};let editingCode=null;let editingNoticeId=null;let editingManagerCode=null;let currentLookupCode=null;let currentRole='guest';let currentManager=null;
+  let db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[],auditLogs:[]};let editingCode=null;let editingNoticeId=null;let editingManagerCode=null;let currentLookupCode=null;let currentRole='guest';let currentManager=null;
   function byId(id){return document.getElementById(id)}function value(id){const el=byId(id);return el?el.value.trim():''}function setValue(id,v){const el=byId(id);if(el)el.value=v??''}function num(v){return Number(v||0)}function money(v){return num(v).toLocaleString('vi-VN')+' đ'}function normalize(v){return String(v||'').trim().toLowerCase().replace(/\s+/g,' ')}function safe(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function dateText(v){if(!v)return'';const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})$/);return m?`${m[3]}/${m[2]}/${m[1]}`:v}function monthText(v){if(!v)return'';const m=String(v).match(/^(\d{4})-(\d{2})$/);return m?`${m[2]}/${m[1]}`:v}function today(){return new Date().toISOString().slice(0,10)}function thisMonth(){return new Date().toISOString().slice(0,7)}function showMsg(id,type,text){const el=byId(id);if(el){el.className='msg '+type;el.textContent=text}}function clearMsg(id){const el=byId(id);if(el){el.className='msg';el.textContent=''}}
   function findResident(code){return db.residents.find(r=>r.code===code)}function billId(code,month){return `${code}__${month}`}function billsOf(code){return db.bills.filter(b=>b.residentCode===code).sort((a,b)=>b.month.localeCompare(a.month))}function latestBill(code){return billsOf(code)[0]||null}
   function billRows(b){const r=findResident(b.residentCode)||{};const electricQty=Math.max(0,num(b.newElectric)-num(b.oldElectric));const waterQty=Math.max(0,num(b.newWater)-num(b.oldWater));const roomPrice=b.roomPrice??r.roomPrice,electricPrice=b.electricPrice??r.electricPrice,waterPrice=b.waterPrice??r.waterPrice,wifiFee=b.wifiFee??r.wifiFee,serviceFee=b.serviceFee??r.serviceFee,fridgeFee=b.fridgeFee??r.fridgeFee,airconFee=b.airconFee??r.airconFee,stoveFee=b.stoveFee??r.stoveFee,filterFee=b.filterFee??r.filterFee;return[{old:'',now:'',qty:1,price:num(roomPrice),total:num(roomPrice)},{old:b.oldElectric,now:b.newElectric,qty:electricQty,price:num(electricPrice),total:electricQty*num(electricPrice)},{old:b.oldWater,now:b.newWater,qty:waterQty,price:num(waterPrice),total:waterQty*num(waterPrice)},{old:'',now:'',qty:1,price:num(wifiFee),total:num(wifiFee)},{old:'',now:'',qty:1,price:num(serviceFee),total:num(serviceFee)},{old:'',now:'',qty:1,price:num(fridgeFee),total:num(fridgeFee)},{old:'',now:'',qty:1,price:num(airconFee),total:num(airconFee)},{old:'',now:'',qty:1,price:num(stoveFee),total:num(stoveFee)},{old:'',now:'',qty:1,price:num(filterFee),total:num(filterFee)},{old:'',now:'',qty:num(b.vehicleCount??r.vehicleCount),price:num(b.parkingFee??r.parkingFee),total:num(b.vehicleCount??r.vehicleCount)*num(b.parkingFee??r.parkingFee)},{old:'',now:'',qty:1,price:num(b.extraFee),total:num(b.extraFee)}]}
   function billTotal(b){return billRows(b).reduce((s,r)=>s+num(r.total),0)}function billRemain(b){return Math.max(0,billTotal(b)-num(b.paidAmount))}function statusText(s){return s==='paid'?'Đã thu đủ':s==='partial'?'Thu một phần':'Chưa thu'}function statusClass(s){return s==='paid'?'paid':s==='partial'?'partial':'unpaid'}
-  function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));refresh()}function load(){try{db=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"residents":[],"bills":[]}')}catch{db={residents:[],bills:[]}}if(!Array.isArray(db.residents))db.residents=[];if(!Array.isArray(db.bills))db.bills=[];if(!Array.isArray(db.notices))db.notices=[];if(!Array.isArray(db.managers))db.managers=[];if(!Array.isArray(db.pendingRequests))db.pendingRequests=[];db.residents.forEach(r=>{if(!Array.isArray(r.vehicles))r.vehicles=[];if(!Array.isArray(r.roomContacts))r.roomContacts=[]});refresh()}
+  function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));refresh()}function load(){try{db=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"residents":[],"bills":[]}')}catch{db={residents:[],bills:[]}}if(!Array.isArray(db.residents))db.residents=[];if(!Array.isArray(db.bills))db.bills=[];if(!Array.isArray(db.notices))db.notices=[];if(!Array.isArray(db.managers))db.managers=[];if(!Array.isArray(db.pendingRequests))db.pendingRequests=[];if(!Array.isArray(db.auditLogs))db.auditLogs=[];db.residents.forEach(r=>{if(!Array.isArray(r.vehicles))r.vehicles=[];if(!Array.isArray(r.roomContacts))r.roomContacts=[]});refresh()}
 function refresh(){
   byId('statResidents').textContent = db.residents.length;
   byId('statBills').textContent = db.bills.length;
@@ -770,6 +1199,7 @@ function refresh(){
   renderResidentNotices();
   renderManagerList();
   renderPendingList();
+  renderAuditLog();
   setRoleUI();
 }  window.showResident=function(){byId('residentPage').classList.remove('hidden');byId('adminPage').classList.add('hidden');byId('modePill').textContent='Trang cư dân';location.hash='resident'}
   window.showAdminLogin=function(){byId('residentPage').classList.add('hidden');byId('adminPage').classList.remove('hidden');byId('modePill').textContent='Trang quản trị';location.hash='admin'}
@@ -785,6 +1215,7 @@ function refresh(){
       clearMsg('loginMsg');
       setRoleUI();
       refresh();
+      logAction('Đăng nhập Admin','Tài khoản Admin','Admin đăng nhập hệ thống','admin');
       return;
     }
 
@@ -797,6 +1228,7 @@ function refresh(){
       clearMsg('loginMsg');
       setRoleUI();
       refresh();
+      logAction('Đăng nhập quản lý','Tài khoản quản lý',m.name+' đăng nhập hệ thống','manager');
       return;
     }
 
@@ -931,7 +1363,7 @@ function refresh(){
     editingManagerCode=null;
     if(byId('managerForm')) byId('managerForm').reset();
     save();
-    showMsg('managerFormMsg','ok','Đã xóa quản lý.');
+    showMsg('managerFormMsg','ok','Đã xóa quản lý.');logAction('Xóa tài khoản quản lý','Quản lý','Admin xóa tài khoản quản lý','admin');
   }
 
   function renderManagerList(){
@@ -939,10 +1371,10 @@ function refresh(){
     if(!tbody) return;
     const list=db.managers||[];
     if(!list.length){
-      tbody.innerHTML='<tr><td colspan="7" class="center">Chưa có quản lý.</td></tr>';
+      tbody.innerHTML='<tr><td colspan="8" class="center">Chưa có quản lý.</td></tr>';
       return;
     }
-    tbody.innerHTML=list.map(m=>`<tr><td>${safe(m.code)}</td><td><b>${safe(m.name)}</b><br><span class="muted">${safe(m.phone||'')}</span></td><td>${safe(m.username)}</td><td>${safe(m.motelCode)}</td><td>${safe(m.motelName)}</td><td>${m.status==='locked'?'Tạm khóa':'Đang hoạt động'}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editManager('${safe(m.code)}')">Sửa</button></div></td></tr>`).join('');
+    tbody.innerHTML=list.map(m=>`<tr><td>${safe(m.code)}</td><td><b>${safe(m.name)}</b><br><span class="muted">${safe(m.phone||'')}</span></td><td>${safe(m.username)}</td><td>${safe(m.motelCode)}</td><td>${safe(m.motelName)}</td><td>${safe(m.area||'')}</td><td>${m.status==='locked'?'Tạm khóa':'Đang hoạt động'}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editManager('${safe(m.code)}')">Sửa</button></div></td></tr>`).join('');
   }
 
   function renderPendingList(){
@@ -996,6 +1428,7 @@ function refresh(){
     p.status='approved';
     p.decidedAt=new Date().toISOString();
     p.decidedBy='admin';
+    logAction('Duyệt dữ liệu quản lý',pendingTypeText(p.type),pendingSummary(p),'admin');
     save();
   }
 
@@ -1006,6 +1439,7 @@ function refresh(){
     p.status='rejected';
     p.decidedAt=new Date().toISOString();
     p.decidedBy='admin';
+    logAction('Từ chối dữ liệu quản lý',pendingTypeText(p.type),pendingSummary(p),'admin');
     save();
   }
 
@@ -1035,7 +1469,7 @@ function refresh(){
       }
       editingManagerCode=m.code;
       save();
-      showMsg('managerFormMsg','ok','Đã lưu tài khoản quản lý.');
+      showMsg('managerFormMsg','ok','Đã lưu tài khoản quản lý.');logAction('Lưu tài khoản quản lý','Quản lý '+m.code,'Admin lưu tài khoản quản lý '+m.name,'admin');
     });
   }
 
@@ -1185,7 +1619,7 @@ function refresh(){
     editingNoticeId=null;
     if(byId('noticeForm')) byId('noticeForm').reset();
     save();
-    showMsg('noticeFormMsg','ok','Đã xóa thông báo.');
+    showMsg('noticeFormMsg','ok','Đã xóa thông báo.');logAction('Xóa thông báo','Thông báo','Admin xóa thông báo','admin');
   }
 
   window.deleteNotice=function(id){
@@ -1252,11 +1686,11 @@ function refresh(){
         const index=db.notices.findIndex(x=>x.id===n.id);
         if(index>=0){
           db.notices[index]=n;
-          showMsg('noticeFormMsg','ok','Đã cập nhật thông báo.');
+          showMsg('noticeFormMsg','ok','Đã cập nhật thông báo.');logAction('Cập nhật thông báo','Thông báo '+n.id,'Admin cập nhật thông báo '+n.title,'admin');
         }else{
           db.notices.push(n);
           editingNoticeId=n.id;
-          showMsg('noticeFormMsg','ok','Đã đăng thông báo mới.');
+          showMsg('noticeFormMsg','ok','Đã đăng thông báo mới.');logAction('Đăng thông báo','Thông báo '+n.id,'Admin đăng thông báo '+n.title,'admin');
         }
         save();
       }catch(error){
@@ -1751,14 +2185,14 @@ function refresh(){
   function fillResidentForm(r){Object.entries({rCode:r.code,rName:r.name,rDob:r.dob,rPhone:r.phone,rId:r.citizenId,rIssueDate:r.issueDate,rIssuePlace:r.issuePlace,rEmail:r.email,rOtherPhone:r.otherPhone,residentUsername:r.residentUsername,residentPassword:r.residentPassword,rStatus:r.status,rAddress:r.address,residentPhotoData:r.residentPhoto,paymentBank:r.paymentBank,paymentAccount:r.paymentAccount,paymentHolder:r.paymentHolder,paymentMethod:r.paymentMethod,paymentContent:r.paymentContent,paymentNote:r.paymentNote,paymentQrData:r.paymentQr,facilityCode:r.facilityCode,facilityName:r.facilityName,roomCode:r.roomCode,roomName:r.roomName,occupants:r.occupants,contractCode:r.contractCode,contractDate:r.contractDate,moveInDate:r.moveInDate,temporaryStart:r.temporaryStart,temporaryEnd:r.temporaryEnd,rentalDuration:r.rentalDuration,signer:r.signer,facilityAddress:r.facilityAddress,roomPrice:r.roomPrice,vehicleCount:r.vehicleCount,parkingFee:r.parkingFee,electricPrice:r.electricPrice,waterPrice:r.waterPrice,wifiFee:r.wifiFee,serviceFee:r.serviceFee,fridgeFee:r.fridgeFee,airconFee:r.airconFee,stoveFee:r.stoveFee,filterFee:r.filterFee}).forEach(([id,v])=>setValue(id,v));renderCoTenantForm(r.coTenants||[]);renderVehicleForm(r.vehicles||[]);renderRoomContactForm(r.roomContacts||[]);showImagePreview('residentPhotoPreview',r.residentPhoto||'');showImagePreview('paymentQrPreview',r.paymentQr||'')}
   window.newResident=function(){editingCode=null;byId('residentForm').reset();clearMsg('residentFormMsg');setValue('rStatus','active');setValue('paymentMethod','bank');clearResidentPhoto();clearPaymentQr();renderCoTenantForm([]);renderVehicleForm([]);renderRoomContactForm([])}
   window.editResident=function(code){const r=findResident(code);if(!r)return;editingCode=code;fillResidentForm(r);showMsg('residentFormMsg','ok','Đang sửa hồ sơ của '+r.name+'.');byId('residentForm').scrollIntoView({behavior:'smooth',block:'start'})}
-  window.deleteCurrentResident=function(){if(currentRole!=='admin'){showMsg('residentFormMsg','err','Quản lý không có quyền xóa cư dân.');return}if(!editingCode){showMsg('residentFormMsg','warn','Chưa chọn cư dân để xóa.');return}if(!confirm('Xóa cư dân này và toàn bộ kỳ công nợ liên quan?'))return;db.residents=db.residents.filter(r=>r.code!==editingCode);db.bills=db.bills.filter(b=>b.residentCode!==editingCode);editingCode=null;byId('residentForm').reset();save();showMsg('residentFormMsg','ok','Đã xóa cư dân.')}
-  byId('residentForm').addEventListener('submit',e=>{e.preventDefault();const r=collectResident();if(!r.code||!r.name||!r.dob||!r.phone||!r.citizenId||!r.residentUsername||!r.residentPassword){showMsg('residentFormMsg','err','Vui lòng nhập đủ mã cư dân, họ tên, ngày sinh, số điện thoại, CCCD, tài khoản và mật khẩu cư dân.');return}const exists=findResident(r.code);if(exists&&editingCode!==r.code){showMsg('residentFormMsg','err','Mã cư dân đã tồn tại.');return}const usernames=[r.residentUsername,...(r.coTenants||[]).map(ct=>ct.username)];if(hasDuplicateInArray(usernames)){showMsg('residentFormMsg','err','Tài khoản cư dân chính và người ở cùng không được trùng nhau.');return}const usedNames=allResidentUsernames(editingCode);if(usernames.some(u=>usedNames.includes(normalize(u)))){showMsg('residentFormMsg','err','Có tài khoản đã được dùng ở cư dân khác. Vui lòng đổi tài khoản.');return}if(currentRole==='manager'){newPending('resident_upsert',r,'Hồ sơ cư dân '+r.code);showMsg('residentFormMsg','warn','Đã gửi hồ sơ cư dân lên Admin. Trạng thái: Chờ duyệt. Cư dân chưa thấy dữ liệu này.');newResident();return}const usernameExists=db.residents.some(item=>normalize(item.residentUsername)===normalize(r.residentUsername)&&item.code!==editingCode);if(usernameExists){showMsg('residentFormMsg','err','Tài khoản cư dân đã tồn tại. Vui lòng chọn tài khoản khác.');return}if(editingCode){const old=editingCode;db.residents=db.residents.map(item=>item.code===old?r:item);if(old!==r.code)db.bills.forEach(b=>{if(b.residentCode===old)b.residentCode=r.code});editingCode=r.code;showMsg('residentFormMsg','ok','Đã cập nhật hồ sơ cư dân.')}else{db.residents.push(r);editingCode=r.code;showMsg('residentFormMsg','ok','Đã tạo hồ sơ cư dân mới.')}save()})
+  window.deleteCurrentResident=function(){if(currentRole!=='admin'){showMsg('residentFormMsg','err','Quản lý không có quyền xóa cư dân.');return}if(!editingCode){showMsg('residentFormMsg','warn','Chưa chọn cư dân để xóa.');return}if(!confirm('Xóa cư dân này và toàn bộ kỳ công nợ liên quan?'))return;db.residents=db.residents.filter(r=>r.code!==editingCode);db.bills=db.bills.filter(b=>b.residentCode!==editingCode);editingCode=null;byId('residentForm').reset();save();showMsg('residentFormMsg','ok','Đã xóa cư dân.');logAction('Xóa hồ sơ cư dân','Cư dân','Admin xóa hồ sơ cư dân','admin')}
+  byId('residentForm').addEventListener('submit',e=>{e.preventDefault();const r=collectResident();if(!r.code||!r.name||!r.dob||!r.phone||!r.citizenId||!r.residentUsername||!r.residentPassword){showMsg('residentFormMsg','err','Vui lòng nhập đủ mã cư dân, họ tên, ngày sinh, số điện thoại, CCCD, tài khoản và mật khẩu cư dân.');return}const exists=findResident(r.code);if(exists&&editingCode!==r.code){showMsg('residentFormMsg','err','Mã cư dân đã tồn tại.');return}const usernames=[r.residentUsername,...(r.coTenants||[]).map(ct=>ct.username)];if(hasDuplicateInArray(usernames)){showMsg('residentFormMsg','err','Tài khoản cư dân chính và người ở cùng không được trùng nhau.');return}const usedNames=allResidentUsernames(editingCode);if(usernames.some(u=>usedNames.includes(normalize(u)))){showMsg('residentFormMsg','err','Có tài khoản đã được dùng ở cư dân khác. Vui lòng đổi tài khoản.');return}if(currentRole==='manager'){newPending('resident_upsert',r,'Hồ sơ cư dân '+r.code);showMsg('residentFormMsg','warn','Đã gửi hồ sơ cư dân lên Admin. Trạng thái: Chờ duyệt. Cư dân chưa thấy dữ liệu này.');logAction('Gửi duyệt hồ sơ cư dân','Cư dân '+r.code,'Quản lý gửi hồ sơ '+r.name+' chờ Admin duyệt','manager');newResident();return}const usernameExists=db.residents.some(item=>normalize(item.residentUsername)===normalize(r.residentUsername)&&item.code!==editingCode);if(usernameExists){showMsg('residentFormMsg','err','Tài khoản cư dân đã tồn tại. Vui lòng chọn tài khoản khác.');return}if(editingCode){const old=editingCode;db.residents=db.residents.map(item=>item.code===old?r:item);if(old!==r.code)db.bills.forEach(b=>{if(b.residentCode===old)b.residentCode=r.code});editingCode=r.code;showMsg('residentFormMsg','ok','Đã cập nhật hồ sơ cư dân.');logAction('Cập nhật hồ sơ cư dân','Cư dân '+r.code,'Admin cập nhật hồ sơ '+r.name,'admin')}else{db.residents.push(r);editingCode=r.code;showMsg('residentFormMsg','ok','Đã tạo hồ sơ cư dân mới.');logAction('Tạo hồ sơ cư dân','Cư dân '+r.code,'Admin tạo hồ sơ '+r.name,'admin')}save()})
   function collectBill(){const residentCode=value('bResident'),month=value('bMonth');return{id:billId(residentCode,month),residentCode,month,oldElectric:num(value('oldElectric')),newElectric:num(value('newElectric')),oldWater:num(value('oldWater')),newWater:num(value('newWater')),roomPrice:num(value('bRoomPrice')),electricPrice:num(value('bElectricPrice')),waterPrice:num(value('bWaterPrice')),wifiFee:num(value('bWifiFee')),serviceFee:num(value('bServiceFee')),fridgeFee:num(value('bFridgeFee')),airconFee:num(value('bAirconFee')),stoveFee:num(value('bStoveFee')),filterFee:num(value('bFilterFee')),vehicleCount:num(value('bVehicleCount')),parkingFee:num(value('bParkingFee')),extraFee:num(value('extraFee')),paidAmount:num(value('paidAmount')),paymentStatus:value('paymentStatus'),closedDate:value('closedDate')||today(),note:value('billNote'),updatedAt:new Date().toISOString()}}
-  byId('billForm').addEventListener('submit',e=>{e.preventDefault();const b=collectBill();if(!b.residentCode||!b.month){showMsg('billFormMsg','err','Vui lòng chọn cư dân và kỳ tháng.');return}if(!findResident(b.residentCode)){showMsg('billFormMsg','err','Cư dân không tồn tại.');return}const total=billTotal(b);if(b.paymentStatus==='paid')b.paidAmount=total;if(b.paymentStatus==='partial'&&b.paidAmount<=0)b.paymentStatus='unpaid';if(b.paidAmount>=total){b.paidAmount=total;b.paymentStatus='paid'}if(currentRole==='manager'){newPending('bill_upsert',b,'Chốt kỳ '+b.month+' cho '+b.residentCode);showMsg('billFormMsg','warn','Đã gửi kỳ chốt/chỉ số lên Admin. Trạng thái: Chờ duyệt. Cư dân chưa thấy dữ liệu này.');return}const i=db.bills.findIndex(x=>x.id===b.id);if(i>=0){db.bills[i]=b;showMsg('billFormMsg','ok','Đã cập nhật kỳ công nợ '+monthText(b.month)+'.')}else{db.bills.push(b);showMsg('billFormMsg','ok','Đã chốt kỳ công nợ '+monthText(b.month)+'.')}save();updateBillPreview()})
+  byId('billForm').addEventListener('submit',e=>{e.preventDefault();const b=collectBill();if(!b.residentCode||!b.month){showMsg('billFormMsg','err','Vui lòng chọn cư dân và kỳ tháng.');return}if(!findResident(b.residentCode)){showMsg('billFormMsg','err','Cư dân không tồn tại.');return}const total=billTotal(b);if(b.paymentStatus==='paid')b.paidAmount=total;if(b.paymentStatus==='partial'&&b.paidAmount<=0)b.paymentStatus='unpaid';if(b.paidAmount>=total){b.paidAmount=total;b.paymentStatus='paid'}if(currentRole==='manager'){newPending('bill_upsert',b,'Chốt kỳ '+b.month+' cho '+b.residentCode);showMsg('billFormMsg','warn','Đã gửi kỳ chốt/chỉ số lên Admin. Trạng thái: Chờ duyệt. Cư dân chưa thấy dữ liệu này.');logAction('Gửi duyệt phiếu thu','Phiếu thu '+b.id,'Quản lý gửi kỳ '+b.month+' chờ Admin duyệt','manager');return}const i=db.bills.findIndex(x=>x.id===b.id);if(i>=0){db.bills[i]=b;showMsg('billFormMsg','ok','Đã cập nhật kỳ công nợ '+monthText(b.month)+'.');logAction('Cập nhật phiếu thu','Phiếu thu '+b.id,'Admin cập nhật kỳ '+b.month,'admin')}else{db.bills.push(b);showMsg('billFormMsg','ok','Đã chốt kỳ công nợ '+monthText(b.month)+'.');logAction('Tạo phiếu thu','Phiếu thu '+b.id,'Admin chốt kỳ '+b.month,'admin')}save();updateBillPreview()})
   window.onBillingResidentChange=function(){const code=value('bResident');if(!code)return;const r=findResident(code);if(!r)return;const last=latestBill(code);setValue('oldElectric',last?last.newElectric:0);setValue('oldWater',last?last.newWater:0);setValue('bRoomPrice',r.roomPrice);setValue('bElectricPrice',r.electricPrice);setValue('bWaterPrice',r.waterPrice);setValue('bWifiFee',r.wifiFee);setValue('bServiceFee',r.serviceFee);setValue('bFridgeFee',r.fridgeFee);setValue('bAirconFee',r.airconFee);setValue('bStoveFee',r.stoveFee);setValue('bFilterFee',r.filterFee);setValue('bVehicleCount',r.vehicleCount);setValue('bParkingFee',r.parkingFee);setValue('bMonth',thisMonth());setValue('closedDate',today());updateBillPreview()}
   window.editBill=function(id){const b=db.bills.find(x=>x.id===id);if(!b)return;const r=findResident(b.residentCode)||{};setValue('bResident',b.residentCode);setValue('bMonth',b.month);setValue('oldElectric',b.oldElectric);setValue('newElectric',b.newElectric);setValue('oldWater',b.oldWater);setValue('newWater',b.newWater);setValue('bRoomPrice',b.roomPrice??r.roomPrice);setValue('bElectricPrice',b.electricPrice??r.electricPrice);setValue('bWaterPrice',b.waterPrice??r.waterPrice);setValue('bWifiFee',b.wifiFee??r.wifiFee);setValue('bServiceFee',b.serviceFee??r.serviceFee);setValue('bFridgeFee',b.fridgeFee??r.fridgeFee);setValue('bAirconFee',b.airconFee??r.airconFee);setValue('bStoveFee',b.stoveFee??r.stoveFee);setValue('bFilterFee',b.filterFee??r.filterFee);setValue('bVehicleCount',b.vehicleCount??r.vehicleCount);setValue('bParkingFee',b.parkingFee??r.parkingFee);setValue('extraFee',b.extraFee);setValue('paidAmount',b.paidAmount);setValue('paymentStatus',b.paymentStatus);setValue('closedDate',b.closedDate);setValue('billNote',b.note);updateBillPreview();showMsg('billFormMsg','ok','Đang sửa kỳ '+monthText(b.month)+'.');byId('billForm').scrollIntoView({behavior:'smooth',block:'start'})}
   window.deleteBill=function(id){if(currentRole!=='admin'){showMsg('billFormMsg','err','Quản lý không có quyền xóa kỳ công nợ.');return}if(!confirm('Xóa kỳ công nợ này?'))return;db.bills=db.bills.filter(b=>b.id!==id);save()}
-  window.markSelectedBillPaid=function(){const code=value('bResident'),month=value('bMonth');const b=db.bills.find(x=>x.id===billId(code,month));if(!b){showMsg('billFormMsg','warn','Chưa có kỳ công nợ này. Hãy chốt kỳ trước.');return}b.paidAmount=billTotal(b);b.paymentStatus='paid';b.updatedAt=new Date().toISOString();save();editBill(b.id);showMsg('billFormMsg','ok','Đã đánh dấu thu đủ.')}
+  window.markSelectedBillPaid=function(){const code=value('bResident'),month=value('bMonth');const b=db.bills.find(x=>x.id===billId(code,month));if(!b){showMsg('billFormMsg','warn','Chưa có kỳ công nợ này. Hãy chốt kỳ trước.');return}b.paidAmount=billTotal(b);b.paymentStatus='paid';b.updatedAt=new Date().toISOString();save();editBill(b.id);showMsg('billFormMsg','ok','Đã đánh dấu thu đủ.');logAction('Đánh dấu đã thu đủ','Phiếu thu '+bill.id,'Admin đánh dấu phiếu thu đã thu đủ','admin')}
   window.updateBillPreview=function(){const code=value('bResident'),preview=byId('billPreview');if(!preview)return;const temp=collectBill();setValue('usedElectric',Math.max(0,num(temp.newElectric)-num(temp.oldElectric)));setValue('usedWater',Math.max(0,num(temp.newWater)-num(temp.oldWater)));if(!code){preview.innerHTML='<tr><td colspan="6" class="center">Chọn cư dân để xem bảng tạm tính.</td></tr>';return}const rows=billRows(temp);preview.innerHTML=rows.map((row,i)=>`<tr><td>${debtNames[i]}</td><td>${safe(row.old)}</td><td>${safe(row.now)}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td class="money">${money(row.total)}</td></tr>`).join('')+`<tr><td colspan="5" class="money">Tổng tạm tính</td><td class="money">${money(billTotal(temp))}</td></tr>`}
 
   window.copyPaymentInfo=function(){
@@ -1798,7 +2232,7 @@ function refresh(){
   window.fillDemoBillingForm=function(){if(!db.residents.length)seedDemoData();const r=db.residents[0],last=latestBill(r.code);setValue('bResident',r.code);setValue('bMonth',thisMonth());setValue('closedDate',today());setValue('oldElectric',last?last.newElectric:120);setValue('newElectric',last?num(last.newElectric)+55:180);setValue('oldWater',last?last.newWater:35);setValue('newWater',last?num(last.newWater)+6:42);setValue('bRoomPrice',r.roomPrice);setValue('bElectricPrice',r.electricPrice);setValue('bWaterPrice',r.waterPrice);setValue('bWifiFee',r.wifiFee);setValue('bServiceFee',r.serviceFee);setValue('bFridgeFee',r.fridgeFee);setValue('bAirconFee',r.airconFee);setValue('bStoveFee',r.stoveFee);setValue('bFilterFee',r.filterFee);setValue('bVehicleCount',r.vehicleCount);setValue('bParkingFee',r.parkingFee);setValue('extraFee',0);setValue('paidAmount',0);setValue('paymentStatus','unpaid');setValue('billNote','');updateBillPreview()}
   window.seedDemoData=function(){if(!Array.isArray(db.managers))db.managers=[];if(!db.managers.some(m=>m.code==='QL001'))db.managers.push({code:'QL001',name:'Quản lý mẫu',phone:'0900000000',email:'quanly@example.com',status:'active',username:'ql001',password:'123456',motelCode:'NT001',motelName:'Dãy trọ A',area:'Dãy A',motelAddress:'Đồng Tháp',note:'Tài khoản quản lý mẫu',updatedAt:new Date().toISOString()});if(!findResident('CD001'))db.residents.push(demoResident());if(!Array.isArray(db.notices))db.notices=[];if(!db.notices.some(n=>n.id==='TB001'))db.notices.push({id:'TB001',type:'info',date:today(),status:'active',title:'Thông báo hệ thống',content:'Chào mừng cư dân sử dụng trang tra cứu SMART STAY ĐỒNG THÁP. Chủ trọ có thể đăng thông báo dạng nội dung, PDF hoặc DOCX.',fileName:'',fileMime:'',fileData:'',updatedAt:new Date().toISOString()});if(!db.bills.some(b=>b.id==='CD001__2026-05'))db.bills.push({id:'CD001__2026-05',residentCode:'CD001',month:'2026-05',oldElectric:120,newElectric:180,oldWater:35,newWater:42,extraFee:0,paidAmount:0,paymentStatus:'unpaid',closedDate:'2026-05-31',note:'',updatedAt:new Date().toISOString()});save()}
   function demoResident(){return{code:'CD001',name:'Nguyễn Văn A',dob:'2000-01-15',phone:'0901234567',citizenId:'012345678901',issueDate:'2020-03-20',issuePlace:'Cục CSQLHC về TTXH',email:'vana@example.com',otherPhone:'',residentUsername:'cd001',residentPassword:'123456',coTenants:[{id:'NT001',name:'Trần Thị B',dob:'2001-02-20',phone:'0912345678',citizenId:'079001111111',relationship:'Người ở cùng',username:'cd001_2',password:'123456'}],vehicles:[{id:'XE001',ownerKey:'main:CD001',ownerName:'Nguyễn Văn A',vehicleType:'motorbike',plateNumber:'66B1-123.45',frameNumber:'SK123456',engineNumber:'SM123456',registrationNumber:'DKX001',note:'Xe máy màu đen'}],roomContacts:[{id:'LH001',name:'Nguyễn Văn C',phone:'0987654321',relationship:'Người thân',address:'Đồng Tháp',note:'Liên hệ khi khẩn cấp'}],status:'active',address:'Xã B, Huyện C, Tỉnh D',residentPhoto:'',paymentBank:'Vietcombank',paymentAccount:'0123456789',paymentHolder:'SMART STAY DONG THAP',paymentMethod:'bank',paymentContent:'CD001 tien phong',paymentNote:'Sau khi chuyển khoản, vui lòng gửi bill cho chủ trọ.',paymentQr:'',facilityCode:'CS01',facilityName:'Nhà trọ Minh Anh',facilityAddress:'123 Đường A, TP.HCM',roomCode:'P101',roomName:'Phòng 101',occupants:2,contractCode:'HD001',contractDate:'2026-01-01',moveInDate:'2026-01-05',temporaryStart:'2026-01-05',temporaryEnd:'2027-01-05',rentalDuration:'12 tháng',signer:'Nguyễn Văn A',roomPrice:2500000,vehicleCount:2,parkingFee:100000,electricPrice:4000,waterPrice:18000,wifiFee:100000,serviceFee:150000,fridgeFee:50000,airconFee:150000,stoveFee:30000,filterFee:40000,updatedAt:new Date().toISOString()}}
-  byId('lookupForm').addEventListener('submit',e=>{e.preventDefault();const login=findAccountLogin(value('residentLoginUser'),value('residentLoginPass'));if(!login){byId('residentResult').style.display='none';showMsg('lookupMsg','err','Sai tài khoản hoặc mật khẩu cư dân/người ở cùng. Vui lòng liên hệ chủ trọ.');return}const r=login.resident;if(r.status==='ended'){byId('residentResult').style.display='none';showMsg('lookupMsg','warn','Tài khoản này thuộc hồ sơ đã kết thúc thuê. Vui lòng liên hệ chủ trọ.');return}currentLookupCode=r.code;const select=byId('residentBillSelect'),bs=billsOf(r.code);select.innerHTML=bs.length?bs.map(b=>`<option value="${safe(b.id)}">Kỳ ${monthText(b.month)} - trạng thái ${statusText(b.paymentStatus)} - còn lại ${money(billRemain(b))}</option>`).join(''):'<option value="">Chưa có kỳ công nợ</option>';byId('residentResult').style.display='block';renderResidentResult();showMsg('lookupMsg','ok','Đăng nhập thành công. Bạn chỉ có quyền xem thông tin.')})
+  byId('lookupForm').addEventListener('submit',e=>{e.preventDefault();const login=findAccountLogin(value('residentLoginUser'),value('residentLoginPass'));if(!login){byId('residentResult').style.display='none';showMsg('lookupMsg','err','Sai tài khoản hoặc mật khẩu cư dân/người ở cùng. Vui lòng liên hệ chủ trọ.');return}const r=login.resident;if(r.status==='ended'){byId('residentResult').style.display='none';showMsg('lookupMsg','warn','Tài khoản này thuộc hồ sơ đã kết thúc thuê. Vui lòng liên hệ chủ trọ.');return}currentLookupCode=r.code;const select=byId('residentBillSelect'),bs=billsOf(r.code);select.innerHTML=bs.length?bs.map(b=>`<option value="${safe(b.id)}">Kỳ ${monthText(b.month)} - trạng thái ${statusText(b.paymentStatus)} - còn lại ${money(billRemain(b))}</option>`).join(''):'<option value="">Chưa có kỳ công nợ</option>';byId('residentResult').style.display='block';renderResidentResult();showMsg('lookupMsg','ok','Đăng nhập thành công. Bạn chỉ có quyền xem thông tin.');logAction('Đăng nhập cư dân','Tài khoản cư dân',r.name+' đăng nhập xem thông tin','resident')})
   window.renderResidentResult=function(){if(!currentLookupCode)return;const r=findResident(currentLookupCode);if(!r)return;const bill=db.bills.find(b=>b.id===value('residentBillSelect'))||latestBill(r.code);const totalDebt=billsOf(r.code).reduce((s,b)=>s+billRemain(b),0);byId('summary').innerHTML=`<div class="summary-card"><span>Cư dân</span><strong>${safe(r.name)}</strong></div><div class="summary-card"><span>Phòng</span><strong>${safe(r.roomName||r.roomCode)}</strong></div><div class="summary-card"><span>Kỳ đang xem</span><strong>${bill?monthText(bill.month):'Chưa có'}</strong></div><div class="summary-card"><span>Tổng còn nợ</span><strong>${money(totalDebt)}</strong></div>`;if(!bill){byId('residentTables').innerHTML='<div class="section"><h2>Chưa có kỳ công nợ</h2><p class="muted">Chủ trọ chưa chốt tiền tháng nào cho cư dân này.</p></div>';return}const rows=billRows(bill);byId('residentTables').innerHTML=`<div class="section"><h2>Thông tin phòng</h2><div class="table"><table><thead><tr><th>Mã cơ sở</th><th>Tên cơ sở</th><th>Địa chỉ</th><th>Mã phòng</th><th>Tên phòng</th><th>Số người ở</th></tr></thead><tbody><tr><td>${safe(r.facilityCode)}</td><td>${safe(r.facilityName)}</td><td>${safe(r.facilityAddress)}</td><td>${safe(r.roomCode)}</td><td>${safe(r.roomName)}</td><td>${safe(r.occupants)}</td></tr></tbody></table></div></div><div class="section"><h2>Người ở cùng</h2><div class="table"><table><thead><tr><th>Họ tên</th><th>Ngày sinh</th><th>SĐT</th><th>CCCD</th><th>Quan hệ</th><th>Tài khoản</th><th>Quyền</th></tr></thead><tbody>${(Array.isArray(r.coTenants)&&r.coTenants.length?r.coTenants:[null]).map(ct=>ct?`<tr><td>${safe(ct.name)}</td><td>${dateText(ct.dob)}</td><td>${safe(ct.phone)}</td><td>${safe(ct.citizenId)}</td><td>${safe(ct.relationship)}</td><td>${safe(ct.username)}</td><td>Chỉ xem</td></tr>`:'<tr><td colspan="7" class="center">Không có người ở cùng.</td></tr>').join('')}</tbody></table></div></div><div class="section"><h2>Thông tin hợp đồng</h2><div class="table"><table><thead><tr><th>Mã hợp đồng</th><th>Ngày ký</th><th>Ngày vào ở</th><th>Bắt đầu tạm trú</th><th>Kết thúc tạm trú</th><th>Thời gian thuê</th><th>Người ký</th></tr></thead><tbody><tr><td>${safe(r.contractCode)}</td><td>${dateText(r.contractDate)}</td><td>${dateText(r.moveInDate)}</td><td>${dateText(r.temporaryStart)}</td><td>${dateText(r.temporaryEnd)}</td><td>${safe(r.rentalDuration)}</td><td>${safe(r.signer)}</td></tr></tbody></table></div></div><div class="section"><h2>Tài khoản xem thông tin</h2><p class="readonly-note">Bạn đang đăng nhập bằng tài khoản cư dân. Trang này chỉ cho xem thông tin, lịch sử công nợ và trạng thái thanh toán. Không thể chỉnh sửa dữ liệu.</p><div class="table"><table><thead><tr><th>Tài khoản</th><th>Trạng thái thuê</th><th>Quyền</th></tr></thead><tbody><tr><td>${safe(r.residentUsername||'')}</td><td>${safe(r.status||'')}</td><td>Chỉ xem</td></tr></tbody></table></div></div><div class="section"><h2>Hình ảnh cư dân</h2><div class="profile-line">${r.residentPhoto?`<img class="resident-photo-preview" src="${safe(r.residentPhoto)}" alt="Ảnh cư dân">`:'<div class="muted">Chưa có hình ảnh cư dân.</div>'}<div><b>${safe(r.name)}</b><p class="muted">Mã cư dân: ${safe(r.code)}</p></div></div></div><div class="section"><h2>Thông tin cư dân</h2><div class="table"><table><thead><tr><th>Mã cư dân</th><th>Họ tên</th><th>Ngày sinh</th><th>CCCD</th><th>Ngày cấp</th><th>Nơi cấp</th><th>Địa chỉ thường trú</th><th>SĐT</th><th>Email</th></tr></thead><tbody><tr><td>${safe(r.code)}</td><td>${safe(r.name)}</td><td>${dateText(r.dob)}</td><td>${safe(r.citizenId)}</td><td>${dateText(r.issueDate)}</td><td>${safe(r.issuePlace)}</td><td>${safe(r.address)}</td><td>${safe(r.phone)}</td><td>${safe(r.email)}</td></tr></tbody></table></div></div><div class="section"><h2>Thông tin thanh toán</h2><div class="payment-box"><div class="table"><table><thead><tr><th>Phương thức</th><th>Ngân hàng</th><th>Số tài khoản</th><th>Chủ tài khoản</th><th>Nội dung CK</th></tr></thead><tbody><tr><td>${safe(r.paymentMethod||'')}</td><td>${safe(r.paymentBank||'')}</td><td>${safe(r.paymentAccount||'')}</td><td>${safe(r.paymentHolder||'')}</td><td>${safe(r.paymentContent||r.code+' '+(bill?bill.month:''))}</td></tr></tbody></table></div><p class="muted">${safe(r.paymentNote||'')}</p>${r.paymentQr?`<img class="payment-qr-preview" src="${safe(r.paymentQr)}" alt="QR thanh toán">`:''}</div></div><div class="section"><h2>Công nợ kỳ ${monthText(bill.month)}</h2><p class="muted">Ngày chốt: ${dateText(bill.closedDate)}. Ghi chú: ${safe(bill.note||'Không có')}</p><div class="table"><table><thead><tr><th>STT</th><th>Khoản thu</th><th>Chỉ số cũ</th><th>Chỉ số mới</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows.map((row,i)=>`<tr><td>${i+1}</td><td>${debtNames[i]}</td><td>${safe(row.old)}</td><td>${safe(row.now)}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td class="money">${money(row.total)}</td></tr>`).join('')}<tr><td colspan="6" class="money">Tổng tiền</td><td class="money">${money(billTotal(bill))}</td></tr><tr><td colspan="6">Đã thanh toán</td><td>${money(bill.paidAmount)}</td></tr><tr><td colspan="6" class="money">Còn lại</td><td class="money">${money(billRemain(bill))}</td></tr><tr><td colspan="6">Trạng thái</td><td><span class="badge ${statusClass(bill.paymentStatus)}">${statusText(bill.paymentStatus)}</span></td></tr></tbody></table></div></div>`}
   window.clearLookup=function(){byId('lookupForm').reset();byId('residentResult').style.display='none';currentLookupCode=null;clearMsg('lookupMsg')}
   window.fillDemoResidentLogin=function(){if(!findResident('CD001'))seedDemoData();const r=findResident('CD001');setValue('residentLoginUser',r.residentUsername||'cd001');setValue('residentLoginPass',r.residentPassword||'123456')}
@@ -1836,9 +2270,535 @@ function refresh(){
     if(!confirm('Bạn chắc chắn muốn xóa toàn bộ dữ liệu trên trình duyệt này?')){
       return;
     }
-    db={residents:[],bills:[],notices:[]};
+    db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[],auditLogs:[]};
     save();
   }
+
+
+
+  function currentActorName(){
+    if(currentRole==='admin') return 'Admin';
+    if(currentRole==='manager' && currentManager) return currentManager.name + ' (' + currentManager.code + ')';
+    if(currentLookupCode){
+      const r=findResident(currentLookupCode);
+      return r ? (r.name + ' (' + r.code + ')') : 'Cư dân';
+    }
+    return 'Hệ thống';
+  }
+
+  function auditRoleText(role){
+    if(role==='admin') return 'Admin';
+    if(role==='manager') return 'Quản lý';
+    if(role==='resident') return 'Cư dân/người ở cùng';
+    return 'Hệ thống';
+  }
+
+  function auditActorClass(role){
+    if(role==='admin') return 'audit-actor-admin';
+    if(role==='manager') return 'audit-actor-manager';
+    if(role==='resident') return 'audit-actor-resident';
+    return '';
+  }
+
+  function actionGroup(action){
+    const a=String(action||'').toLowerCase();
+    if(a.includes('đăng nhập')||a.includes('login')) return 'login';
+    if(a.includes('cư dân')||a.includes('hồ sơ')) return 'resident';
+    if(a.includes('chốt')||a.includes('phiếu')||a.includes('công nợ')) return 'bill';
+    if(a.includes('quản lý')) return 'manager';
+    if(a.includes('duyệt')||a.includes('từ chối')) return 'approval';
+    if(a.includes('thông báo')) return 'notice';
+    if(a.includes('excel')||a.includes('nhập')||a.includes('xuất')) return 'excel';
+    if(a.includes('in ')) return 'print';
+    if(a.includes('xóa toàn bộ')||a.includes('khôi phục')||a.includes('sao lưu')) return 'data';
+    return 'data';
+  }
+
+  function logAction(action,target,detail,roleOverride){
+    if(!Array.isArray(db.auditLogs)) db.auditLogs=[];
+    const role=roleOverride || (currentRole==='guest'&&currentLookupCode?'resident':currentRole||'system');
+    const item={
+      id:'LOG'+Date.now()+Math.floor(Math.random()*1000),
+      time:new Date().toISOString(),
+      actor:currentActorName(),
+      role:role,
+      action:action,
+      target:target||'',
+      detail:detail||'',
+      group:actionGroup(action)
+    };
+    db.auditLogs.unshift(item);
+    if(db.auditLogs.length>1500) db.auditLogs=db.auditLogs.slice(0,1500);
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(db));
+    renderAuditLog();
+  }
+
+  function formatAuditTime(iso){
+    if(!iso) return '';
+    const d=new Date(iso);
+    if(isNaN(d.getTime())) return iso;
+    return d.toLocaleString('vi-VN');
+  }
+
+  function renderAuditLog(){
+    const tbody=byId('auditLogList');
+    if(!tbody) return;
+
+    const keyword=normalize(value('auditSearch'));
+    const actorFilter=value('auditActorFilter');
+    const actionFilter=value('auditActionFilter');
+
+    let rows=[...(db.auditLogs||[])];
+
+    if(actorFilter){
+      rows=rows.filter(x=>x.role===actorFilter);
+    }
+
+    if(actionFilter){
+      rows=rows.filter(x=>x.group===actionFilter);
+    }
+
+    if(keyword){
+      rows=rows.filter(x=>[
+        x.time,x.actor,x.role,x.action,x.target,x.detail,x.group
+      ].some(v=>normalize(v).includes(keyword)));
+    }
+
+    if(!rows.length){
+      tbody.innerHTML='<tr><td colspan="6" class="center">Chưa có lịch sử thao tác phù hợp.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML=rows.slice(0,300).map(x=>`
+      <tr>
+        <td>${formatAuditTime(x.time)}</td>
+        <td><b>${safe(x.actor)}</b></td>
+        <td><span class="badge ${auditActorClass(x.role)}">${auditRoleText(x.role)}</span></td>
+        <td><span class="audit-action">${safe(x.action)}</span></td>
+        <td>${safe(x.target)}</td>
+        <td class="audit-detail">${safe(x.detail)}</td>
+      </tr>
+    `).join('');
+  }
+
+  window.renderAuditLog=renderAuditLog;
+
+  window.clearAuditFilter=function(){
+    setValue('auditSearch','');
+    setValue('auditActorFilter','');
+    setValue('auditActionFilter','');
+    renderAuditLog();
+  }
+
+  window.clearAuditLog=function(){
+    if(currentRole!=='admin'){
+      alert('Chỉ Admin được xóa lịch sử thao tác.');
+      return;
+    }
+    if(!confirm('Xóa toàn bộ lịch sử thao tác?')) return;
+    db.auditLogs=[];
+    logAction('Xóa lịch sử thao tác','Audit','Admin đã xóa lịch sử thao tác cũ','admin');
+    save();
+  }
+
+  function auditRows(){
+    return (db.auditLogs||[]).map(x=>({
+      thoiGian:formatAuditTime(x.time),
+      nguoiThaoTac:x.actor,
+      vaiTro:auditRoleText(x.role),
+      thaoTac:x.action,
+      doiTuong:x.target,
+      chiTiet:x.detail,
+      nhom:x.group
+    }));
+  }
+
+  function exportAuditExcel(){
+    if(currentRole!=='admin'){
+      alert('Chỉ Admin được xuất lịch sử thao tác.');
+      return;
+    }
+    if(typeof writeWorkbook==='function'){
+      writeWorkbook([{name:'LichSuThaoTac',rows:auditRows()}],'lich_su_thao_tac_smart_stay.xlsx');
+      logAction('Xuất Excel lịch sử thao tác','Audit','Đã xuất file lịch sử thao tác','admin');
+    }else{
+      alert('Chức năng Excel chưa sẵn sàng.');
+    }
+  }
+
+
+  function requireXLSX(){
+    if(!window.XLSX){
+      alert('Không tải được thư viện Excel. Hãy kiểm tra kết nối mạng rồi thử lại.');
+      return false;
+    }
+    return true;
+  }
+
+  function normalizeHeaderExcel(text){
+    return String(text||'')
+      .trim()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g,'')
+      .replace(/đ/g,'d')
+      .replace(/[^a-z0-9]/g,'');
+  }
+
+  function getExcelCell(row,names,fallback=''){
+    const map={};
+    Object.keys(row||{}).forEach(k=>map[normalizeHeaderExcel(k)]=row[k]);
+    for(const name of names){
+      const key=normalizeHeaderExcel(name);
+      if(map[key]!==undefined&&map[key]!==null&&map[key]!=='') return map[key];
+    }
+    return fallback;
+  }
+
+  function excelDateInput(v){
+    if(!v) return '';
+    if(typeof v==='number'&&window.XLSX&&XLSX.SSF){
+      const d=XLSX.SSF.parse_date_code(v);
+      if(d) return `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
+    }
+    const raw=String(v).trim();
+    if(/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
+    const m=raw.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+    if(m) return `${m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`;
+    return raw;
+  }
+
+  function rowsFromExcelFile(file){
+    return new Promise((resolve,reject)=>{
+      const reader=new FileReader();
+      reader.onload=e=>{
+        try{
+          const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
+          const sheet=wb.Sheets[wb.SheetNames[0]];
+          resolve(XLSX.utils.sheet_to_json(sheet,{defval:''}));
+        }catch(error){ reject(error); }
+      };
+      reader.onerror=()=>reject(reader.error);
+      reader.readAsArrayBuffer(file);
+    });
+  }
+
+  function residentFromExcelRow(row){
+    const code=String(getExcelCell(row,['maCuDan','mã cư dân','ma cu dan','code'])).trim();
+    const name=String(getExcelCell(row,['hoTen','họ tên','ho ten','name'])).trim();
+    const phone=String(getExcelCell(row,['soDienThoai','số điện thoại','sdt','phone'])).trim();
+    const citizenId=String(getExcelCell(row,['soCCCD','số CCCD','cccd','citizenId'])).trim();
+
+    return {
+      code,
+      name,
+      dob:excelDateInput(getExcelCell(row,['ngaySinh','ngày sinh','dob'])),
+      phone,
+      citizenId,
+      issueDate:excelDateInput(getExcelCell(row,['ngayCap','ngày cấp','issueDate'])),
+      issuePlace:String(getExcelCell(row,['noiCap','nơi cấp','issuePlace'])).trim(),
+      email:String(getExcelCell(row,['email'])).trim(),
+      otherPhone:String(getExcelCell(row,['sdtKhac','số điện thoại khác','otherPhone'])).trim(),
+      residentUsername:String(getExcelCell(row,['taiKhoanCuDan','tài khoản cư dân','username','residentUsername'],code.toLowerCase())).trim(),
+      residentPassword:String(getExcelCell(row,['matKhauCuDan','mật khẩu cư dân','password','residentPassword'],'123456')).trim(),
+      coTenants:[],
+      vehicles:[],
+      roomContacts:[],
+      status:String(getExcelCell(row,['trangThai','trạng thái','status'],'active')).trim()||'active',
+      address:String(getExcelCell(row,['diaChiThuongTru','địa chỉ thường trú','address'])).trim(),
+      residentPhoto:'',
+      paymentBank:String(getExcelCell(row,['nganHang','ngân hàng','paymentBank'])).trim(),
+      paymentAccount:String(getExcelCell(row,['soTaiKhoan','số tài khoản','paymentAccount'])).trim(),
+      paymentHolder:String(getExcelCell(row,['chuTaiKhoan','chủ tài khoản','paymentHolder'])).trim(),
+      paymentMethod:String(getExcelCell(row,['phuongThucThanhToan','phương thức thanh toán','paymentMethod'],'bank')).trim(),
+      paymentContent:String(getExcelCell(row,['noiDungCK','nội dung CK','paymentContent'])).trim(),
+      paymentNote:String(getExcelCell(row,['ghiChuThanhToan','ghi chú thanh toán','paymentNote'])).trim(),
+      paymentQr:'',
+      facilityCode:String(getExcelCell(row,['maCoSo','mã cơ sở','facilityCode'])).trim(),
+      facilityName:String(getExcelCell(row,['tenCoSo','tên cơ sở','facilityName'])).trim(),
+      facilityAddress:String(getExcelCell(row,['diaChiCoSo','địa chỉ cơ sở','facilityAddress'])).trim(),
+      roomCode:String(getExcelCell(row,['maPhong','mã phòng','roomCode'])).trim(),
+      roomName:String(getExcelCell(row,['tenPhong','tên phòng','roomName'])).trim(),
+      occupants:num(getExcelCell(row,['soNguoiO','số người ở','occupants'],1)),
+      contractCode:String(getExcelCell(row,['maHopDong','mã hợp đồng','contractCode'])).trim(),
+      contractDate:excelDateInput(getExcelCell(row,['ngayKy','ngày ký','contractDate'])),
+      moveInDate:excelDateInput(getExcelCell(row,['ngayVaoO','ngày vào ở','moveInDate'])),
+      temporaryStart:excelDateInput(getExcelCell(row,['batDauTamTru','bắt đầu tạm trú','temporaryStart'])),
+      temporaryEnd:excelDateInput(getExcelCell(row,['ketThucTamTru','kết thúc tạm trú','temporaryEnd'])),
+      rentalDuration:String(getExcelCell(row,['thoiGianThue','thời gian thuê','rentalDuration'])).trim(),
+      signer:String(getExcelCell(row,['nguoiKy','người ký','signer'],name)).trim(),
+      roomPrice:num(getExcelCell(row,['giaPhong','giá phòng','roomPrice'])),
+      vehicleCount:num(getExcelCell(row,['soXe','số xe','vehicleCount'])),
+      parkingFee:num(getExcelCell(row,['phiGiuXe','phí giữ xe','parkingFee'])),
+      electricPrice:num(getExcelCell(row,['donGiaDien','đơn giá điện','electricPrice'])),
+      waterPrice:num(getExcelCell(row,['donGiaNuoc','đơn giá nước','waterPrice'])),
+      wifiFee:num(getExcelCell(row,['wifi','wifiFee'])),
+      serviceFee:num(getExcelCell(row,['dichVu','dịch vụ','serviceFee'])),
+      fridgeFee:num(getExcelCell(row,['tuLanh','tủ lạnh','fridgeFee'])),
+      airconFee:num(getExcelCell(row,['mayLanh','máy lạnh','airconFee'])),
+      stoveFee:num(getExcelCell(row,['bepTu','bếp từ','stoveFee'])),
+      filterFee:num(getExcelCell(row,['mayLocNuoc','máy lọc nước','filterFee'])),
+      updatedAt:new Date().toISOString()
+    };
+  }
+
+  function managerFromExcelRow(row){
+    return {
+      code:String(getExcelCell(row,['maQuanLy','mã quản lý','managerCode','code'])).trim(),
+      name:String(getExcelCell(row,['hoTenQuanLy','họ tên quản lý','name'])).trim(),
+      phone:String(getExcelCell(row,['soDienThoai','số điện thoại','phone'])).trim(),
+      email:String(getExcelCell(row,['email'])).trim(),
+      status:String(getExcelCell(row,['trangThai','trạng thái','status'],'active')).trim()||'active',
+      username:String(getExcelCell(row,['taiKhoanQuanLy','tài khoản quản lý','username'])).trim(),
+      password:String(getExcelCell(row,['matKhauQuanLy','mật khẩu quản lý','password'],'123456')).trim(),
+      motelCode:String(getExcelCell(row,['maNhaTro','mã nhà trọ','motelCode'])).trim(),
+      motelName:String(getExcelCell(row,['tenDayTro','tên dãy trọ','motelName'])).trim(),
+      area:String(getExcelCell(row,['khuVucPhuTrach','khu vực phụ trách','area'])).trim(),
+      motelAddress:String(getExcelCell(row,['diaChiNhaTro','địa chỉ nhà trọ','motelAddress'])).trim(),
+      note:String(getExcelCell(row,['ghiChu','ghi chú','note'])).trim(),
+      updatedAt:new Date().toISOString()
+    };
+  }
+
+  async function importResidentsExcel(){
+    if(currentRole!=='admin'){ alert('Chỉ Admin được nhập Excel.'); return; }
+    if(!requireXLSX()) return;
+    const file=byId('importResidentExcel')&&byId('importResidentExcel').files[0];
+    if(!file){ showMsg('excelImportMsg','warn','Vui lòng chọn file Excel cư dân.'); return; }
+    try{
+      const mode=value('importResidentMode')||'upsert';
+      const rows=await rowsFromExcelFile(file);
+      const imported=rows.map(residentFromExcelRow).filter(r=>r.code&&r.name&&r.phone&&r.citizenId);
+      if(!imported.length){ showMsg('excelImportMsg','err','Không có dòng cư dân hợp lệ. Cần mã, họ tên, SĐT, CCCD.'); return; }
+
+      let added=0,updated=0,skipped=0;
+      if(mode==='replaceAll'){
+        db.residents=imported;
+        const codes=new Set(imported.map(r=>r.code));
+        db.bills=db.bills.filter(b=>codes.has(b.residentCode));
+        added=imported.length;
+      }else{
+        imported.forEach(r=>{
+          const i=db.residents.findIndex(x=>x.code===r.code);
+          if(i>=0){
+            if(mode==='insertOnly') skipped++;
+            else { db.residents[i]={...db.residents[i],...r}; updated++; }
+          }else{ db.residents.push(r); added++; }
+        });
+      }
+      save();
+      showMsg('excelImportMsg','ok',`Đã nhập cư dân: thêm ${added}, cập nhật ${updated}, bỏ qua ${skipped}.`);logAction('Nhập Excel cư dân','Excel cư dân',`Thêm ${added}, cập nhật ${updated}, bỏ qua ${skipped}`,'admin');
+    }catch(error){
+      console.error(error);
+      showMsg('excelImportMsg','err','Không đọc được file Excel cư dân.');
+    }
+  }
+
+  async function importManagersExcel(){
+    if(currentRole!=='admin'){ alert('Chỉ Admin được nhập Excel.'); return; }
+    if(!requireXLSX()) return;
+    const file=byId('importManagerExcel')&&byId('importManagerExcel').files[0];
+    if(!file){ showMsg('excelImportMsg','warn','Vui lòng chọn file Excel quản lý.'); return; }
+    try{
+      const mode=value('importManagerMode')||'upsert';
+      const rows=await rowsFromExcelFile(file);
+      const imported=rows.map(managerFromExcelRow).filter(m=>m.code&&m.name&&m.username&&m.password&&m.motelCode&&m.motelName);
+      if(!imported.length){ showMsg('excelImportMsg','err','Không có dòng quản lý hợp lệ. Cần mã QL, họ tên, tài khoản, mật khẩu, mã nhà trọ, tên dãy trọ.'); return; }
+
+      let added=0,updated=0,skipped=0;
+      if(mode==='replaceAll'){
+        db.managers=imported;
+        added=imported.length;
+      }else{
+        imported.forEach(m=>{
+          const i=(db.managers||[]).findIndex(x=>x.code===m.code);
+          if(i>=0){
+            if(mode==='insertOnly') skipped++;
+            else { db.managers[i]={...db.managers[i],...m}; updated++; }
+          }else{
+            if(!Array.isArray(db.managers)) db.managers=[];
+            db.managers.push(m); added++;
+          }
+        });
+      }
+      save();
+      showMsg('excelImportMsg','ok',`Đã nhập quản lý: thêm ${added}, cập nhật ${updated}, bỏ qua ${skipped}.`);logAction('Nhập Excel quản lý','Excel quản lý',`Thêm ${added}, cập nhật ${updated}, bỏ qua ${skipped}`,'admin');
+    }catch(error){
+      console.error(error);
+      showMsg('excelImportMsg','err','Không đọc được file Excel quản lý.');
+    }
+  }
+
+  function residentsSheetRows(){
+    return db.residents.map(r=>({
+      maCuDan:r.code, hoTen:r.name, ngaySinh:r.dob, soDienThoai:r.phone, soCCCD:r.citizenId,
+      taiKhoanCuDan:r.residentUsername, matKhauCuDan:r.residentPassword,
+      maPhong:r.roomCode, tenPhong:r.roomName, soNguoiO:r.occupants,
+      giaPhong:r.roomPrice, soXe:(r.vehicles&&r.vehicles.length)||r.vehicleCount||0, phiGiuXe:r.parkingFee,
+      nganHang:r.paymentBank, soTaiKhoan:r.paymentAccount, chuTaiKhoan:r.paymentHolder,
+      trangThai:r.status
+    }));
+  }
+
+  function billsSheetRows(){
+    return db.bills.map(b=>{
+      const r=findResident(b.residentCode)||{};
+      return {
+        ky:b.month, maCuDan:b.residentCode, hoTen:r.name||'', phong:r.roomName||r.roomCode||'',
+        chiSoDienCu:b.oldElectric, chiSoDienMoi:b.newElectric,
+        chiSoNuocCu:b.oldWater, chiSoNuocMoi:b.newWater,
+        tongTien:billTotal(b), daThu:b.paidAmount, conLai:billRemain(b),
+        trangThai:statusText(b.paymentStatus), ngayChot:b.closedDate, ghiChu:b.note
+      };
+    });
+  }
+
+  function residentAccountsRows(){
+    const rows=[];
+    db.residents.forEach(r=>{
+      rows.push({loaiTaiKhoan:'Cư dân chính',maCuDan:r.code,hoTen:r.name,phong:r.roomName||r.roomCode,taiKhoan:r.residentUsername,matKhau:r.residentPassword,quyen:'Chỉ xem'});
+      (Array.isArray(r.coTenants)?r.coTenants:[]).forEach(ct=>{
+        rows.push({loaiTaiKhoan:'Người ở cùng',maCuDan:r.code,hoTen:ct.name,phong:r.roomName||r.roomCode,taiKhoan:ct.username,matKhau:ct.password,quyen:'Chỉ xem'});
+      });
+    });
+    return rows;
+  }
+
+  function managersRows(){
+    return (db.managers||[]).map(m=>({
+      maQuanLy:m.code, hoTenQuanLy:m.name, soDienThoai:m.phone, email:m.email,
+      taiKhoanQuanLy:m.username, matKhauQuanLy:m.password,
+      maNhaTro:m.motelCode, tenDayTro:m.motelName, khuVucPhuTrach:m.area,
+      diaChiNhaTro:m.motelAddress, trangThai:m.status, ghiChu:m.note
+    }));
+  }
+
+  function writeWorkbook(sheets,filename){
+    if(!requireXLSX()) return;
+    const wb=XLSX.utils.book_new();
+    sheets.forEach(s=>{
+      const ws=XLSX.utils.json_to_sheet(s.rows);
+      XLSX.utils.book_append_sheet(wb,ws,s.name);
+    });
+    XLSX.writeFile(wb,filename);
+  }
+
+  function exportAllExcel(){
+    if(currentRole!=='admin'){ alert('Chỉ Admin được xuất Excel tổng.'); return; }
+    logAction('Xuất Excel tất cả','Excel','Admin xuất toàn bộ dữ liệu','admin');
+    writeWorkbook([
+      {name:'CuDan',rows:residentsSheetRows()},
+      {name:'PhieuThu',rows:billsSheetRows()},
+      {name:'TaiKhoanCuDan',rows:residentAccountsRows()},
+      {name:'QuanLy',rows:managersRows()},
+      {name:'LichSuThaoTac',rows:auditRows()}
+    ],'smart_stay_xuat_du_lieu.xlsx');
+  }
+
+  function exportResidentAccountsExcel(){
+    if(currentRole!=='admin'){ alert('Chỉ Admin được xuất tài khoản cư dân.'); return; }
+    logAction('Xuất Excel tài khoản cư dân','Excel','Admin xuất tài khoản/mật khẩu cư dân','admin');
+    writeWorkbook([{name:'TaiKhoanCuDan',rows:residentAccountsRows()}],'tai_khoan_mat_khau_cu_dan.xlsx');
+  }
+
+  function exportManagersExcel(){
+    if(currentRole!=='admin'){ alert('Chỉ Admin được xuất quản lý.'); return; }
+    logAction('Xuất Excel quản lý','Excel','Admin xuất tài khoản và thông tin quản lý','admin');
+    writeWorkbook([{name:'QuanLy',rows:managersRows()},
+      {name:'LichSuThaoTac',rows:auditRows()}],'tai_khoan_thong_tin_quan_ly.xlsx');
+  }
+
+  function downloadAllTemplates(){
+    if(!requireXLSX()) return;
+    const demo=demoResident();
+    const managerDemo={code:'QL001',name:'Quản lý mẫu',phone:'0900000000',email:'quanly@example.com',status:'active',username:'ql001',password:'123456',motelCode:'NT001',motelName:'Dãy trọ A',area:'Dãy A',motelAddress:'Đồng Tháp',note:'Mẫu'};
+    writeWorkbook([
+      {name:'MauCuDan',rows:[{
+        maCuDan:demo.code, hoTen:demo.name, ngaySinh:demo.dob, soDienThoai:demo.phone, soCCCD:demo.citizenId,
+        taiKhoanCuDan:demo.residentUsername, matKhauCuDan:demo.residentPassword,
+        maPhong:demo.roomCode, tenPhong:demo.roomName, giaPhong:demo.roomPrice, soXe:2, phiGiuXe:demo.parkingFee,
+        nganHang:demo.paymentBank, soTaiKhoan:demo.paymentAccount, chuTaiKhoan:demo.paymentHolder
+      }]},
+      {name:'MauQuanLy',rows:[{
+        maQuanLy:managerDemo.code, hoTenQuanLy:managerDemo.name, soDienThoai:managerDemo.phone, email:managerDemo.email,
+        taiKhoanQuanLy:managerDemo.username, matKhauQuanLy:managerDemo.password,
+        maNhaTro:managerDemo.motelCode, tenDayTro:managerDemo.motelName, khuVucPhuTrach:managerDemo.area,
+        diaChiNhaTro:managerDemo.motelAddress, trangThai:managerDemo.status, ghiChu:managerDemo.note
+      }]}
+    ],'file_mau_nhap_excel_smart_stay.xlsx');
+  }
+
+  function printWindow(title,html){
+    const win=window.open('','_blank');
+    if(!win){ alert('Trình duyệt đang chặn popup. Vui lòng cho phép popup để in.'); return; }
+    win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${safe(title)}</title><style>
+      body{font-family:Arial,sans-serif;color:#0f172a;margin:24px}
+      h1,h2{margin:0 0 12px}
+      .muted{color:#64748b}
+      table{width:100%;border-collapse:collapse;margin:12px 0 22px}
+      th,td{border:1px solid #cbd5e1;padding:8px;text-align:left;font-size:13px;vertical-align:top}
+      th{background:#f1f5f9}
+      .page{page-break-after:always}
+      .money{font-weight:700}
+      @media print{button{display:none}.page{page-break-after:always}}
+    </style></head><body><button onclick="window.print()">In</button>${html}</body></html>`);
+    win.document.close();
+  }
+
+  function printResidentInfo(){
+    const html=db.residents.map(r=>`
+      <div class="page">
+        <h1>THÔNG TIN CƯ DÂN</h1>
+        <p class="muted">Mã cư dân: ${safe(r.code)} - Phòng: ${safe(r.roomName||r.roomCode||'')}</p>
+        <table><tr><th>Họ tên</th><td>${safe(r.name)}</td><th>Ngày sinh</th><td>${dateText(r.dob)}</td></tr>
+        <tr><th>SĐT</th><td>${safe(r.phone)}</td><th>CCCD</th><td>${safe(r.citizenId)}</td></tr>
+        <tr><th>Địa chỉ</th><td colspan="3">${safe(r.address)}</td></tr>
+        <tr><th>Hợp đồng</th><td>${safe(r.contractCode)}</td><th>Ngày vào ở</th><td>${dateText(r.moveInDate)}</td></tr></table>
+        <h2>Người ở cùng</h2>
+        <table><tr><th>Họ tên</th><th>SĐT</th><th>CCCD</th><th>Tài khoản</th></tr>${(r.coTenants||[]).map(ct=>`<tr><td>${safe(ct.name)}</td><td>${safe(ct.phone)}</td><td>${safe(ct.citizenId)}</td><td>${safe(ct.username)}</td></tr>`).join('')||'<tr><td colspan="4">Không có</td></tr>'}</table>
+        <h2>Xe</h2>
+        <table><tr><th>Chủ sở hữu</th><th>Biển số</th><th>Số khung</th><th>Số máy</th><th>Số đăng ký</th></tr>${(r.vehicles||[]).map(v=>`<tr><td>${safe(v.ownerName)}</td><td>${safe(v.plateNumber)}</td><td>${safe(v.frameNumber)}</td><td>${safe(v.engineNumber)}</td><td>${safe(v.registrationNumber)}</td></tr>`).join('')||'<tr><td colspan="5">Không có</td></tr>'}</table>
+      </div>
+    `).join('');
+    logAction('In thông tin cư dân','In ấn','Admin in thông tin cư dân','admin');
+    printWindow('In thông tin cư dân',html);
+  }
+
+  function printReceipts(){
+    const html=db.bills.map(b=>{
+      const r=findResident(b.residentCode)||{};
+      const rows=billRows(b);
+      return `<div class="page">
+        <h1>PHIẾU THU TIỀN PHÒNG</h1>
+        <p><b>Kỳ:</b> ${monthText(b.month)} | <b>Ngày chốt:</b> ${dateText(b.closedDate)}</p>
+        <p><b>Cư dân:</b> ${safe(r.name||b.residentCode)} | <b>Phòng:</b> ${safe(r.roomName||r.roomCode||'')}</p>
+        <table><tr><th>STT</th><th>Khoản thu</th><th>Chỉ số cũ</th><th>Chỉ số mới</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr>
+        ${rows.map((row,i)=>`<tr><td>${i+1}</td><td>${safe(debtNames[i])}</td><td>${safe(row.old)}</td><td>${safe(row.now)}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td class="money">${money(row.total)}</td></tr>`).join('')}
+        <tr><th colspan="6">Tổng tiền</th><th>${money(billTotal(b))}</th></tr>
+        <tr><td colspan="6">Đã thu</td><td>${money(b.paidAmount)}</td></tr>
+        <tr><th colspan="6">Còn lại</th><th>${money(billRemain(b))}</th></tr></table>
+        <p><b>Trạng thái:</b> ${statusText(b.paymentStatus)}</p>
+        <br><table><tr><td style="height:80px;text-align:center">Người thu ký</td><td style="height:80px;text-align:center">Người nộp ký</td></tr></table>
+      </div>`;
+    }).join('');
+    logAction('In phiếu thu','In ấn','Admin in phiếu thu','admin');
+    printWindow('In phiếu thu',html);
+  }
+
+  function printResidentAccounts(){
+    const rows=residentAccountsRows();
+    const html=`<h1>TÀI KHOẢN VÀ MẬT KHẨU CƯ DÂN</h1><table><tr><th>Loại</th><th>Mã cư dân</th><th>Họ tên</th><th>Phòng</th><th>Tài khoản</th><th>Mật khẩu</th><th>Quyền</th></tr>${rows.map(r=>`<tr><td>${safe(r.loaiTaiKhoan)}</td><td>${safe(r.maCuDan)}</td><td>${safe(r.hoTen)}</td><td>${safe(r.phong)}</td><td><b>${safe(r.taiKhoan)}</b></td><td><b>${safe(r.matKhau)}</b></td><td>${safe(r.quyen)}</td></tr>`).join('')}</table>`;
+    logAction('In tài khoản cư dân','In ấn','Admin in tài khoản/mật khẩu cư dân','admin');
+    printWindow('In tài khoản cư dân',html);
+  }
+
+  function printManagerInfo(){
+    const rows=managersRows();
+    const html=`<h1>TÀI KHOẢN VÀ THÔNG TIN QUẢN LÝ</h1><table><tr><th>Mã QL</th><th>Họ tên</th><th>SĐT</th><th>Tài khoản</th><th>Mật khẩu</th><th>Mã nhà trọ</th><th>Tên dãy trọ</th><th>Khu vực</th></tr>${rows.map(m=>`<tr><td>${safe(m.maQuanLy)}</td><td>${safe(m.hoTenQuanLy)}</td><td>${safe(m.soDienThoai)}</td><td><b>${safe(m.taiKhoanQuanLy)}</b></td><td><b>${safe(m.matKhauQuanLy)}</b></td><td>${safe(m.maNhaTro)}</td><td>${safe(m.tenDayTro)}</td><td>${safe(m.khuVucPhuTrach)}</td></tr>`).join('')}</table>`;
+    logAction('In thông tin quản lý','In ấn','Admin in tài khoản và thông tin quản lý','admin');
+    printWindow('In thông tin quản lý',html);
+  }
+
 
   function runTests(){console.assert(typeof window.showResident==='function','showResident tồn tại');console.assert(typeof window.showAdminLogin==='function','showAdminLogin tồn tại');const old=JSON.parse(JSON.stringify(db));db={residents:[demoResident()],bills:[{id:'CD001__2026-05',residentCode:'CD001',month:'2026-05',oldElectric:100,newElectric:150,oldWater:10,newWater:15,extraFee:20000,paidAmount:0,paymentStatus:'unpaid',closedDate:'2026-05-31',note:''}]};console.assert(billTotal(db.bills[0])===2500000+50*4000+5*18000+100000+150000+50000+150000+30000+40000+2*100000+20000,'Tính tổng kỳ công nợ đúng');db=old}
   window.addEventListener('DOMContentLoaded',function(){load();setupImageInputs();renderCoTenantForm([]);runTests();if(!db.residents.length)seedDemoData();if(location.hash==='#admin')showAdminLogin();else showResident()})
