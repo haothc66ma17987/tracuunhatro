@@ -885,6 +885,78 @@
       }
     }
 
+
+    .approval-detail-card {
+      border: 1px solid #c7d2fe;
+      background: linear-gradient(180deg, #eef2ff, #ffffff);
+      border-radius: 20px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+
+    .approval-json {
+      background: #020617;
+      color: #dbeafe;
+      border-radius: 16px;
+      padding: 14px;
+      white-space: pre-wrap;
+      overflow: auto;
+      max-height: 360px;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .approval-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .approval-compare-box {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #ffffff;
+      padding: 14px;
+      overflow: auto;
+    }
+
+    .approval-compare-box h3 {
+      margin-bottom: 10px;
+    }
+
+    .approval-field-table {
+      min-width: 620px;
+    }
+
+    .diff-new {
+      background: #ecfeff;
+      color: #155e75;
+      font-weight: 900;
+    }
+
+    .diff-old {
+      background: #fff7ed;
+      color: #9a3412;
+    }
+
+    .reject-reason-box {
+      border: 1px solid #fecaca;
+      background: #fef2f2;
+      color: #991b1b;
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 8px;
+      font-weight: 800;
+    }
+
+    @media(max-width:900px) {
+      .approval-compare {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media(max-width:1050px){.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr 1fr}}
     @media(max-width:680px){.top,.card-head{flex-direction:column;align-items:stretch}.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr}.hero-main,.hero-side,.card,.section{padding:16px}table{min-width:760px}}
     @media print{.top,.hero,.lookup,.admin-section,.result-actions{display:none!important}body{background:white}.app{width:100%;padding:0}.section{box-shadow:none;border:0;page-break-inside:avoid}th,td{font-size:11px;padding:6px}}
@@ -1267,6 +1339,19 @@
           </table>
         </div>
       </div>
+
+        <div id="approvalDetailPanel" class="approval-detail-card hidden">
+          <div class="card-head">
+            <div>
+              <h2>Chi tiết dữ liệu chờ duyệt</h2>
+              <p class="muted">Admin kiểm tra toàn bộ thông tin quản lý đã nhập, so sánh dữ liệu cũ và dữ liệu mới trước khi duyệt.</p>
+            </div>
+            <button type="button" class="btn-light" onclick="closePendingDetail()">Đóng chi tiết</button>
+          </div>
+
+          <div id="approvalDetailContent"></div>
+        </div>
+
 
       <div class="card manager-role-ui role-hidden" id="managerWorkingCard">
         <h2>Khu vực tài khoản quản lý</h2>
@@ -1958,7 +2043,8 @@ function refresh(){
       createdAt:new Date().toISOString(),
       decidedAt:'',
       decidedBy:'',
-      note:''
+      note:'',
+      rejectReason:''
     };
     if(!Array.isArray(db.pendingRequests)) db.pendingRequests=[];
     db.pendingRequests.push(item);
@@ -2055,6 +2141,131 @@ function refresh(){
     tbody.innerHTML=list.map(m=>`<tr><td>${safe(m.code)}</td><td><b>${safe(m.name)}</b><br><span class="muted">${safe(m.phone||'')}</span></td><td>${safe(m.username)}</td><td>${safe(m.motelCode)}</td><td>${safe(m.motelName)}</td><td>${safe(m.area||'')}</td><td>${m.status==='locked'?'Tạm khóa':'Đang hoạt động'}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editManager('${safe(m.code)}')">Sửa</button></div></td></tr>`).join('');
   }
 
+
+  function pendingStatusText(status){
+    if(status==='approved') return 'Đã duyệt';
+    if(status==='rejected') return 'Từ chối';
+    return 'Chờ duyệt';
+  }
+
+  function prettyValue(v){
+    if(v===undefined||v===null) return '';
+    if(typeof v==='object') return JSON.stringify(v,null,2);
+    return String(v);
+  }
+
+  function pendingExistingData(p){
+    if(!p) return null;
+    if(p.type==='resident_upsert'){
+      return (db.residents||[]).find(r=>r.code===p.data.code) || null;
+    }
+    if(p.type==='bill_upsert'){
+      return (db.bills||[]).find(b=>b.id===p.data.id) || null;
+    }
+    return null;
+  }
+
+  function flattenObject(obj,prefix='',out={}){
+    if(!obj) return out;
+    Object.keys(obj).forEach(k=>{
+      const v=obj[k];
+      const key=prefix?prefix+'.'+k:k;
+      if(v && typeof v==='object' && !Array.isArray(v)){
+        flattenObject(v,key,out);
+      }else if(Array.isArray(v)){
+        out[key]=JSON.stringify(v,null,2);
+      }else{
+        out[key]=v;
+      }
+    });
+    return out;
+  }
+
+  function renderCompareTable(oldData,newData){
+    const oldFlat=flattenObject(oldData||{});
+    const newFlat=flattenObject(newData||{});
+    const keys=Array.from(new Set([...Object.keys(oldFlat),...Object.keys(newFlat)])).sort();
+
+    if(!keys.length){
+      return '<p class="muted">Không có dữ liệu để so sánh.</p>';
+    }
+
+    return `<div class="table"><table class="approval-field-table"><thead><tr><th>Trường dữ liệu</th><th>Dữ liệu hiện tại</th><th>Dữ liệu quản lý gửi</th></tr></thead><tbody>${
+      keys.map(k=>{
+        const oldV=prettyValue(oldFlat[k]);
+        const newV=prettyValue(newFlat[k]);
+        const changed=oldV!==newV;
+        return `<tr><td><b>${safe(k)}</b></td><td class="${changed?'diff-old':''}">${safe(oldV)}</td><td class="${changed?'diff-new':''}">${safe(newV)}</td></tr>`;
+      }).join('')
+    }</tbody></table></div>`;
+  }
+
+  function pendingDetailTitle(p){
+    if(!p) return '';
+    if(p.type==='resident_upsert'){
+      return 'Hồ sơ cư dân: ' + (p.data.name||'') + ' - Mã: ' + (p.data.code||'');
+    }
+    if(p.type==='bill_upsert'){
+      return 'Phiếu thu/chốt tiền: ' + (p.data.id||'') + ' - Kỳ: ' + monthText(p.data.month||'');
+    }
+    return pendingSummary(p);
+  }
+
+  function viewPendingDetail(id){
+    const p=(db.pendingRequests||[]).find(x=>x.id===id);
+    if(!p) return;
+
+    const panel=byId('approvalDetailPanel');
+    const box=byId('approvalDetailContent');
+    if(!panel||!box) return;
+
+    const oldData=pendingExistingData(p);
+    const newData=p.data || {};
+    const manager=managerName(p.managerCode);
+
+    box.innerHTML=`
+      <div class="grid4">
+        <div class="mini-card"><label>Mã yêu cầu</label><b>${safe(p.id)}</b></div>
+        <div class="mini-card"><label>Quản lý gửi</label><b>${safe(manager)}</b></div>
+        <div class="mini-card"><label>Loại dữ liệu</label><b>${safe(pendingTypeText(p.type))}</b></div>
+        <div class="mini-card"><label>Trạng thái</label><b>${safe(pendingStatusText(p.status))}</b></div>
+      </div>
+
+      <div class="soft-divider"></div>
+
+      <h3>${safe(pendingDetailTitle(p))}</h3>
+      <p class="muted">Ngày gửi: ${safe(p.createdAt?new Date(p.createdAt).toLocaleString('vi-VN'):'')}</p>
+
+      ${p.status==='rejected'&&p.rejectReason?`<div class="reject-reason-box"><b>Lý do từ chối:</b><br>${safe(p.rejectReason)}</div>`:''}
+
+      <div class="approval-compare">
+        <div class="approval-compare-box">
+          <h3>So sánh dữ liệu</h3>
+          ${renderCompareTable(oldData,newData)}
+        </div>
+
+        <div class="approval-compare-box">
+          <h3>Dữ liệu gốc quản lý gửi</h3>
+          <div class="approval-json">${safe(JSON.stringify(newData,null,2))}</div>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:16px">
+        ${p.status==='pending'?`<button type="button" class="btn-ok" onclick="approvePending('${safe(p.id)}')">Duyệt dữ liệu này</button><button type="button" class="btn-danger" onclick="rejectPending('${safe(p.id)}')">Từ chối và nhập lý do</button>`:''}
+        <button type="button" class="btn-light" onclick="closePendingDetail()">Đóng</button>
+      </div>
+    `;
+
+    panel.classList.remove('hidden');
+    panel.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function closePendingDetail(){
+    const panel=byId('approvalDetailPanel');
+    if(panel) panel.classList.add('hidden');
+  }
+
+
   function renderPendingList(){
     const tbody=byId('pendingList');
     if(!tbody) return;
@@ -2065,7 +2276,7 @@ function refresh(){
     }
     tbody.innerHTML=list.map(p=>{
       const actions=p.status==='pending'
-        ? `<div class="actions"><button type="button" class="btn-ok" onclick="approvePending('${safe(p.id)}')">Duyệt</button><button type="button" class="btn-danger" onclick="rejectPending('${safe(p.id)}')">Từ chối</button></div>`
+        ? `<div class="actions"><button type="button" class="btn-light" onclick="viewPendingDetail('${safe(p.id)}')">Xem chi tiết</button><button type="button" class="btn-light" onclick="viewPendingDetail('${safe(p.id)}')">Xem chi tiết</button><button type="button" class="btn-ok" onclick="approvePending('${safe(p.id)}')">Duyệt</button><button type="button" class="btn-danger" onclick="rejectPending('${safe(p.id)}')">Từ chối</button></div>`
         : `<span class="muted">Đã xử lý</span>`;
       const badge=p.status==='pending'
         ? '<span class="badge partial">Chờ duyệt</span>'
@@ -2113,12 +2324,27 @@ function refresh(){
   window.rejectPending=function(id){
     const p=(db.pendingRequests||[]).find(x=>x.id===id);
     if(!p||p.status!=='pending') return;
-    if(!confirm('Từ chối dữ liệu này?')) return;
+
+    const reason=prompt('Nhập rõ lý do từ chối để quản lý biết và gửi duyệt lại:');
+    if(reason===null) return;
+    if(!String(reason).trim()){
+      alert('Bạn phải nhập lý do từ chối.');
+      return;
+    }
+
     p.status='rejected';
+    p.rejectReason=String(reason).trim();
     p.decidedAt=new Date().toISOString();
     p.decidedBy='admin';
-    logAction('Từ chối dữ liệu quản lý',pendingTypeText(p.type),pendingSummary(p),'admin');
+
+    if(typeof logAction==='function'){
+      logAction('Từ chối dữ liệu quản lý',pendingTypeText(p.type),pendingSummary(p)+' | Lý do: '+p.rejectReason,'admin');
+    }
+
     save();
+    renderPendingList();
+    renderManagerPendingStatus();
+    viewPendingDetail(id);
   }
 
   if(byId('managerForm')){
@@ -5400,7 +5626,7 @@ function refresh(){
     const code=currentManager?currentManager.code:'';
     const rows=(db.pendingRequests||[]).filter(p=>p.managerCode===code).sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
     if(!rows.length){tbody.innerHTML='<tr><td colspan="5" class="center">Chưa có dữ liệu đã gửi.</td></tr>';return;}
-    tbody.innerHTML=rows.map(p=>`<tr><td>${p.createdAt?new Date(p.createdAt).toLocaleString('vi-VN'):'-'}</td><td>${pendingTypeText(p.type)}</td><td>${safe(pendingSummary(p))}</td><td>${statusBadgeHtml(p.status)}</td><td>${p.decidedAt?new Date(p.decidedAt).toLocaleString('vi-VN'):'-'}</td></tr>`).join('');
+    tbody.innerHTML=rows.map(p=>`<tr><td>${p.createdAt?new Date(p.createdAt).toLocaleString('vi-VN'):'-'}</td><td>${pendingTypeText(p.type)}</td><td>${safe(pendingSummary(p))}</td><td>${statusBadgeHtml(p.status)}${p.status==='rejected'&&p.rejectReason?`<div class="reject-reason-box"><b>Lý do:</b> ${safe(p.rejectReason)}</div>`:''}</td><td>${p.decidedAt?new Date(p.decidedAt).toLocaleString('vi-VN'):'-'}</td></tr>`).join('');
   }
 
   function exNeed(){if(!window.XLSX){alert('Không tải được thư viện Excel. Hãy kiểm tra mạng.');return false;}return true;}
