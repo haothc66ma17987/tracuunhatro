@@ -740,6 +740,151 @@
       }
     }
 
+
+    .manager-pending-status-card{border:1px solid #fde68a;background:linear-gradient(180deg,#fffbeb,#ffffff)}
+    .one-shot-excel-card{border:1px solid #93c5fd;background:radial-gradient(circle at top left,rgba(37,99,235,.12),transparent 30%),linear-gradient(180deg,#eff6ff,#ffffff)}
+    .status-pill-pending{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
+    .status-pill-approved{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
+    .status-pill-rejected{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+    .excel-big-box{border:1px dashed #93c5fd;border-radius:18px;padding:16px;background:#fff;margin-top:12px}
+
+
+    .real-pro-card {
+      border: 1px solid #86efac;
+      background:
+        radial-gradient(circle at top left, rgba(22, 163, 74, 0.13), transparent 30%),
+        linear-gradient(180deg, #f0fdf4, #ffffff);
+    }
+
+    .settings-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 16px;
+      margin-top: 12px;
+    }
+
+    .operate-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .operate-tile {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 16px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    }
+
+    .operate-tile span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+
+    .operate-tile strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 22px;
+    }
+
+    .payment-proof-box {
+      border: 1px dashed #93c5fd;
+      border-radius: 18px;
+      background: #eff6ff;
+      padding: 14px;
+      margin-top: 14px;
+    }
+
+    .proof-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      object-fit: contain;
+      background: #fff;
+      margin-top: 10px;
+    }
+
+    .due-warning {
+      border: 1px solid #fde68a;
+      background: #fffbeb;
+      color: #92400e;
+      border-radius: 14px;
+      padding: 12px;
+      font-weight: 900;
+      margin-top: 12px;
+    }
+
+    .receipt-page {
+      max-width: 820px;
+      margin: auto;
+      border: 1px solid #cbd5e1;
+      padding: 24px;
+    }
+
+    .receipt-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .receipt-stamp {
+      border: 2px solid #16a34a;
+      color: #16a34a;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 900;
+      transform: rotate(-4deg);
+      display: inline-block;
+    }
+
+    .toast-real {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 9999;
+      max-width: 360px;
+      border: 1px solid #bbf7d0;
+      background: #f0fdf4;
+      color: #166534;
+      border-radius: 18px;
+      padding: 14px 16px;
+      box-shadow: 0 18px 45px rgba(15,23,42,.18);
+      font-weight: 900;
+      display: none;
+    }
+
+    .toast-real.show {
+      display: block;
+      animation: toastIn .18s ease-out;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(max-width:900px) {
+      .operate-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:620px) {
+      .operate-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media(max-width:1050px){.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr 1fr}}
     @media(max-width:680px){.top,.card-head{flex-direction:column;align-items:stretch}.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr}.hero-main,.hero-side,.card,.section{padding:16px}table{min-width:760px}}
     @media print{.top,.hero,.lookup,.admin-section,.result-actions{display:none!important}body{background:white}.app{width:100%;padding:0}.section{box-shadow:none;border:0;page-break-inside:avoid}th,td{font-size:11px;padding:6px}}
@@ -829,6 +974,30 @@
     <div id="residentResult" style="display:none">
       <div class="card"><div class="grid3"><div><label>Chọn kỳ công nợ</label><select id="residentBillSelect" onchange="renderResidentResult()"></select></div><div style="align-self:end" class="actions result-actions"><button type="button" onclick="window.print()">In / Lưu PDF</button></div></div></div>
       <div style="margin-top:16px"><span class="readonly-watermark">Chế độ chỉ xem - không thể chỉnh sửa</span></div><div id="summary" class="summary"></div><div id="residentTables"></div>
+
+        <div class="card" id="residentPaymentProofCard" style="display:none">
+          <div class="card-head">
+            <div>
+              <h2>Gửi xác nhận thanh toán</h2>
+              <p class="muted">Cư dân có thể nhập số tiền đã chuyển và gửi ảnh bill/chứng từ để chủ trọ xác nhận.</p>
+            </div>
+            <span class="readonly-watermark">Cư dân gửi, Admin xác nhận</span>
+          </div>
+
+          <div class="grid3">
+            <div><label>Số tiền đã chuyển</label><input id="proofAmount" type="number" min="0" placeholder="VD: 2500000"></div>
+            <div><label>Ngày chuyển</label><input id="proofDate" type="date"></div>
+            <div><label>Ảnh bill/chứng từ</label><input id="proofFile" type="file" accept="image/*"></div>
+            <div class="full"><label>Ghi chú</label><textarea id="proofNote" placeholder="VD: Em đã chuyển khoản tiền phòng tháng này."></textarea></div>
+          </div>
+
+          <div class="actions" style="margin-top:14px">
+            <button type="button" onclick="submitPaymentProof()">Gửi xác nhận thanh toán</button>
+            <button type="button" class="btn-light" onclick="clearPaymentProofForm()">Xóa form</button>
+          </div>
+          <div id="proofMsg" class="msg"></div>
+        </div>
+
     </div>
     <p style="text-align:center;margin-top:24px"><a class="admin-link" href="#admin" onclick="showAdminLogin()">Chủ trọ / Admin</a></p>
   </section>
@@ -883,7 +1052,24 @@
       <div id="dashboard" class="hidden">
 
       
-      <div class="card manager-role-ui role-hidden" id="managerUsageGuide">
+      
+      <div class="card manager-pending-status-card manager-role-ui role-hidden" id="managerPendingStatusCard">
+        <div class="card-head">
+          <div>
+            <h2>Trạng thái dữ liệu đã gửi</h2>
+            <p class="muted">Quản lý xem các dữ liệu đã gửi: Chờ duyệt, Đã duyệt hoặc Từ chối.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="renderManagerPendingStatus()">Tải lại trạng thái</button>
+        </div>
+        <div class="table">
+          <table>
+            <thead><tr><th>Ngày gửi</th><th>Loại</th><th>Nội dung</th><th>Trạng thái</th><th>Ngày xử lý</th></tr></thead>
+            <tbody id="managerPendingStatusList"><tr><td colspan="5" class="center">Chưa có dữ liệu đã gửi.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+<div class="card manager-role-ui role-hidden" id="managerUsageGuide">
         <div class="card-head">
           <div>
             <h2>Hướng dẫn sử dụng cho quản lý</h2>
@@ -923,6 +1109,7 @@
         <a href="#importJsonBox">Sao lưu</a>
         <a href="#auditHistoryCard">Lịch sử thao tác</a>
         <a href="#vipProCenterCard">VIP Pro</a>
+        <a href="#realProOperateCard">Vận hành thật</a>
         <span class="admin-only-watermark" id="roleBadge">Khu vực quản trị</span>
       </nav>
 
@@ -1113,7 +1300,27 @@
 
 
       
-      <div class="card excel-card admin-only-ui" id="excelPrintCard">
+      
+      <div class="card one-shot-excel-card" id="oneShotExcelCard">
+        <div class="card-head">
+          <div>
+            <h2>Nhập liệu nhanh 1 lần bằng Excel</h2>
+            <p class="muted">Admin nhập là có hiệu lực ngay. Quản lý nhập thì dữ liệu chuyển sang Chờ Admin duyệt.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="downloadOneShotExcelTemplate()">Tải file Excel mẫu tổng hợp</button>
+        </div>
+        <div class="excel-big-box">
+          <div class="grid3">
+            <div><label>Chọn file Excel tổng hợp</label><input id="oneShotExcelFile" type="file" accept=".xlsx,.xls,.csv"></div>
+            <div><label>Chế độ nhập</label><select id="oneShotImportMode"><option value="upsert">Thêm mới + cập nhật nếu trùng mã</option><option value="insertOnly">Chỉ thêm mới, bỏ qua dữ liệu đã có</option></select></div>
+            <div style="align-self:end"><button type="button" onclick="importOneShotExcel()">Update dữ liệu từ Excel</button></div>
+          </div>
+          <p class="muted" style="margin-top:12px">File mẫu gồm các sheet: CuDan, QuanLy, PhieuThu, NguoiOCung, Xe, LienHePhong. Quản lý nhập sẽ tự gửi duyệt.</p>
+          <div id="oneShotImportMsg" class="msg"></div>
+        </div>
+      </div>
+
+<div class="card excel-card admin-only-ui" id="excelPrintCard">
         <div class="card-head">
           <div>
             <h2>Excel / Xuất / In báo cáo</h2>
@@ -1377,7 +1584,80 @@
       <div class="card"><h2>Lịch sử chốt tiền</h2><div class="table"><table><thead><tr><th>Kỳ</th><th>Cư dân</th><th>Phòng</th><th>Điện</th><th>Nước</th><th>Tổng tiền</th><th>Đã thu</th><th>Còn lại</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="billList"></tbody></table></div></div>
     
       
-      <div class="card vip-pro-card admin-only-ui" id="vipProCenterCard">
+      
+      <div class="card real-pro-card admin-only-ui" id="realProOperateCard">
+        <div class="card-head">
+          <div>
+            <span class="vip-section-label">REAL PRO MODE</span>
+            <h2 style="margin-top:10px">Thiết lập vận hành thật</h2>
+            <p class="muted">Cấu hình thông tin nhà trọ, hạn thu tiền, số phiếu thu, nhắc công nợ và quy trình xác nhận thanh toán như hệ thống thật.</p>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn-light" onclick="loadSystemSettingsToForm()">Tải cấu hình</button>
+            <button type="button" onclick="saveSystemSettings()">Lưu cấu hình</button>
+          </div>
+        </div>
+
+        <div class="settings-box">
+          <h3>Thông tin đơn vị / nhà trọ</h3>
+          <div class="grid5">
+            <div><label>Tên hệ thống</label><input id="sysName" placeholder="SMART STAY ĐỒNG THÁP"></div>
+            <div><label>Tên chủ trọ / đơn vị</label><input id="sysOwner" placeholder="Tên chủ trọ"></div>
+            <div><label>Số điện thoại hỗ trợ</label><input id="sysPhone" placeholder="090..."></div>
+            <div><label>Email hỗ trợ</label><input id="sysEmail" placeholder="email@example.com"></div>
+            <div><label>Ngày thu tiền hàng tháng</label><input id="sysDueDay" type="number" min="1" max="31" placeholder="5"></div>
+            <div><label>Tiền tố phiếu thu</label><input id="sysReceiptPrefix" placeholder="PT"></div>
+            <div><label>Số phiếu tiếp theo</label><input id="sysReceiptNext" type="number" min="1" placeholder="1"></div>
+            <div><label>Tiền tệ</label><input id="sysCurrency" placeholder="VND"></div>
+            <div class="full"><label>Địa chỉ nhà trọ / công ty</label><textarea id="sysAddress" placeholder="Nhập địa chỉ đầy đủ"></textarea></div>
+            <div class="full"><label>Ghi chú trên phiếu thu</label><textarea id="sysReceiptNote" placeholder="VD: Phiếu thu có giá trị khi có xác nhận của chủ trọ."></textarea></div>
+          </div>
+        </div>
+
+        <div class="operate-grid">
+          <div class="operate-tile">
+            <span>Phiếu quá hạn</span>
+            <strong id="realOverdueCount">0</strong>
+          </div>
+          <div class="operate-tile">
+            <span>Cần xác nhận thanh toán</span>
+            <strong id="realProofPendingCount">0</strong>
+          </div>
+          <div class="operate-tile">
+            <span>Doanh thu tháng này</span>
+            <strong id="realMonthRevenue">0 đ</strong>
+          </div>
+          <div class="operate-tile">
+            <span>Dự kiến thu tháng này</span>
+            <strong id="realMonthExpected">0 đ</strong>
+          </div>
+        </div>
+
+        <div class="soft-divider"></div>
+
+        <div class="grid2">
+          <div>
+            <h3>Danh sách quá hạn / còn nợ</h3>
+            <div class="table">
+              <table>
+                <thead><tr><th>Kỳ</th><th>Cư dân</th><th>Phòng</th><th>Còn lại</th><th>Trạng thái</th></tr></thead>
+                <tbody id="realDebtList"><tr><td colspan="5" class="center">Chưa có dữ liệu.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <h3>Xác nhận thanh toán cư dân gửi</h3>
+            <div class="table">
+              <table>
+                <thead><tr><th>Kỳ</th><th>Cư dân</th><th>Số tiền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+                <tbody id="realPaymentProofList"><tr><td colspan="5" class="center">Chưa có yêu cầu xác nhận.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="card vip-pro-card admin-only-ui" id="vipProCenterCard">
         <div class="card-head">
           <div>
             <span class="vip-section-label">VIP PRO CENTER</span>
@@ -1508,12 +1788,12 @@
   'use strict';
   const STORAGE_KEY='smart_stay_one_file_v1';
   const debtNames=['Giá tiền phòng','Chỉ số điện','Chỉ số nước','Mạng/Internet','Phí dịch vụ','Phí thuê tủ lạnh','Phí thuê máy lạnh','Phí thuê bếp từ','Phí thuê máy lọc','Phí giữ xe','Phụ thu khác'];
-  let db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[],auditLogs:[]};let editingCode=null;let editingNoticeId=null;let editingManagerCode=null;let currentLookupCode=null;let currentRole='guest';let currentManager=null;
+  let db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[],auditLogs:[],paymentProofs:[],systemSettings:defaultSystemSettings()};let editingCode=null;let editingNoticeId=null;let editingManagerCode=null;let currentLookupCode=null;let currentRole='guest';let currentManager=null;
   function byId(id){return document.getElementById(id)}function value(id){const el=byId(id);return el?el.value.trim():''}function setValue(id,v){const el=byId(id);if(el)el.value=v??''}function num(v){return Number(v||0)}function money(v){return num(v).toLocaleString('vi-VN')+' đ'}function normalize(v){return String(v||'').trim().toLowerCase().replace(/\s+/g,' ')}function safe(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function dateText(v){if(!v)return'';const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})$/);return m?`${m[3]}/${m[2]}/${m[1]}`:v}function monthText(v){if(!v)return'';const m=String(v).match(/^(\d{4})-(\d{2})$/);return m?`${m[2]}/${m[1]}`:v}function today(){return new Date().toISOString().slice(0,10)}function thisMonth(){return new Date().toISOString().slice(0,7)}function showMsg(id,type,text){const el=byId(id);if(el){el.className='msg '+type;el.textContent=text}}function clearMsg(id){const el=byId(id);if(el){el.className='msg';el.textContent=''}}
   function findResident(code){return db.residents.find(r=>r.code===code)}function billId(code,month){return `${code}__${month}`}function billsOf(code){return db.bills.filter(b=>b.residentCode===code).sort((a,b)=>b.month.localeCompare(a.month))}function latestBill(code){return billsOf(code)[0]||null}
   function billRows(b){const r=findResident(b.residentCode)||{};const electricQty=Math.max(0,num(b.newElectric)-num(b.oldElectric));const waterQty=Math.max(0,num(b.newWater)-num(b.oldWater));const roomPrice=b.roomPrice??r.roomPrice,electricPrice=b.electricPrice??r.electricPrice,waterPrice=b.waterPrice??r.waterPrice,wifiFee=b.wifiFee??r.wifiFee,serviceFee=b.serviceFee??r.serviceFee,fridgeFee=b.fridgeFee??r.fridgeFee,airconFee=b.airconFee??r.airconFee,stoveFee=b.stoveFee??r.stoveFee,filterFee=b.filterFee??r.filterFee;return[{old:'',now:'',qty:1,price:num(roomPrice),total:num(roomPrice)},{old:b.oldElectric,now:b.newElectric,qty:electricQty,price:num(electricPrice),total:electricQty*num(electricPrice)},{old:b.oldWater,now:b.newWater,qty:waterQty,price:num(waterPrice),total:waterQty*num(waterPrice)},{old:'',now:'',qty:1,price:num(wifiFee),total:num(wifiFee)},{old:'',now:'',qty:1,price:num(serviceFee),total:num(serviceFee)},{old:'',now:'',qty:1,price:num(fridgeFee),total:num(fridgeFee)},{old:'',now:'',qty:1,price:num(airconFee),total:num(airconFee)},{old:'',now:'',qty:1,price:num(stoveFee),total:num(stoveFee)},{old:'',now:'',qty:1,price:num(filterFee),total:num(filterFee)},{old:'',now:'',qty:num(b.vehicleCount??r.vehicleCount),price:num(b.parkingFee??r.parkingFee),total:num(b.vehicleCount??r.vehicleCount)*num(b.parkingFee??r.parkingFee)},{old:'',now:'',qty:1,price:num(b.extraFee),total:num(b.extraFee)}]}
   function billTotal(b){return billRows(b).reduce((s,r)=>s+num(r.total),0)}function billRemain(b){return Math.max(0,billTotal(b)-num(b.paidAmount))}function statusText(s){return s==='paid'?'Đã thu đủ':s==='partial'?'Thu một phần':'Chưa thu'}function statusClass(s){return s==='paid'?'paid':s==='partial'?'partial':'unpaid'}
-  function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));refresh()}function load(){try{db=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"residents":[],"bills":[]}')}catch{db={residents:[],bills:[]}}if(!Array.isArray(db.residents))db.residents=[];if(!Array.isArray(db.bills))db.bills=[];if(!Array.isArray(db.notices))db.notices=[];if(!Array.isArray(db.managers))db.managers=[];if(!Array.isArray(db.pendingRequests))db.pendingRequests=[];if(!Array.isArray(db.auditLogs))db.auditLogs=[];db.residents.forEach(r=>{if(!Array.isArray(r.vehicles))r.vehicles=[];if(!Array.isArray(r.roomContacts))r.roomContacts=[]});refresh()}
+  function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));refresh()}function load(){try{db=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"residents":[],"bills":[]}')}catch{db={residents:[],bills:[]}}if(!Array.isArray(db.residents))db.residents=[];if(!Array.isArray(db.bills))db.bills=[];if(!Array.isArray(db.notices))db.notices=[];if(!Array.isArray(db.managers))db.managers=[];if(!Array.isArray(db.pendingRequests))db.pendingRequests=[];if(!Array.isArray(db.auditLogs))db.auditLogs=[];if(!Array.isArray(db.paymentProofs))db.paymentProofs=[];if(!db.systemSettings)db.systemSettings=defaultSystemSettings();db.residents.forEach(r=>{if(!Array.isArray(r.vehicles))r.vehicles=[];if(!Array.isArray(r.roomContacts))r.roomContacts=[]});refresh()}
 function refresh(){
   byId('statResidents').textContent = db.residents.length;
   byId('statBills').textContent = db.bills.length;
@@ -1547,6 +1827,7 @@ function refresh(){
   renderPendingList();
   renderAuditLog();
   vipRefreshCenter();
+  renderRealProOperate();
   setRoleUI();
 }
   window.showManagerLogin=function(){
@@ -2623,15 +2904,15 @@ function refresh(){
 
   function renderResidentOptions(){const s=byId('bResident');const current=s.value;s.innerHTML='<option value="">-- Chọn cư dân --</option>'+db.residents.map(r=>`<option value="${safe(r.code)}">${safe(r.code)} - ${safe(r.name)} - ${safe(r.roomName||r.roomCode)}</option>`).join('');if(current)s.value=current}
   function renderResidentList(){const tbody=byId('residentList');if(!db.residents.length){tbody.innerHTML='<tr><td colspan="11" class="center">Chưa có dữ liệu.</td></tr>';return}tbody.innerHTML=db.residents.map(r=>{const bs=billsOf(r.code),debt=bs.reduce((s,b)=>s+billRemain(b),0);return`<tr><td>${r.residentPhoto?`<img class="photo-small" src="${safe(r.residentPhoto)}" alt="Ảnh">`:'-'}</td><td>${safe(r.code)}</td><td><b>${safe(r.name)}</b></td><td>${safe(r.roomName||r.roomCode)}</td><td>${safe(r.phone)}</td><td>${safe(r.citizenId)}</td><td>${safe(r.residentUsername||'')}</td><td>${bs.length}</td><td class="money">${money(debt)}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editResident('${safe(r.code)}')">Sửa</button><button type="button" class="btn-light" onclick="startBill('${safe(r.code)}')">Chốt tháng</button></div></td></tr>`}).join('')}
-  function renderBillList(){const tbody=byId('billList');if(!db.bills.length){tbody.innerHTML='<tr><td colspan="11" class="center">Chưa có kỳ công nợ nào.</td></tr>';return}tbody.innerHTML=[...db.bills].sort((a,b)=>b.month.localeCompare(a.month)).map(b=>{const r=findResident(b.residentCode)||{},rows=billRows(b);return`<tr><td>${monthText(b.month)}</td><td>${safe(r.name||b.residentCode)}</td><td>${safe(r.roomName||r.roomCode||'')}</td><td>${rows[1].qty} kWh</td><td>${rows[2].qty} khối</td><td class="money">${money(billTotal(b))}</td><td>${money(b.paidAmount)}</td><td class="money">${money(billRemain(b))}</td><td><span class="badge ${statusClass(b.paymentStatus)}">${statusText(b.paymentStatus)}</span></td><td><div class="actions"><button type="button" class="btn-light" onclick="editBill('${safe(b.id)}')">Sửa</button><button type="button" class="btn-danger" onclick="deleteBill('${safe(b.id)}')">Xóa</button></div></td></tr>`}).join('')}
+  function renderBillList(){const tbody=byId('billList');if(!db.bills.length){tbody.innerHTML='<tr><td colspan="11" class="center">Chưa có kỳ công nợ nào.</td></tr>';return}tbody.innerHTML=[...db.bills].sort((a,b)=>b.month.localeCompare(a.month)).map(b=>{const r=findResident(b.residentCode)||{},rows=billRows(b);return`<tr><td>${monthText(b.month)}</td><td>${safe(r.name||b.residentCode)}</td><td>${safe(r.roomName||r.roomCode||'')}</td><td>${rows[1].qty} kWh</td><td>${rows[2].qty} khối</td><td class="money">${money(billTotal(b))}</td><td>${money(b.paidAmount)}</td><td class="money">${money(billRemain(b))}</td><td><span class="badge ${statusClass(b.paymentStatus)}">${statusText(b.paymentStatus)}</span></td><td><div class="actions"><button type="button" class="btn-light" onclick="editBill('${safe(b.id)}')">Sửa</button><button type="button" class="btn-light" onclick="printBeautifulReceipt('${safe(b.id)}')">Phiếu đẹp</button><button type="button" class="btn-danger" onclick="deleteBill('${safe(b.id)}')">Xóa</button></div></td></tr>`}).join('')}
   window.startBill=function(code){setValue('bResident',code);onBillingResidentChange();byId('billForm').scrollIntoView({behavior:'smooth',block:'start'})}
   window.fillDemoResidentForm=function(){newResident();fillResidentForm(demoResident())}
   window.fillDemoBillingForm=function(){if(!db.residents.length)seedDemoData();const r=db.residents[0],last=latestBill(r.code);setValue('bResident',r.code);setValue('bMonth',thisMonth());setValue('closedDate',today());setValue('oldElectric',last?last.newElectric:120);setValue('newElectric',last?num(last.newElectric)+55:180);setValue('oldWater',last?last.newWater:35);setValue('newWater',last?num(last.newWater)+6:42);setValue('bRoomPrice',r.roomPrice);setValue('bElectricPrice',r.electricPrice);setValue('bWaterPrice',r.waterPrice);setValue('bWifiFee',r.wifiFee);setValue('bServiceFee',r.serviceFee);setValue('bFridgeFee',r.fridgeFee);setValue('bAirconFee',r.airconFee);setValue('bStoveFee',r.stoveFee);setValue('bFilterFee',r.filterFee);setValue('bVehicleCount',r.vehicleCount);setValue('bParkingFee',r.parkingFee);setValue('extraFee',0);setValue('paidAmount',0);setValue('paymentStatus','unpaid');setValue('billNote','');updateBillPreview()}
   window.seedDemoData=function(){if(!Array.isArray(db.managers))db.managers=[];if(!db.managers.some(m=>m.code==='QL001'))db.managers.push({code:'QL001',name:'Quản lý mẫu',phone:'0900000000',email:'quanly@example.com',status:'active',username:'ql001',password:'123456',motelCode:'NT001',motelName:'Dãy trọ A',area:'Dãy A',motelAddress:'Đồng Tháp',note:'Tài khoản quản lý mẫu',updatedAt:new Date().toISOString()});if(!findResident('CD001'))db.residents.push(demoResident());if(!Array.isArray(db.notices))db.notices=[];if(!db.notices.some(n=>n.id==='TB001'))db.notices.push({id:'TB001',type:'info',date:today(),status:'active',title:'Thông báo hệ thống',content:'Chào mừng cư dân sử dụng trang tra cứu SMART STAY ĐỒNG THÁP. Chủ trọ có thể đăng thông báo dạng nội dung, PDF hoặc DOCX.',fileName:'',fileMime:'',fileData:'',updatedAt:new Date().toISOString()});if(!db.bills.some(b=>b.id==='CD001__2026-05'))db.bills.push({id:'CD001__2026-05',residentCode:'CD001',month:'2026-05',oldElectric:120,newElectric:180,oldWater:35,newWater:42,extraFee:0,paidAmount:0,paymentStatus:'unpaid',closedDate:'2026-05-31',note:'',updatedAt:new Date().toISOString()});save()}
   function demoResident(){return{code:'CD001',name:'Nguyễn Văn A',dob:'2000-01-15',phone:'0901234567',citizenId:'012345678901',issueDate:'2020-03-20',issuePlace:'Cục CSQLHC về TTXH',email:'vana@example.com',otherPhone:'',residentUsername:'cd001',residentPassword:'123456',coTenants:[{id:'NT001',name:'Trần Thị B',dob:'2001-02-20',phone:'0912345678',citizenId:'079001111111',relationship:'Người ở cùng',username:'cd001_2',password:'123456'}],vehicles:[{id:'XE001',ownerKey:'main:CD001',ownerName:'Nguyễn Văn A',vehicleType:'motorbike',plateNumber:'66B1-123.45',frameNumber:'SK123456',engineNumber:'SM123456',registrationNumber:'DKX001',note:'Xe máy màu đen'}],roomContacts:[{id:'LH001',name:'Nguyễn Văn C',phone:'0987654321',relationship:'Người thân',address:'Đồng Tháp',note:'Liên hệ khi khẩn cấp'}],status:'active',address:'Xã B, Huyện C, Tỉnh D',residentPhoto:'',paymentBank:'Vietcombank',paymentAccount:'0123456789',paymentHolder:'SMART STAY DONG THAP',paymentMethod:'bank',paymentContent:'CD001 tien phong',paymentNote:'Sau khi chuyển khoản, vui lòng gửi bill cho chủ trọ.',paymentQr:'',facilityCode:'CS01',facilityName:'Nhà trọ Minh Anh',facilityAddress:'123 Đường A, TP.HCM',roomCode:'P101',roomName:'Phòng 101',occupants:2,contractCode:'HD001',contractDate:'2026-01-01',moveInDate:'2026-01-05',temporaryStart:'2026-01-05',temporaryEnd:'2027-01-05',rentalDuration:'12 tháng',signer:'Nguyễn Văn A',roomPrice:2500000,vehicleCount:2,parkingFee:100000,electricPrice:4000,waterPrice:18000,wifiFee:100000,serviceFee:150000,fridgeFee:50000,airconFee:150000,stoveFee:30000,filterFee:40000,updatedAt:new Date().toISOString()}}
-  byId('lookupForm').addEventListener('submit',e=>{e.preventDefault();const login=findAccountLogin(value('residentLoginUser'),value('residentLoginPass'));if(!login){byId('residentResult').style.display='none';showMsg('lookupMsg','err','Sai tài khoản hoặc mật khẩu cư dân/người ở cùng. Vui lòng liên hệ chủ trọ.');return}const r=login.resident;if(r.status==='ended'){byId('residentResult').style.display='none';showMsg('lookupMsg','warn','Tài khoản này thuộc hồ sơ đã kết thúc thuê. Vui lòng liên hệ chủ trọ.');return}currentLookupCode=r.code;const select=byId('residentBillSelect'),bs=billsOf(r.code);select.innerHTML=bs.length?bs.map(b=>`<option value="${safe(b.id)}">Kỳ ${monthText(b.month)} - trạng thái ${statusText(b.paymentStatus)} - còn lại ${money(billRemain(b))}</option>`).join(''):'<option value="">Chưa có kỳ công nợ</option>';byId('residentResult').style.display='block';renderResidentResult();showMsg('lookupMsg','ok','Đăng nhập thành công. Bạn chỉ có quyền xem thông tin.');logAction('Đăng nhập cư dân','Tài khoản cư dân',r.name+' đăng nhập xem thông tin','resident')})
+  byId('lookupForm').addEventListener('submit',e=>{e.preventDefault();const login=findAccountLogin(value('residentLoginUser'),value('residentLoginPass'));if(!login){byId('residentResult').style.display='none';showMsg('lookupMsg','err','Sai tài khoản hoặc mật khẩu cư dân/người ở cùng. Vui lòng liên hệ chủ trọ.');return}const r=login.resident;if(r.status==='ended'){byId('residentResult').style.display='none';showMsg('lookupMsg','warn','Tài khoản này thuộc hồ sơ đã kết thúc thuê. Vui lòng liên hệ chủ trọ.');return}currentLookupCode=r.code;const select=byId('residentBillSelect'),bs=billsOf(r.code);select.innerHTML=bs.length?bs.map(b=>`<option value="${safe(b.id)}">Kỳ ${monthText(b.month)} - trạng thái ${statusText(b.paymentStatus)} - còn lại ${money(billRemain(b))}</option>`).join(''):'<option value="">Chưa có kỳ công nợ</option>';byId('residentResult').style.display='block';if(byId('residentPaymentProofCard'))byId('residentPaymentProofCard').style.display='block';setValue('proofDate',today());renderResidentResult();showMsg('lookupMsg','ok','Đăng nhập thành công. Bạn chỉ có quyền xem thông tin.');logAction('Đăng nhập cư dân','Tài khoản cư dân',r.name+' đăng nhập xem thông tin','resident')})
   window.renderResidentResult=function(){if(!currentLookupCode)return;const r=findResident(currentLookupCode);if(!r)return;const bill=db.bills.find(b=>b.id===value('residentBillSelect'))||latestBill(r.code);const totalDebt=billsOf(r.code).reduce((s,b)=>s+billRemain(b),0);byId('summary').innerHTML=`<div class="summary-card"><span>Cư dân</span><strong>${safe(r.name)}</strong></div><div class="summary-card"><span>Phòng</span><strong>${safe(r.roomName||r.roomCode)}</strong></div><div class="summary-card"><span>Kỳ đang xem</span><strong>${bill?monthText(bill.month):'Chưa có'}</strong></div><div class="summary-card"><span>Tổng còn nợ</span><strong>${money(totalDebt)}</strong></div>`;if(!bill){byId('residentTables').innerHTML='<div class="section"><h2>Chưa có kỳ công nợ</h2><p class="muted">Chủ trọ chưa chốt tiền tháng nào cho cư dân này.</p></div>';return}const rows=billRows(bill);byId('residentTables').innerHTML=`<div class="section"><h2>Thông tin phòng</h2><div class="table"><table><thead><tr><th>Mã cơ sở</th><th>Tên cơ sở</th><th>Địa chỉ</th><th>Mã phòng</th><th>Tên phòng</th><th>Số người ở</th></tr></thead><tbody><tr><td>${safe(r.facilityCode)}</td><td>${safe(r.facilityName)}</td><td>${safe(r.facilityAddress)}</td><td>${safe(r.roomCode)}</td><td>${safe(r.roomName)}</td><td>${safe(r.occupants)}</td></tr></tbody></table></div></div><div class="section"><h2>Người ở cùng</h2><div class="table"><table><thead><tr><th>Họ tên</th><th>Ngày sinh</th><th>SĐT</th><th>CCCD</th><th>Quan hệ</th><th>Tài khoản</th><th>Quyền</th></tr></thead><tbody>${(Array.isArray(r.coTenants)&&r.coTenants.length?r.coTenants:[null]).map(ct=>ct?`<tr><td>${safe(ct.name)}</td><td>${dateText(ct.dob)}</td><td>${safe(ct.phone)}</td><td>${safe(ct.citizenId)}</td><td>${safe(ct.relationship)}</td><td>${safe(ct.username)}</td><td>Chỉ xem</td></tr>`:'<tr><td colspan="7" class="center">Không có người ở cùng.</td></tr>').join('')}</tbody></table></div></div><div class="section"><h2>Thông tin hợp đồng</h2><div class="table"><table><thead><tr><th>Mã hợp đồng</th><th>Ngày ký</th><th>Ngày vào ở</th><th>Bắt đầu tạm trú</th><th>Kết thúc tạm trú</th><th>Thời gian thuê</th><th>Người ký</th></tr></thead><tbody><tr><td>${safe(r.contractCode)}</td><td>${dateText(r.contractDate)}</td><td>${dateText(r.moveInDate)}</td><td>${dateText(r.temporaryStart)}</td><td>${dateText(r.temporaryEnd)}</td><td>${safe(r.rentalDuration)}</td><td>${safe(r.signer)}</td></tr></tbody></table></div></div><div class="section"><h2>Tài khoản xem thông tin</h2><p class="readonly-note">Bạn đang đăng nhập bằng tài khoản cư dân. Trang này chỉ cho xem thông tin, lịch sử công nợ và trạng thái thanh toán. Không thể chỉnh sửa dữ liệu.</p><div class="table"><table><thead><tr><th>Tài khoản</th><th>Trạng thái thuê</th><th>Quyền</th></tr></thead><tbody><tr><td>${safe(r.residentUsername||'')}</td><td>${safe(r.status||'')}</td><td>Chỉ xem</td></tr></tbody></table></div></div><div class="section"><h2>Hình ảnh cư dân</h2><div class="profile-line">${r.residentPhoto?`<img class="resident-photo-preview" src="${safe(r.residentPhoto)}" alt="Ảnh cư dân">`:'<div class="muted">Chưa có hình ảnh cư dân.</div>'}<div><b>${safe(r.name)}</b><p class="muted">Mã cư dân: ${safe(r.code)}</p></div></div></div><div class="section"><h2>Thông tin cư dân</h2><div class="table"><table><thead><tr><th>Mã cư dân</th><th>Họ tên</th><th>Ngày sinh</th><th>CCCD</th><th>Ngày cấp</th><th>Nơi cấp</th><th>Địa chỉ thường trú</th><th>SĐT</th><th>Email</th></tr></thead><tbody><tr><td>${safe(r.code)}</td><td>${safe(r.name)}</td><td>${dateText(r.dob)}</td><td>${safe(r.citizenId)}</td><td>${dateText(r.issueDate)}</td><td>${safe(r.issuePlace)}</td><td>${safe(r.address)}</td><td>${safe(r.phone)}</td><td>${safe(r.email)}</td></tr></tbody></table></div></div><div class="section"><h2>Thông tin thanh toán</h2><div class="payment-box"><div class="table"><table><thead><tr><th>Phương thức</th><th>Ngân hàng</th><th>Số tài khoản</th><th>Chủ tài khoản</th><th>Nội dung CK</th></tr></thead><tbody><tr><td>${safe(r.paymentMethod||'')}</td><td>${safe(r.paymentBank||'')}</td><td>${safe(r.paymentAccount||'')}</td><td>${safe(r.paymentHolder||'')}</td><td>${safe(r.paymentContent||r.code+' '+(bill?bill.month:''))}</td></tr></tbody></table></div><p class="muted">${safe(r.paymentNote||'')}</p>${r.paymentQr?`<img class="payment-qr-preview" src="${safe(r.paymentQr)}" alt="QR thanh toán">`:''}</div></div><div class="section"><h2>Công nợ kỳ ${monthText(bill.month)}</h2><p class="muted">Ngày chốt: ${dateText(bill.closedDate)}. Ghi chú: ${safe(bill.note||'Không có')}</p><div class="table"><table><thead><tr><th>STT</th><th>Khoản thu</th><th>Chỉ số cũ</th><th>Chỉ số mới</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows.map((row,i)=>`<tr><td>${i+1}</td><td>${debtNames[i]}</td><td>${safe(row.old)}</td><td>${safe(row.now)}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td class="money">${money(row.total)}</td></tr>`).join('')}<tr><td colspan="6" class="money">Tổng tiền</td><td class="money">${money(billTotal(bill))}</td></tr><tr><td colspan="6">Đã thanh toán</td><td>${money(bill.paidAmount)}</td></tr><tr><td colspan="6" class="money">Còn lại</td><td class="money">${money(billRemain(bill))}</td></tr><tr><td colspan="6">Trạng thái</td><td><span class="badge ${statusClass(bill.paymentStatus)}">${statusText(bill.paymentStatus)}</span></td></tr></tbody></table></div></div>`}
-  window.clearLookup=function(){byId('lookupForm').reset();byId('residentResult').style.display='none';currentLookupCode=null;clearMsg('lookupMsg')}
+  window.clearLookup=function(){byId('lookupForm').reset();byId('residentResult').style.display='none';if(byId('residentPaymentProofCard'))byId('residentPaymentProofCard').style.display='none';currentLookupCode=null;clearMsg('lookupMsg')}
   window.fillDemoResidentLogin=function(){if(!findResident('CD001'))seedDemoData();const r=findResident('CD001');setValue('residentLoginUser',r.residentUsername||'cd001');setValue('residentLoginPass',r.residentPassword||'123456')}
   window.fillDemoSearch=window.fillDemoResidentLogin
 
@@ -2667,7 +2948,7 @@ function refresh(){
     if(!confirm('Bạn chắc chắn muốn xóa toàn bộ dữ liệu trên trình duyệt này?')){
       return;
     }
-    db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[],auditLogs:[]};
+    db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[],auditLogs:[],paymentProofs:[],systemSettings:defaultSystemSettings()};
     save();
   }
 
@@ -4547,6 +4828,302 @@ function refresh(){
   VIP PRO NOTE 1400: Hệ thống quản lý nhà trọ gồm Admin, Quản lý, Cư dân, Người ở cùng, Excel, Phiếu thu, Lịch sử thao tác, Duyệt dữ liệu, Sao lưu, Thông báo, Xe, QR thanh toán.
   VIP PRO NOTE 1401: Hệ thống quản lý nhà trọ gồm Admin, Quản lý, Cư dân, Người ở cùng, Excel, Phiếu thu, Lịch sử thao tác, Duyệt dữ liệu, Sao lưu, Thông báo, Xe, QR thanh toán.
 -->
+
+<!--
+ SMART STAY - EXCEL 1 LẦN + TRẠNG THÁI DUYỆT QUẢN LÝ
+ Ghi chú 0001: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0002: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0003: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0004: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0005: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0006: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0007: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0008: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0009: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0010: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0011: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0012: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0013: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0014: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0015: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0016: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0017: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0018: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0019: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0020: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0021: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0022: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0023: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0024: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0025: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0026: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0027: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0028: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0029: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0030: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0031: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0032: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0033: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0034: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0035: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0036: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0037: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0038: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0039: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0040: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0041: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0042: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0043: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0044: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0045: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0046: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0047: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0048: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0049: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0050: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0051: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0052: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0053: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0054: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0055: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0056: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0057: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0058: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0059: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0060: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0061: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0062: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0063: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0064: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0065: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0066: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0067: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0068: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0069: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0070: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0071: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0072: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0073: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0074: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0075: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0076: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0077: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0078: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0079: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0080: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0081: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0082: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0083: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0084: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0085: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0086: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0087: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0088: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0089: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0090: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0091: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0092: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0093: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0094: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0095: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0096: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0097: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0098: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0099: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0100: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0101: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0102: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0103: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0104: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0105: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0106: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0107: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0108: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0109: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0110: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0111: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0112: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0113: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0114: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0115: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0116: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0117: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0118: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0119: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0120: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0121: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0122: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0123: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0124: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0125: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0126: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0127: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0128: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0129: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0130: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0131: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0132: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0133: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0134: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0135: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0136: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0137: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0138: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0139: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0140: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0141: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0142: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0143: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0144: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0145: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0146: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0147: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0148: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0149: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0150: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0151: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0152: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0153: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0154: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0155: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0156: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0157: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0158: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0159: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0160: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0161: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0162: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0163: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0164: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0165: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0166: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0167: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0168: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0169: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0170: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0171: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0172: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0173: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0174: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0175: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0176: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0177: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0178: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0179: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0180: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0181: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0182: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0183: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0184: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0185: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0186: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0187: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0188: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0189: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0190: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0191: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0192: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0193: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0194: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0195: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0196: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0197: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0198: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0199: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0200: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0201: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0202: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0203: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0204: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0205: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0206: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0207: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0208: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0209: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0210: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0211: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0212: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0213: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0214: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0215: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0216: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0217: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0218: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0219: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0220: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0221: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0222: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0223: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0224: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0225: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0226: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0227: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0228: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0229: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0230: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0231: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0232: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0233: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0234: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0235: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0236: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0237: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0238: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0239: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0240: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0241: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0242: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0243: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0244: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0245: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0246: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0247: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0248: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0249: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0250: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0251: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0252: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0253: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0254: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0255: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0256: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0257: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0258: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0259: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0260: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0261: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0262: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0263: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0264: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0265: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0266: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0267: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0268: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0269: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0270: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0271: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0272: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0273: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0274: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0275: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0276: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0277: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0278: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0279: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0280: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0281: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0282: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0283: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0284: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0285: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0286: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0287: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0288: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0289: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0290: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0291: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+-->
+<div id="realToast" class="toast-real"></div>
 </body></html>`);
     win.document.close();
   }
@@ -4807,6 +5384,369 @@ function refresh(){
   function vipClearCommand(){
     setValue('vipCommandInput','');
     vipCommandResult('Sẵn sàng nhận lệnh VIP Pro.');
+  }
+
+
+
+  function statusBadgeHtml(status){
+    if(status==='approved') return '<span class="badge status-pill-approved">Đã duyệt</span>';
+    if(status==='rejected') return '<span class="badge status-pill-rejected">Từ chối</span>';
+    return '<span class="badge status-pill-pending">Chờ duyệt</span>';
+  }
+
+  function renderManagerPendingStatus(){
+    const tbody=byId('managerPendingStatusList');
+    if(!tbody) return;
+    const code=currentManager?currentManager.code:'';
+    const rows=(db.pendingRequests||[]).filter(p=>p.managerCode===code).sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
+    if(!rows.length){tbody.innerHTML='<tr><td colspan="5" class="center">Chưa có dữ liệu đã gửi.</td></tr>';return;}
+    tbody.innerHTML=rows.map(p=>`<tr><td>${p.createdAt?new Date(p.createdAt).toLocaleString('vi-VN'):'-'}</td><td>${pendingTypeText(p.type)}</td><td>${safe(pendingSummary(p))}</td><td>${statusBadgeHtml(p.status)}</td><td>${p.decidedAt?new Date(p.decidedAt).toLocaleString('vi-VN'):'-'}</td></tr>`).join('');
+  }
+
+  function exNeed(){if(!window.XLSX){alert('Không tải được thư viện Excel. Hãy kiểm tra mạng.');return false;}return true;}
+  function exKey(t){return String(t||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]/g,'');}
+  function exCell(row,names,fb=''){const m={};Object.keys(row||{}).forEach(k=>m[exKey(k)]=row[k]);for(const n of names){const k=exKey(n);if(m[k]!==undefined&&m[k]!==null&&m[k]!=='')return m[k];}return fb;}
+  function exDate(v){if(!v)return '';if(typeof v==='number'&&window.XLSX&&XLSX.SSF){const d=XLSX.SSF.parse_date_code(v);if(d)return `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;}const raw=String(v).trim();if(/^\d{4}-\d{2}-\d{2}$/.test(raw))return raw;const m=raw.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);if(m)return `${m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`;return raw;}
+  function readWb(file){return new Promise((ok,fail)=>{const r=new FileReader();r.onload=e=>{try{ok(XLSX.read(new Uint8Array(e.target.result),{type:'array'}));}catch(err){fail(err)}};r.onerror=()=>fail(r.error);r.readAsArrayBuffer(file);});}
+  function rows(wb,name){const n=wb.SheetNames.find(s=>exKey(s)===exKey(name));return n?XLSX.utils.sheet_to_json(wb.Sheets[n],{defval:''}):[];}
+
+  function residentRow(row){
+    const code=String(exCell(row,['maCuDan','mã cư dân','code'])).trim();
+    const name=String(exCell(row,['hoTen','họ tên','name'])).trim();
+    return {code,name,dob:exDate(exCell(row,['ngaySinh','ngày sinh'])),phone:String(exCell(row,['soDienThoai','số điện thoại','sdt'])).trim(),citizenId:String(exCell(row,['soCCCD','số CCCD','cccd'])).trim(),issueDate:'',issuePlace:'',email:String(exCell(row,['email'])).trim(),otherPhone:'',residentUsername:String(exCell(row,['taiKhoanCuDan','tài khoản cư dân'],code.toLowerCase())).trim(),residentPassword:String(exCell(row,['matKhauCuDan','mật khẩu cư dân'],'123456')).trim(),coTenants:[],vehicles:[],roomContacts:[],status:'active',address:String(exCell(row,['diaChi','địa chỉ','address'])).trim(),residentPhoto:'',paymentBank:String(exCell(row,['nganHang','ngân hàng'])).trim(),paymentAccount:String(exCell(row,['soTaiKhoan','số tài khoản'])).trim(),paymentHolder:String(exCell(row,['chuTaiKhoan','chủ tài khoản'])).trim(),paymentMethod:'bank',paymentContent:String(exCell(row,['noiDungCK','nội dung CK'])).trim(),paymentNote:'',paymentQr:'',facilityCode:'',facilityName:'',facilityAddress:'',roomCode:String(exCell(row,['maPhong','mã phòng'])).trim(),roomName:String(exCell(row,['tenPhong','tên phòng'])).trim(),occupants:num(exCell(row,['soNguoiO','số người ở'],1)),contractCode:'',contractDate:'',moveInDate:'',temporaryStart:'',temporaryEnd:'',rentalDuration:'',signer:name,roomPrice:num(exCell(row,['giaPhong','giá phòng'])),vehicleCount:num(exCell(row,['soXe','số xe'])),parkingFee:num(exCell(row,['phiGiuXe','phí giữ xe'])),electricPrice:num(exCell(row,['donGiaDien','đơn giá điện'])),waterPrice:num(exCell(row,['donGiaNuoc','đơn giá nước'])),wifiFee:num(exCell(row,['wifi'])),serviceFee:num(exCell(row,['dichVu','dịch vụ'])),fridgeFee:0,airconFee:0,stoveFee:0,filterFee:0,updatedAt:new Date().toISOString()};
+  }
+
+  function managerRow(row){return {code:String(exCell(row,['maQuanLy','mã quản lý'])).trim(),name:String(exCell(row,['hoTenQuanLy','họ tên quản lý'])).trim(),phone:String(exCell(row,['soDienThoai','số điện thoại'])).trim(),email:String(exCell(row,['email'])).trim(),status:'active',username:String(exCell(row,['taiKhoanQuanLy','tài khoản quản lý'])).trim(),password:String(exCell(row,['matKhauQuanLy','mật khẩu quản lý'],'123456')).trim(),motelCode:String(exCell(row,['maNhaTro','mã nhà trọ'])).trim(),motelName:String(exCell(row,['tenDayTro','tên dãy trọ'])).trim(),area:String(exCell(row,['khuVuc','khu vực'])).trim(),motelAddress:String(exCell(row,['diaChi','địa chỉ'])).trim(),note:'',updatedAt:new Date().toISOString()};}
+  function billRow(row){const residentCode=String(exCell(row,['maCuDan','mã cư dân'])).trim();const month=String(exCell(row,['ky','kỳ','thang','tháng'])).trim();return {id:billId(residentCode,month),residentCode,month,oldElectric:num(exCell(row,['chiSoDienCu','chỉ số điện cũ'])),newElectric:num(exCell(row,['chiSoDienMoi','chỉ số điện mới'])),oldWater:num(exCell(row,['chiSoNuocCu','chỉ số nước cũ'])),newWater:num(exCell(row,['chiSoNuocMoi','chỉ số nước mới'])),roomPrice:num(exCell(row,['giaPhong','giá phòng'])),electricPrice:num(exCell(row,['donGiaDien','đơn giá điện'])),waterPrice:num(exCell(row,['donGiaNuoc','đơn giá nước'])),wifiFee:num(exCell(row,['wifi'])),serviceFee:num(exCell(row,['dichVu','dịch vụ'])),fridgeFee:0,airconFee:0,stoveFee:0,filterFee:0,vehicleCount:num(exCell(row,['soXe','số xe'])),parkingFee:num(exCell(row,['phiGiuXe','phí giữ xe'])),extraFee:num(exCell(row,['phuThu','phụ thu'])),paidAmount:num(exCell(row,['daThu','đã thu'])),paymentStatus:String(exCell(row,['trangThaiThu','trạng thái thu'],'unpaid')).trim()||'unpaid',closedDate:exDate(exCell(row,['ngayChot','ngày chốt'],today())),note:String(exCell(row,['ghiChu','ghi chú'])).trim(),updatedAt:new Date().toISOString()};}
+
+  function coTenantRow(row){return {residentCode:String(exCell(row,['maCuDan','mã cư dân'])).trim(),item:{id:String(exCell(row,['maNguoiOCung','mã người ở cùng'],'NT'+Date.now()+Math.floor(Math.random()*1000))).trim(),name:String(exCell(row,['hoTen','họ tên'])).trim(),dob:exDate(exCell(row,['ngaySinh','ngày sinh'])),phone:String(exCell(row,['soDienThoai','số điện thoại'])).trim(),citizenId:String(exCell(row,['soCCCD','số CCCD'])).trim(),relationship:String(exCell(row,['quanHe','quan hệ'])).trim(),username:String(exCell(row,['taiKhoan','tài khoản'])).trim(),password:String(exCell(row,['matKhau','mật khẩu'],'123456')).trim()}};}
+  function vehicleRow(row){return {residentCode:String(exCell(row,['maCuDan','mã cư dân'])).trim(),item:{id:String(exCell(row,['maXe','mã xe'],'XE'+Date.now()+Math.floor(Math.random()*1000))).trim(),ownerKey:'',ownerName:String(exCell(row,['cuDanSoHuu','cư dân sở hữu'])).trim(),vehicleType:String(exCell(row,['loaiXe','loại xe'],'motorbike')).trim(),plateNumber:String(exCell(row,['bienSoXe','biển số xe'])).trim(),frameNumber:String(exCell(row,['soKhung','số khung'])).trim(),engineNumber:String(exCell(row,['soMay','số máy'])).trim(),registrationNumber:String(exCell(row,['soDangKyXe','số đăng ký xe'])).trim(),note:String(exCell(row,['ghiChu','ghi chú'])).trim()}};}
+  function contactRow(row){return {residentCode:String(exCell(row,['maCuDan','mã cư dân'])).trim(),item:{id:String(exCell(row,['maLienHe','mã liên hệ'],'LH'+Date.now()+Math.floor(Math.random()*1000))).trim(),name:String(exCell(row,['hoTen','họ tên'])).trim(),phone:String(exCell(row,['soDienThoai','số điện thoại'])).trim(),relationship:String(exCell(row,['quanHe','quan hệ'])).trim(),address:String(exCell(row,['diaChi','địa chỉ'])).trim(),note:String(exCell(row,['ghiChu','ghi chú'])).trim()}};}
+
+  function upsert(list,item,key,mode){const i=list.findIndex(x=>x[key]===item[key]);if(i>=0){if(mode==='insertOnly')return 'skipped';list[i]={...list[i],...item};return 'updated';}list.push(item);return 'added';}
+  function parseWorkbookAll(wb){return {residents:rows(wb,'CuDan').map(residentRow).filter(r=>r.code&&r.name&&r.phone&&r.citizenId),managers:rows(wb,'QuanLy').map(managerRow).filter(m=>m.code&&m.name&&m.username&&m.password&&m.motelCode&&m.motelName),bills:rows(wb,'PhieuThu').map(billRow).filter(b=>b.residentCode&&b.month),coTenants:rows(wb,'NguoiOCung').map(coTenantRow).filter(x=>x.residentCode&&x.item.name&&x.item.username),vehicles:rows(wb,'Xe').map(vehicleRow).filter(x=>x.residentCode&&x.item.plateNumber),roomContacts:rows(wb,'LienHePhong').map(contactRow).filter(x=>x.residentCode&&x.item.name)};}
+
+  function applyParsed(parsed,mode){const s={rA:0,rU:0,bA:0,bU:0,mA:0,mU:0};parsed.residents.forEach(r=>{const x=upsert(db.residents,r,'code',mode);if(x==='added')s.rA++;if(x==='updated')s.rU++;});parsed.coTenants.forEach(x=>{const r=findResident(x.residentCode);if(r){if(!Array.isArray(r.coTenants))r.coTenants=[];upsert(r.coTenants,x.item,'id',mode);}});parsed.vehicles.forEach(x=>{const r=findResident(x.residentCode);if(r){if(!Array.isArray(r.vehicles))r.vehicles=[];upsert(r.vehicles,x.item,'id',mode);}});parsed.roomContacts.forEach(x=>{const r=findResident(x.residentCode);if(r){if(!Array.isArray(r.roomContacts))r.roomContacts=[];upsert(r.roomContacts,x.item,'id',mode);}});parsed.bills.forEach(b=>{const x=upsert(db.bills,b,'id',mode);if(x==='added')s.bA++;if(x==='updated')s.bU++;});parsed.managers.forEach(m=>{if(!Array.isArray(db.managers))db.managers=[];const x=upsert(db.managers,m,'code',mode);if(x==='added')s.mA++;if(x==='updated')s.mU++;});return s;}
+
+  function submitParsedPending(parsed){let count=0;parsed.residents.forEach(r=>{newPending('resident_upsert',r,'Excel hồ sơ cư dân '+r.code);count++;});parsed.bills.forEach(b=>{newPending('bill_upsert',b,'Excel phiếu thu '+b.id);count++;});[...parsed.coTenants,...parsed.vehicles,...parsed.roomContacts].forEach(x=>{const r=findResident(x.residentCode)||{code:x.residentCode,name:''};const data={...r};if(x.item.plateNumber){data.vehicles=[...(r.vehicles||[]),x.item];}else if(x.item.relationship&&x.item.username){data.coTenants=[...(r.coTenants||[]),x.item];}else{data.roomContacts=[...(r.roomContacts||[]),x.item];}newPending('resident_upsert',data,'Excel dữ liệu bổ sung '+x.residentCode);count++;});return count;}
+
+  async function importOneShotExcel(){
+    if(currentRole!=='admin'&&currentRole!=='manager'){alert('Vui lòng đăng nhập Admin hoặc Quản lý.');return;}
+    if(!exNeed())return;
+    const file=byId('oneShotExcelFile')&&byId('oneShotExcelFile').files[0];
+    if(!file){showMsg('oneShotImportMsg','warn','Vui lòng chọn file Excel tổng hợp.');return;}
+    try{const mode=value('oneShotImportMode')||'upsert';const wb=await readWb(file);const parsed=parseWorkbookAll(wb);
+      if(currentRole==='manager'){parsed.managers=[];const c=submitParsedPending(parsed);save();renderManagerPendingStatus();showMsg('oneShotImportMsg','warn','Quản lý đã gửi '+c+' dòng dữ liệu. Trạng thái: Chờ Admin duyệt.');return;}
+      const s=applyParsed(parsed,mode);save();showMsg('oneShotImportMsg','ok',`Admin đã update Excel: cư dân thêm ${s.rA}, cập nhật ${s.rU}; phiếu thu thêm ${s.bA}, cập nhật ${s.bU}; quản lý thêm ${s.mA}, cập nhật ${s.mU}.`);
+    }catch(e){console.error(e);showMsg('oneShotImportMsg','err','Không đọc được file Excel tổng hợp. Vui lòng dùng đúng file mẫu.');}
+  }
+
+  function downloadOneShotExcelTemplate(){
+    if(!exNeed())return;
+    const wb=XLSX.utils.book_new();
+    const sheets=[
+      ['CuDan',[{maCuDan:'CD001',hoTen:'Nguyễn Văn A',ngaySinh:'2000-01-15',soDienThoai:'0901234567',soCCCD:'012345678901',taiKhoanCuDan:'cd001',matKhauCuDan:'123456',maPhong:'P101',tenPhong:'Phòng 101',giaPhong:2500000,soXe:1,phiGiuXe:100000,nganHang:'Vietcombank',soTaiKhoan:'0123456789',chuTaiKhoan:'SMART STAY'}]],
+      ['QuanLy',[{maQuanLy:'QL001',hoTenQuanLy:'Quản lý mẫu',soDienThoai:'0900000000',email:'quanly@example.com',taiKhoanQuanLy:'ql001',matKhauQuanLy:'123456',maNhaTro:'NT001',tenDayTro:'Dãy trọ A',khuVuc:'Dãy A',diaChi:'Đồng Tháp'}]],
+      ['PhieuThu',[{maCuDan:'CD001',ky:'2026-05',chiSoDienCu:100,chiSoDienMoi:150,chiSoNuocCu:10,chiSoNuocMoi:15,giaPhong:2500000,donGiaDien:4000,donGiaNuoc:18000,wifi:100000,dichVu:150000,soXe:1,phiGiuXe:100000,daThu:0,trangThaiThu:'unpaid',ngayChot:'2026-05-31'}]],
+      ['NguoiOCung',[{maCuDan:'CD001',maNguoiOCung:'NT001',hoTen:'Trần Thị B',ngaySinh:'2001-02-20',soDienThoai:'0912345678',soCCCD:'079001111111',quanHe:'Người ở cùng',taiKhoan:'cd001_2',matKhau:'123456'}]],
+      ['Xe',[{maCuDan:'CD001',maXe:'XE001',cuDanSoHuu:'Nguyễn Văn A',loaiXe:'motorbike',bienSoXe:'66B1-123.45',soKhung:'SK123456',soMay:'SM123456',soDangKyXe:'DKX001'}]],
+      ['LienHePhong',[{maCuDan:'CD001',maLienHe:'LH001',hoTen:'Nguyễn Văn C',soDienThoai:'0987654321',quanHe:'Người thân',diaChi:'Đồng Tháp'}]]
+    ];
+    sheets.forEach(([n,r])=>XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(r),n));
+    XLSX.writeFile(wb,'file_mau_nhap_nhanh_1_lan_smart_stay.xlsx');
+  }
+
+
+
+  function defaultSystemSettings(){
+    return {
+      name:'SMART STAY ĐỒNG THÁP',
+      owner:'',
+      phone:'',
+      email:'',
+      address:'',
+      dueDay:5,
+      receiptPrefix:'PT',
+      receiptNext:1,
+      currency:'VND',
+      receiptNote:'Phiếu thu có giá trị khi có xác nhận của chủ trọ.'
+    };
+  }
+
+  function getSystemSettings(){
+    if(!db.systemSettings) db.systemSettings=defaultSystemSettings();
+    db.systemSettings={...defaultSystemSettings(),...db.systemSettings};
+    return db.systemSettings;
+  }
+
+  function loadSystemSettingsToForm(){
+    const s=getSystemSettings();
+    setValue('sysName',s.name);
+    setValue('sysOwner',s.owner);
+    setValue('sysPhone',s.phone);
+    setValue('sysEmail',s.email);
+    setValue('sysAddress',s.address);
+    setValue('sysDueDay',s.dueDay);
+    setValue('sysReceiptPrefix',s.receiptPrefix);
+    setValue('sysReceiptNext',s.receiptNext);
+    setValue('sysCurrency',s.currency);
+    setValue('sysReceiptNote',s.receiptNote);
+  }
+
+  function saveSystemSettings(){
+    if(currentRole!=='admin'){
+      alert('Chỉ Admin được lưu cấu hình hệ thống.');
+      return;
+    }
+    db.systemSettings={
+      name:value('sysName')||'SMART STAY ĐỒNG THÁP',
+      owner:value('sysOwner'),
+      phone:value('sysPhone'),
+      email:value('sysEmail'),
+      address:value('sysAddress'),
+      dueDay:num(value('sysDueDay'))||5,
+      receiptPrefix:value('sysReceiptPrefix')||'PT',
+      receiptNext:num(value('sysReceiptNext'))||1,
+      currency:value('sysCurrency')||'VND',
+      receiptNote:value('sysReceiptNote')
+    };
+    save();
+    realToast('Đã lưu cấu hình vận hành.');
+    if(typeof logAction==='function') logAction('Lưu cấu hình vận hành','Thiết lập hệ thống','Admin cập nhật thông tin hệ thống và phiếu thu','admin');
+  }
+
+  function receiptNo(){
+    const s=getSystemSettings();
+    return (s.receiptPrefix||'PT') + String(s.receiptNext||1).padStart(6,'0');
+  }
+
+  function increaseReceiptNo(){
+    const s=getSystemSettings();
+    s.receiptNext=(num(s.receiptNext)||1)+1;
+    db.systemSettings=s;
+  }
+
+  function realToast(msg){
+    const el=byId('realToast');
+    if(!el) return;
+    el.textContent=msg;
+    el.classList.add('show');
+    clearTimeout(window.__realToastTimer);
+    window.__realToastTimer=setTimeout(()=>el.classList.remove('show'),3500);
+  }
+
+  function billDueDate(b){
+    const s=getSystemSettings();
+    const day=Math.min(28,Math.max(1,num(s.dueDay)||5));
+    if(!b.month) return '';
+    return b.month + '-' + String(day).padStart(2,'0');
+  }
+
+  function isBillOverdue(b){
+    if(billRemain(b)<=0) return false;
+    const d=billDueDate(b);
+    if(!d) return false;
+    return new Date(d+'T23:59:59') < new Date();
+  }
+
+  function currentMonthKey(){
+    return new Date().toISOString().slice(0,7);
+  }
+
+  function renderRealProOperate(){
+    const debtList=byId('realDebtList');
+    const proofList=byId('realPaymentProofList');
+    if(!debtList && !proofList) return;
+
+    const bills=db.bills||[];
+    const debtBills=bills.filter(b=>billRemain(b)>0).sort((a,b)=>billRemain(b)-billRemain(a));
+    const overdue=debtBills.filter(isBillOverdue);
+    const month=currentMonthKey();
+    const monthBills=bills.filter(b=>b.month===month);
+    const monthRevenue=monthBills.reduce((sum,b)=>sum+num(b.paidAmount),0);
+    const monthExpected=monthBills.reduce((sum,b)=>sum+billTotal(b),0);
+    const proofs=(db.paymentProofs||[]).filter(p=>p.status==='pending');
+
+    if(byId('realOverdueCount')) byId('realOverdueCount').textContent=overdue.length;
+    if(byId('realProofPendingCount')) byId('realProofPendingCount').textContent=proofs.length;
+    if(byId('realMonthRevenue')) byId('realMonthRevenue').textContent=money(monthRevenue);
+    if(byId('realMonthExpected')) byId('realMonthExpected').textContent=money(monthExpected);
+
+    if(debtList){
+      if(!debtBills.length){
+        debtList.innerHTML='<tr><td colspan="5" class="center">Không có công nợ còn lại.</td></tr>';
+      }else{
+        debtList.innerHTML=debtBills.slice(0,50).map(b=>{
+          const r=findResident(b.residentCode)||{};
+          return `<tr><td>${monthText(b.month)}</td><td>${safe(r.name||b.residentCode)}</td><td>${safe(r.roomName||r.roomCode||'')}</td><td class="money">${money(billRemain(b))}</td><td>${isBillOverdue(b)?'<span class="badge unpaid">Quá hạn</span>':'<span class="badge partial">Chưa thu đủ</span>'}</td></tr>`;
+        }).join('');
+      }
+    }
+
+    if(proofList){
+      if(!proofs.length){
+        proofList.innerHTML='<tr><td colspan="5" class="center">Chưa có yêu cầu xác nhận.</td></tr>';
+      }else{
+        proofList.innerHTML=proofs.map(p=>{
+          const r=findResident(p.residentCode)||{};
+          return `<tr><td>${monthText(p.month)}</td><td>${safe(r.name||p.residentCode)}</td><td class="money">${money(p.amount)}</td><td><span class="badge partial">Chờ xác nhận</span></td><td><div class="actions"><button type="button" class="btn-ok" onclick="approvePaymentProof('${safe(p.id)}')">Xác nhận</button><button type="button" class="btn-danger" onclick="rejectPaymentProof('${safe(p.id)}')">Từ chối</button></div></td></tr>`;
+        }).join('');
+      }
+    }
+  }
+
+  async function fileToBase64(file){
+    return new Promise((resolve,reject)=>{
+      const reader=new FileReader();
+      reader.onload=()=>resolve(reader.result);
+      reader.onerror=()=>reject(reader.error);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function clearPaymentProofForm(){
+    setValue('proofAmount','');
+    setValue('proofDate',today());
+    setValue('proofNote','');
+    const f=byId('proofFile');
+    if(f) f.value='';
+    clearMsg('proofMsg');
+  }
+
+  async function submitPaymentProof(){
+    if(!currentLookupCode){
+      showMsg('proofMsg','err','Bạn cần đăng nhập cư dân trước.');
+      return;
+    }
+    const bill=db.bills.find(b=>b.id===value('residentBillSelect'))||latestBill(currentLookupCode);
+    if(!bill){
+      showMsg('proofMsg','err','Chưa có kỳ công nợ để gửi xác nhận.');
+      return;
+    }
+    const amount=num(value('proofAmount'));
+    if(amount<=0){
+      showMsg('proofMsg','err','Vui lòng nhập số tiền đã chuyển.');
+      return;
+    }
+    const file=byId('proofFile')&&byId('proofFile').files[0];
+    let image='';
+    if(file){
+      if(!String(file.type||'').startsWith('image/')){
+        showMsg('proofMsg','err','Chỉ nhận file hình ảnh.');
+        return;
+      }
+      if(file.size>2*1024*1024){
+        showMsg('proofMsg','err','Ảnh quá lớn. Vui lòng chọn ảnh dưới 2MB.');
+        return;
+      }
+      image=await fileToBase64(file);
+    }
+    if(!Array.isArray(db.paymentProofs)) db.paymentProofs=[];
+    const proof={
+      id:'PAY'+Date.now()+Math.floor(Math.random()*1000),
+      residentCode:currentLookupCode,
+      billId:bill.id,
+      month:bill.month,
+      amount:amount,
+      date:value('proofDate')||today(),
+      note:value('proofNote'),
+      image:image,
+      status:'pending',
+      createdAt:new Date().toISOString(),
+      decidedAt:'',
+      decidedBy:''
+    };
+    db.paymentProofs.unshift(proof);
+    save();
+    clearPaymentProofForm();
+    showMsg('proofMsg','ok','Đã gửi xác nhận thanh toán. Vui lòng chờ chủ trọ xác nhận.');
+    if(typeof logAction==='function') logAction('Cư dân gửi xác nhận thanh toán','Phiếu thu '+bill.id,'Số tiền '+money(amount),'resident');
+  }
+
+  function approvePaymentProof(id){
+    if(currentRole!=='admin'){
+      alert('Chỉ Admin được xác nhận thanh toán.');
+      return;
+    }
+    const p=(db.paymentProofs||[]).find(x=>x.id===id);
+    if(!p||p.status!=='pending') return;
+    const b=(db.bills||[]).find(x=>x.id===p.billId);
+    if(!b){
+      alert('Không tìm thấy phiếu thu.');
+      return;
+    }
+    const newPaid=Math.min(billTotal(b),num(b.paidAmount)+num(p.amount));
+    b.paidAmount=newPaid;
+    if(newPaid>=billTotal(b)) b.paymentStatus='paid';
+    else if(newPaid>0) b.paymentStatus='partial';
+    p.status='approved';
+    p.decidedAt=new Date().toISOString();
+    p.decidedBy='admin';
+    increaseReceiptNo();
+    save();
+    realToast('Đã xác nhận thanh toán và cập nhật phiếu thu.');
+    if(typeof logAction==='function') logAction('Xác nhận thanh toán','Phiếu thu '+b.id,'Admin xác nhận '+money(p.amount),'admin');
+  }
+
+  function rejectPaymentProof(id){
+    if(currentRole!=='admin'){
+      alert('Chỉ Admin được từ chối xác nhận thanh toán.');
+      return;
+    }
+    const p=(db.paymentProofs||[]).find(x=>x.id===id);
+    if(!p||p.status!=='pending') return;
+    if(!confirm('Từ chối xác nhận thanh toán này?')) return;
+    p.status='rejected';
+    p.decidedAt=new Date().toISOString();
+    p.decidedBy='admin';
+    save();
+    realToast('Đã từ chối xác nhận thanh toán.');
+    if(typeof logAction==='function') logAction('Từ chối xác nhận thanh toán','Xác nhận '+p.id,'Admin từ chối xác nhận thanh toán','admin');
+  }
+
+  function printBeautifulReceipt(id){
+    const b=(db.bills||[]).find(x=>x.id===id) || (db.bills||[])[0];
+    if(!b){
+      alert('Chưa có phiếu thu.');
+      return;
+    }
+    const r=findResident(b.residentCode)||{};
+    const s=getSystemSettings();
+    const no=receiptNo();
+    const rows=billRows(b);
+    const html=`<div class="receipt-page">
+      <div class="receipt-header">
+        <div>
+          <h1>${safe(s.name)}</h1>
+          <p>${safe(s.address||'')}</p>
+          <p>ĐT: ${safe(s.phone||'')} | Email: ${safe(s.email||'')}</p>
+        </div>
+        <div>
+          <div class="receipt-stamp">PHIẾU THU</div>
+          <p><b>Số:</b> ${safe(no)}</p>
+          <p><b>Ngày:</b> ${dateText(today())}</p>
+        </div>
+      </div>
+      <h2>Phiếu thu tiền phòng kỳ ${monthText(b.month)}</h2>
+      <table>
+        <tr><th>Cư dân</th><td>${safe(r.name||b.residentCode)}</td><th>Phòng</th><td>${safe(r.roomName||r.roomCode||'')}</td></tr>
+        <tr><th>SĐT</th><td>${safe(r.phone||'')}</td><th>CCCD</th><td>${safe(r.citizenId||'')}</td></tr>
+      </table>
+      <table>
+        <tr><th>STT</th><th>Khoản thu</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr>
+        ${rows.map((row,i)=>`<tr><td>${i+1}</td><td>${safe(debtNames[i])}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td><b>${money(row.total)}</b></td></tr>`).join('')}
+        <tr><th colspan="4">Tổng tiền</th><th>${money(billTotal(b))}</th></tr>
+        <tr><td colspan="4">Đã thu</td><td>${money(b.paidAmount)}</td></tr>
+        <tr><th colspan="4">Còn lại</th><th>${money(billRemain(b))}</th></tr>
+      </table>
+      <p><b>Ghi chú:</b> ${safe(s.receiptNote||'')}</p>
+      <br>
+      <table><tr><td style="height:90px;text-align:center"><b>Người nộp</b><br><br><br></td><td style="height:90px;text-align:center"><b>Người thu</b><br><br><br></td></tr></table>
+    </div>`;
+    printWindow('Phiếu thu đẹp',html);
+    increaseReceiptNo();
+    save();
+    if(typeof logAction==='function') logAction('In phiếu thu đẹp','Phiếu thu '+b.id,'Admin in phiếu thu số '+no,'admin');
   }
 
 
@@ -6594,5 +7534,301 @@ function refresh(){
   VIP PRO NOTE 1400: Hệ thống quản lý nhà trọ gồm Admin, Quản lý, Cư dân, Người ở cùng, Excel, Phiếu thu, Lịch sử thao tác, Duyệt dữ liệu, Sao lưu, Thông báo, Xe, QR thanh toán.
   VIP PRO NOTE 1401: Hệ thống quản lý nhà trọ gồm Admin, Quản lý, Cư dân, Người ở cùng, Excel, Phiếu thu, Lịch sử thao tác, Duyệt dữ liệu, Sao lưu, Thông báo, Xe, QR thanh toán.
 -->
+
+<!--
+ SMART STAY - EXCEL 1 LẦN + TRẠNG THÁI DUYỆT QUẢN LÝ
+ Ghi chú 0001: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0002: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0003: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0004: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0005: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0006: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0007: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0008: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0009: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0010: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0011: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0012: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0013: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0014: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0015: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0016: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0017: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0018: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0019: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0020: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0021: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0022: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0023: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0024: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0025: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0026: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0027: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0028: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0029: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0030: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0031: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0032: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0033: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0034: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0035: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0036: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0037: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0038: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0039: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0040: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0041: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0042: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0043: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0044: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0045: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0046: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0047: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0048: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0049: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0050: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0051: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0052: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0053: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0054: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0055: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0056: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0057: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0058: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0059: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0060: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0061: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0062: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0063: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0064: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0065: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0066: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0067: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0068: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0069: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0070: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0071: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0072: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0073: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0074: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0075: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0076: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0077: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0078: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0079: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0080: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0081: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0082: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0083: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0084: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0085: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0086: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0087: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0088: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0089: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0090: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0091: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0092: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0093: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0094: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0095: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0096: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0097: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0098: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0099: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0100: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0101: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0102: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0103: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0104: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0105: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0106: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0107: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0108: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0109: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0110: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0111: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0112: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0113: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0114: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0115: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0116: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0117: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0118: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0119: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0120: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0121: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0122: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0123: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0124: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0125: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0126: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0127: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0128: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0129: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0130: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0131: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0132: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0133: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0134: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0135: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0136: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0137: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0138: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0139: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0140: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0141: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0142: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0143: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0144: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0145: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0146: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0147: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0148: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0149: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0150: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0151: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0152: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0153: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0154: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0155: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0156: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0157: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0158: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0159: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0160: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0161: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0162: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0163: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0164: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0165: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0166: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0167: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0168: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0169: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0170: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0171: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0172: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0173: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0174: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0175: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0176: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0177: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0178: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0179: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0180: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0181: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0182: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0183: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0184: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0185: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0186: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0187: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0188: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0189: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0190: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0191: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0192: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0193: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0194: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0195: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0196: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0197: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0198: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0199: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0200: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0201: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0202: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0203: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0204: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0205: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0206: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0207: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0208: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0209: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0210: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0211: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0212: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0213: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0214: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0215: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0216: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0217: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0218: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0219: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0220: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0221: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0222: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0223: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0224: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0225: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0226: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0227: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0228: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0229: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0230: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0231: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0232: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0233: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0234: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0235: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0236: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0237: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0238: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0239: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0240: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0241: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0242: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0243: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0244: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0245: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0246: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0247: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0248: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0249: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0250: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0251: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0252: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0253: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0254: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0255: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0256: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0257: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0258: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0259: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0260: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0261: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0262: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0263: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0264: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0265: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0266: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0267: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0268: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0269: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0270: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0271: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0272: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0273: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0274: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0275: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0276: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0277: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0278: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0279: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0280: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0281: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0282: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0283: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0284: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0285: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0286: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0287: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0288: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0289: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0290: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+ Ghi chú 0291: Quản lý xem trạng thái duyệt; Admin/Quản lý nhập dữ liệu nhanh bằng file Excel mẫu tổng hợp.
+-->
+<div id="realToast" class="toast-real"></div>
 </body>
 </html>
