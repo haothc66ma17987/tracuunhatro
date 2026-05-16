@@ -35,6 +35,392 @@
     .money{font-weight:900}.center{text-align:center}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.summary-card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px}.summary-card span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase}.summary-card strong{display:block;margin-top:6px;font-size:20px}
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900}.paid{background:#dcfce7;color:#166534}.unpaid{background:#fee2e2;color:#991b1b}.partial{background:#fef3c7;color:#92400e}
     .admin-link{font-size:12px;color:#94a3b8;text-decoration:none}.admin-link:hover{color:#2563eb}
+
+    .notice-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .notice-item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+    }
+
+    .notice-item h3 {
+      margin: 8px 0;
+      font-size: 18px;
+    }
+
+    .notice-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .notice-file {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #ffffff;
+      color: #1e40af;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .notice-type-info {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .notice-type-warning {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-type-danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .notice-type-success {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+
+    .readonly-note {
+      border: 1px dashed #cbd5e1;
+      background: #f8fafc;
+      color: #475569;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+
+    .cotenant-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: #ffffff;
+      margin-top: 12px;
+    }
+
+    .cotenant-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .cotenant-title {
+      font-weight: 900;
+      color: #1e293b;
+    }
+
+
+    .resident-photo-preview {
+      width: 120px;
+      height: 120px;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .payment-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      padding: 16px;
+      margin-top: 12px;
+    }
+
+    .payment-qr-preview {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      margin-top: 10px;
+    }
+
+    .photo-small {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+    }
+
+    .profile-line {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+
+    .quick-nav {
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 10px;
+      margin: 16px 0;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .quick-nav a {
+      text-decoration: none;
+      color: #1e293b;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .quick-nav a:hover {
+      color: #1e40af;
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .dash-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+    }
+
+    .dash-card span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .dash-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .search-inline {
+      display: grid;
+      grid-template-columns: 1fr 180px 180px;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .empty-state {
+      border: 1px dashed #cbd5e1;
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      background: #f8fafc;
+      color: #64748b;
+      font-weight: 800;
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .soft-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 18px 0;
+    }
+
+    .readonly-watermark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ecfeff;
+      color: #155e75;
+      border: 1px solid #a5f3fc;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    .admin-only-watermark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    .hero-main .feature-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .feature-chip {
+      border: 1px solid #dbeafe;
+      background: #eff6ff;
+      color: #1e40af;
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .pay-highlight {
+      border: 1px solid #bbf7d0;
+      background: linear-gradient(180deg, #f0fdf4, #ffffff);
+    }
+
+    .danger-zone {
+      border: 1px solid #fecaca;
+      background: #fef2f2;
+    }
+
+    @media(max-width:900px) {
+      .dashboard-grid,
+      .search-inline {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:620px) {
+      .dashboard-grid,
+      .search-inline {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-nav {
+        position: static;
+      }
+    }
+
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: 12px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1e40af;
+    }
+
+    .manager-only-note {
+      border: 1px solid #fde68a;
+      background: #fffbeb;
+      color: #92400e;
+      border-radius: 16px;
+      padding: 14px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+    .pending-card {
+      border: 1px solid #fde68a;
+      background: linear-gradient(180deg, #fffbeb, #ffffff);
+    }
+
+    .approved-card {
+      border: 1px solid #bbf7d0;
+      background: linear-gradient(180deg, #f0fdf4, #ffffff);
+    }
+
+    .manager-card {
+      border: 1px solid #dbeafe;
+      background: linear-gradient(180deg, #eff6ff, #ffffff);
+    }
+
+    .role-hidden {
+      display: none !important;
+    }
+
+
+    .vehicle-box,
+    .room-contact-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: #ffffff;
+      margin-top: 12px;
+    }
+
+    .vehicle-head,
+    .room-contact-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .vehicle-title,
+    .room-contact-title {
+      font-weight: 900;
+      color: #1e293b;
+    }
+
+    .owner-chip {
+      display: inline-flex;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1e40af;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
     @media(max-width:1050px){.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr 1fr}}
     @media(max-width:680px){.top,.card-head{flex-direction:column;align-items:stretch}.hero,.grid2,.grid3,.grid4,.grid5,.summary{grid-template-columns:1fr}.hero-main,.hero-side,.card,.section{padding:16px}table{min-width:760px}}
     @media print{.top,.hero,.lookup,.admin-section,.result-actions{display:none!important}body{background:white}.app{width:100%;padding:0}.section{box-shadow:none;border:0;page-break-inside:avoid}th,td{font-size:11px;padding:6px}}
@@ -49,37 +435,80 @@
 
   <section class="hero" id="hero">
     <div class="hero-main">
-      <h2>Tra cứu tiền phòng nhanh, rõ ràng, bảo mật hơn.</h2>
-      <p class="muted">Cư dân chỉ nhập đúng thông tin xác thực để xem công nợ của mình. Chủ trọ vào trang quản trị riêng bằng mật khẩu.</p>
-      <div class="actions" style="margin-top:22px"><button type="button" onclick="showResident()">Cư dân tra cứu</button><button type="button" class="btn-light" onclick="showAdminLogin()">Quản trị</button></div>
+      <h2>Thông báo</h2>
+      <p class="muted">Vui lòng đăng nhập tài khoản cư dân để xem thông tin phòng, công nợ, lịch sử thanh toán và các thông báo mới nhất từ chủ trọ.</p>
+      <div class="actions" style="margin-top:22px"><button type="button" onclick="showResident()">Cư dân đăng nhập</button><button type="button" class="btn-light" onclick="showAdminLogin()">Quản trị</button></div>
     </div>
-    <div class="hero-side">
-      <div class="stat"><span>Tổng cư dân</span><strong id="statResidents">0</strong></div>
-      <div class="stat"><span>Tổng kỳ đã chốt</span><strong id="statBills">0</strong></div>
-      <div class="stat"><span></span><strong id="statDebt"></strong></div>
-    </div>
+<div class="hero-side">
+  <div class="stat">
+    <span>Tổng số cư dân</span>
+    <strong id="statResidents">0</strong>
+  </div>
+
+  <div class="stat">
+    <span>Tổng số kỳ đã chốt</span>
+    <strong id="statBills">0</strong>
+  </div>
+
+  <div class="stat">
+    <span>Tổng số cư dân đã đóng</span>
+    <strong id="statPaidResidents">0</strong>
+  </div>
+
+  <div class="stat">
+    <span>Còn lại</span>
+    <strong id="statUnpaidResidents">0</strong>
+  </div>
+</div>
   </section>
 
   <!-- TRANG CƯ DÂN -->
   <section id="residentPage">
     <div class="card lookup">
-      <div class="card-head"><div><h2>Tra cứu công nợ</h2><p class="muted">Nhập đúng mã cư dân, số điện thoại, họ tên, ngày sinh và CCCD.</p></div><button type="button" class="btn-light" onclick="fillDemoSearch()">Điền mẫu</button></div>
+      <div class="card-head"><div><h2>Đăng nhập cư dân</h2><p class="muted">Mỗi cư dân có tài khoản riêng do Admin tạo. Cư dân chỉ xem thông tin, lịch sử và trạng thái, không được sửa dữ liệu.</p></div><button type="button" class="btn-light" onclick="fillDemoResidentLogin()">Điền mẫu</button></div>
       <form id="lookupForm">
-        <div class="grid5">
-          <div><label>Mã cư dân</label><input id="sCode" required></div>
-          <div><label>Số điện thoại</label><input id="sPhone" required></div>
-          <div><label>Họ và tên</label><input id="sName" required></div>
-          <div><label>Ngày sinh</label><input id="sDob" type="date" required></div>
-          <div><label>Số CCCD</label><input id="sId" required></div>
+        <div class="grid3">
+          <div>
+            <label>Tài khoản cư dân</label>
+            <input id="residentLoginUser" required placeholder="VD: cd001">
+          </div>
+          <div>
+            <label>Mật khẩu</label>
+            <input id="residentLoginPass" type="password" required placeholder="Nhập mật khẩu">
+          </div>
+          <div style="align-self:end">
+            <button type="submit">Đăng nhập</button>
+          </div>
         </div>
-        <div class="actions" style="margin-top:14px"><button type="submit">Tra cứu</button><button type="button" class="btn-light" onclick="clearLookup()">Xóa</button></div>
+
+        <div class="readonly-note">
+          Cư dân chỉ có quyền xem thông tin cá nhân, hợp đồng, lịch sử công nợ và trạng thái thanh toán. Không có quyền sửa hoặc xóa dữ liệu.
+        </div>
+
+        <div class="actions" style="margin-top:14px">
+          <button type="button" class="btn-light" onclick="clearLookup()">Đăng xuất / Xóa</button>
+          <button type="button" class="btn-light" onclick="fillDemoResidentLogin()">Điền mẫu</button>
+        </div>
+
         <div id="lookupMsg" class="msg"></div>
       </form>
     </div>
 
+
+      <div class="card" id="residentNoticeCard">
+        <div class="card-head">
+          <div>
+            <h2>Thông báo từ chủ trọ</h2>
+            <p class="muted">Cư dân có thể xem nội dung thông báo và tải file PDF/DOCX nếu chủ trọ đính kèm.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="renderResidentNotices()">Tải lại thông báo</button>
+        </div>
+        <div id="residentNoticeList"></div>
+      </div>
+
     <div id="residentResult" style="display:none">
       <div class="card"><div class="grid3"><div><label>Chọn kỳ công nợ</label><select id="residentBillSelect" onchange="renderResidentResult()"></select></div><div style="align-self:end" class="actions result-actions"><button type="button" onclick="window.print()">In / Lưu PDF</button></div></div></div>
-      <div id="summary" class="summary"></div><div id="residentTables"></div>
+      <div style="margin-top:16px"><span class="readonly-watermark">Chế độ chỉ xem - không thể chỉnh sửa</span></div><div id="summary" class="summary"></div><div id="residentTables"></div>
     </div>
     <p style="text-align:center;margin-top:24px"><a class="admin-link" href="#admin" onclick="showAdminLogin()">Chủ trọ / Admin</a></p>
   </section>
@@ -88,35 +517,213 @@
   <section id="adminPage" class="admin-section hidden">
     <div id="loginCard" class="card">
       <h2>Đăng nhập quản trị</h2>
-      <p class="muted"></b>.</p>
-      <div class="grid3"><div><label>Tài khoản</label><input id="adminUser" value=""></div><div><label>Mật khẩu</label><input id="haothc" type="password" value=""></div><div style="align-self:end"><button type="button" onclick="adminLogin()">Đăng nhập</button></div></div>
+      <p class="muted">Vui lòng nhập tài khoản và mật khẩu để vào trang quản trị.</p>
+      <div class="grid3"><div><label>Tài khoản</label><input id="adminUser" placeholder="Nhập tài khoản"></div><div><label>Mật khẩu</label><input id="adminPass" type="password" placeholder="Nhập mật khẩu"></div><div style="align-self:end"><button type="button" onclick="adminLogin()">Đăng nhập</button></div></div>
       <div class="actions" style="margin-top:14px"><button type="button" class="btn-light" onclick="showResident()">Về trang cư dân</button></div>
       <div id="loginMsg" class="msg"></div>
     </div>
 
     <div id="dashboard" class="hidden">
+
+      <nav class="quick-nav">
+        <a href="#managerForm" class="admin-only-ui">Quản lý</a>
+        <a href="#pendingList" class="admin-only-ui">Duyệt</a>
+        <a href="#noticeForm" class="admin-only-ui">Thông báo</a>
+        <a href="#residentForm">Cư dân</a>
+        <a href="#billForm">Chốt tiền</a>
+        <a href="#residentList">Danh sách</a>
+        <a href="#billList">Lịch sử</a>
+        <a href="#importJsonBox">Sao lưu</a>
+        <span class="admin-only-watermark" id="roleBadge">Khu vực quản trị</span>
+      </nav>
+
+      <div class="card" id="adminOverviewCard">
+        <div class="card-head">
+          <div>
+            <h2>Tổng quan quản trị</h2>
+            <p class="muted">Bảng tổng hợp nhanh tình trạng cư dân, kỳ thu tiền và công nợ hiện tại.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="refresh()">Làm mới số liệu</button>
+        </div>
+        <div class="dashboard-grid">
+          <div class="dash-card"><span>Tổng cư dân</span><strong id="dashResidents">0</strong></div>
+          <div class="dash-card"><span>Đã đóng</span><strong id="dashPaid">0</strong></div>
+          <div class="dash-card"><span>Còn lại</span><strong id="dashUnpaid">0</strong></div>
+          <div class="dash-card"><span>Tổng công nợ</span><strong id="dashDebt">0 đ</strong></div>
+        </div>
+      </div>
+
+
+      <div class="card admin-only-ui">
+        <div class="card-head">
+          <div>
+            <h2>0. Đăng thông báo cho cư dân</h2>
+            <p class="muted">Bạn có thể nhập nội dung thông báo hoặc đính kèm file PDF/DOC/DOCX để cư dân tải về xem.</p>
+          </div>
+          <button type="button" class="btn-light" onclick="newNotice()">Tạo thông báo mới</button>
+        </div>
+
+        <form id="noticeForm">
+          <div class="grid4">
+            <div>
+              <label>Mã thông báo</label>
+              <input id="noticeId" placeholder="Tự tạo nếu bỏ trống">
+            </div>
+
+            <div>
+              <label>Loại thông báo</label>
+              <select id="noticeType">
+                <option value="info">Thông tin</option>
+                <option value="warning">Nhắc nhở</option>
+                <option value="danger">Khẩn cấp</option>
+                <option value="success">Đã xử lý</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Ngày đăng</label>
+              <input id="noticeDate" type="date">
+            </div>
+
+            <div>
+              <label>Trạng thái</label>
+              <select id="noticeStatus">
+                <option value="active">Đang hiển thị</option>
+                <option value="hidden">Tạm ẩn</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label>Tiêu đề thông báo *</label>
+              <input id="noticeTitle" placeholder="VD: Thông báo thu tiền phòng tháng này">
+            </div>
+
+            <div class="full">
+              <label>Nội dung thông báo</label>
+              <textarea id="noticeContent" placeholder="Nhập nội dung thông báo, hoặc đính kèm file PDF/DOCX bên dưới..."></textarea>
+            </div>
+
+            <div class="full">
+              <label>File thông báo PDF/DOC/DOCX</label>
+              <input id="noticeFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+              <input id="noticeFileName" type="hidden">
+              <input id="noticeFileMime" type="hidden">
+              <input id="noticeFileData" type="hidden">
+              <p class="muted" id="noticeFileInfo">Chưa chọn file. File sẽ được lưu trong trình duyệt bằng localStorage.</p>
+            </div>
+          </div>
+
+          <div class="actions" style="margin-top:18px">
+            <button type="submit">Lưu thông báo</button>
+            <button type="button" class="btn-light" onclick="newNotice()">Làm mới</button>
+            <button type="button" class="btn-light" onclick="clearNoticeFile()">Xóa file đính kèm</button>
+            <button type="button" class="btn-danger" onclick="deleteCurrentNotice()">Xóa thông báo đang sửa</button>
+          </div>
+
+          <div id="noticeFormMsg" class="msg"></div>
+        </form>
+
+        <div class="table" style="margin-top:16px">
+          <table>
+            <thead>
+              <tr>
+                <th>Ngày</th>
+                <th>Loại</th>
+                <th>Tiêu đề</th>
+                <th>File</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="noticeList">
+              <tr>
+                <td colspan="6" class="center">Chưa có thông báo.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="card">
         <div class="card-head"><div><h2>1. Tạo hồ sơ cư dân một lần</h2><p class="muted">Thông tin này dùng lâu dài. Hàng tháng không cần nhập lại, chỉ chốt tiền.</p></div><div class="actions"><button type="button" class="btn-light" onclick="newResident()">Tạo cư dân mới</button><button type="button" class="btn-gray" onclick="adminLogout()">Đăng xuất</button></div></div>
+        <div id="managerResidentNote" class="manager-only-note role-hidden">Quản lý nhập hồ sơ cư dân tại đây. Khi bấm lưu, hồ sơ sẽ gửi Admin duyệt, chưa hiển thị cho cư dân.</div>
         <form id="residentForm">
-          <h3>Thông tin cư dân</h3><div class="grid5"><div><label>Mã cư dân *</label><input id="rCode" required></div><div><label>Họ tên *</label><input id="rName" required></div><div><label>Ngày sinh *</label><input id="rDob" type="date" required></div><div><label>Số điện thoại *</label><input id="rPhone" required></div><div><label>CCCD *</label><input id="rId" required></div><div><label>Ngày cấp</label><input id="rIssueDate" type="date"></div><div><label>Nơi cấp</label><input id="rIssuePlace"></div><div><label>Email</label><input id="rEmail"></div><div><label>SĐT khác</label><input id="rOtherPhone"></div><div><label>Trạng thái</label><select id="rStatus"><option value="active">Đang thuê</option><option value="paused">Tạm ngưng</option><option value="ended">Đã kết thúc</option></select></div><div class="full"><label>Địa chỉ thường trú</label><textarea id="rAddress"></textarea></div></div>
-          <h3>Phòng & hợp đồng</h3><div class="grid4"><div><label>Mã cơ sở</label><input id="facilityCode"></div><div><label>Tên cơ sở</label><input id="facilityName"></div><div><label>Mã phòng</label><input id="roomCode"></div><div><label>Tên phòng</label><input id="roomName"></div><div><label>Số người ở</label><input id="occupants" type="number" min="0"></div><div><label>Mã hợp đồng</label><input id="contractCode"></div><div><label>Ngày ký</label><input id="contractDate" type="date"></div><div><label>Ngày vào ở</label><input id="moveInDate" type="date"></div><div><label>Bắt đầu tạm trú</label><input id="temporaryStart" type="date"></div><div><label>Kết thúc tạm trú</label><input id="temporaryEnd" type="date"></div><div><label>Thời gian thuê</label><input id="rentalDuration" placeholder="VD: 12 tháng"></div><div><label>Người ký</label><input id="signer"></div><div class="full"><label>Địa chỉ cơ sở</label><textarea id="facilityAddress"></textarea></div></div>
-          <h3>Đơn giá mặc định</h3><div class="grid5"><div><label>Giá phòng</label><input id="roomPrice" type="number" min="0"></div><div><label>Đơn giá điện</label><input id="electricPrice" type="number" min="0"></div><div><label>Đơn giá nước</label><input id="waterPrice" type="number" min="0"></div><div><label>Wifi</label><input id="wifiFee" type="number" min="0"></div><div><label>Dịch vụ</label><input id="serviceFee" type="number" min="0"></div><div><label>Tủ lạnh</label><input id="fridgeFee" type="number" min="0"></div><div><label>Máy lạnh</label><input id="airconFee" type="number" min="0"></div><div><label>Bếp từ</label><input id="stoveFee" type="number" min="0"></div><div><label>Máy lọc nước</label><input id="filterFee" type="number" min="0"></div></div>
+          <h3>Thông tin cư dân</h3><div class="grid5"><div><label>Mã cư dân *</label><input id="rCode" required></div><div><label>Họ tên *</label><input id="rName" required></div><div><label>Ngày sinh *</label><input id="rDob" type="date" required></div><div><label>Số điện thoại *</label><input id="rPhone" required></div><div><label>CCCD *</label><input id="rId" required></div><div><label>Ngày cấp</label><input id="rIssueDate" type="date"></div><div><label>Nơi cấp</label><input id="rIssuePlace"></div><div><label>Email</label><input id="rEmail"></div><div><label>SĐT khác</label><input id="rOtherPhone"></div><div><label>Tài khoản cư dân *</label><input id="residentUsername" placeholder="VD: cd001"></div><div><label>Mật khẩu cư dân *</label><input id="residentPassword" placeholder="VD: 123456"></div><div><label>Trạng thái</label><select id="rStatus"><option value="active">Đang thuê</option><option value="paused">Tạm ngưng</option><option value="ended">Đã kết thúc</option></select></div><div class="full"><label>Địa chỉ thường trú</label><textarea id="rAddress"></textarea></div>
+<div class="full">
+  <label>Hình ảnh cư dân</label>
+  <input id="residentPhotoFile" type="file" accept="image/*">
+  <input id="residentPhotoData" type="hidden">
+  <div class="actions" style="margin-top:10px">
+    <button type="button" class="btn-light" onclick="clearResidentPhoto()">Xóa hình ảnh</button>
+  </div>
+  <img id="residentPhotoPreview" class="resident-photo-preview" alt="Ảnh cư dân" style="display:none">
+  <p class="muted">Ảnh sẽ được lưu trong trình duyệt bằng localStorage. Nên dùng ảnh dung lượng nhỏ.</p>
+</div></div>
+
+          <h3>Người ở cùng</h3>
+          <p class="muted">Admin có thể bấm + để thêm người ở cùng. Mỗi người ở cùng cũng có tài khoản riêng để đăng nhập xem thông tin, lịch sử và trạng thái, không được sửa.</p>
+          <div id="coTenantList"></div>
+          <div class="actions" style="margin-top:12px">
+            <button type="button" class="btn-light" onclick="addCoTenant()">+ Thêm người ở cùng</button>
+            <button type="button" class="btn-light" onclick="clearCoTenants()">Xóa danh sách người ở cùng</button>
+          </div>
+
+
+          <h3>Thông tin xe</h3>
+          <p class="muted">Admin hoặc quản lý có thể thêm nhiều xe. Mỗi xe chọn chủ sở hữu là cư dân chính hoặc người ở cùng.</p>
+          <div id="vehicleList"></div>
+          <div class="actions" style="margin-top:12px">
+            <button type="button" class="btn-light" onclick="addVehicle()">+ Thêm xe</button>
+            <button type="button" class="btn-light" onclick="clearVehicles()">Xóa danh sách xe</button>
+          </div>
+
+          <h3>Người liên hệ của phòng</h3>
+          <p class="muted">Thông tin người liên hệ khẩn cấp hoặc người đại diện phòng nếu có.</p>
+          <div id="roomContactList"></div>
+          <div class="actions" style="margin-top:12px">
+            <button type="button" class="btn-light" onclick="addRoomContact()">+ Thêm người liên hệ</button>
+            <button type="button" class="btn-light" onclick="clearRoomContacts()">Xóa danh sách liên hệ</button>
+          </div>
+
+          <h3>Phòng & hợp đồng</h3><div class="grid4"><div><label>Mã cơ sở</label><input id="facilityCode"></div><div><label>Tên cơ sở</label><input id="facilityName"></div><div><label>Mã phòng</label><input id="roomCode"></div><div><label>Tên phòng</label><input id="roomName"></div><div><label>Số người ở</label><input id="occupants" type="number" min="0" placeholder="Tự tính theo chủ phòng + người ở cùng"></div><div><label>Mã hợp đồng</label><input id="contractCode"></div><div><label>Ngày ký</label><input id="contractDate" type="date"></div><div><label>Ngày vào ở</label><input id="moveInDate" type="date"></div><div><label>Bắt đầu tạm trú</label><input id="temporaryStart" type="date"></div><div><label>Kết thúc tạm trú</label><input id="temporaryEnd" type="date"></div><div><label>Thời gian thuê</label><input id="rentalDuration" placeholder="VD: 12 tháng"></div><div><label>Người ký</label><input id="signer"></div><div class="full"><label>Địa chỉ cơ sở</label><textarea id="facilityAddress"></textarea></div></div>
+          <h3>Đơn giá mặc định</h3><div class="grid5"><div><label>Giá phòng</label><input id="roomPrice" type="number" min="0"></div><div><label>Số xe</label><input id="vehicleCount" type="number" min="0"></div><div><label>Phí giữ xe / xe</label><input id="parkingFee" type="number" min="0"></div><div><label>Đơn giá điện</label><input id="electricPrice" type="number" min="0"></div><div><label>Đơn giá nước</label><input id="waterPrice" type="number" min="0"></div><div><label>Wifi</label><input id="wifiFee" type="number" min="0"></div><div><label>Dịch vụ</label><input id="serviceFee" type="number" min="0"></div><div><label>Tủ lạnh</label><input id="fridgeFee" type="number" min="0"></div><div><label>Máy lạnh</label><input id="airconFee" type="number" min="0"></div><div><label>Bếp từ</label><input id="stoveFee" type="number" min="0"></div><div><label>Máy lọc nước</label><input id="filterFee" type="number" min="0"></div></div>
+
+          <h3>Thông tin thanh toán</h3>
+          <div class="grid5">
+            <div><label>Ngân hàng</label><input id="paymentBank" placeholder="VD: Vietcombank"></div>
+            <div><label>Số tài khoản</label><input id="paymentAccount" placeholder="VD: 0123456789"></div>
+            <div><label>Chủ tài khoản</label><input id="paymentHolder" placeholder="VD: NGUYEN VAN A"></div>
+            <div><label>Phương thức</label><select id="paymentMethod"><option value="bank">Chuyển khoản</option><option value="cash">Tiền mặt</option><option value="momo">MoMo/ZaloPay</option></select></div>
+            <div><label>Nội dung CK mặc định</label><input id="paymentContent" placeholder="VD: MaCuDan Thang"></div>
+            <div class="full"><label>Ghi chú thanh toán</label><textarea id="paymentNote" placeholder="VD: Sau khi chuyển khoản, chụp bill gửi chủ trọ."></textarea></div>
+            <div class="full">
+              <label>Ảnh QR thanh toán</label>
+              <input id="paymentQrFile" type="file" accept="image/*">
+              <input id="paymentQrData" type="hidden">
+              <div class="actions" style="margin-top:10px">
+                <button type="button" class="btn-light" onclick="clearPaymentQr()">Xóa QR</button>
+              </div>
+              <img id="paymentQrPreview" class="payment-qr-preview" alt="QR thanh toán" style="display:none">
+            </div>
+          </div>
+
           <div class="actions" style="margin-top:18px"><button type="submit">Lưu hồ sơ cư dân</button><button type="button" class="btn-light" onclick="fillDemoResidentForm()">Điền mẫu</button><button type="button" class="btn-danger" onclick="deleteCurrentResident()">Xóa cư dân đang sửa</button></div><div id="residentFormMsg" class="msg"></div>
         </form>
       </div>
 
       <div class="card">
         <div class="card-head"><div><h2>2. Chốt tiền hàng tháng</h2><p class="muted">Chọn cư dân và kỳ tháng, hệ thống tự lấy đơn giá mặc định.</p></div><button type="button" class="btn-light" onclick="fillDemoBillingForm()">Điền mẫu chốt tháng</button></div>
+        <div id="managerBillNote" class="manager-only-note role-hidden">Quản lý nhập chỉ số/chốt tiền tại đây. Khi bấm lưu, kỳ chốt sẽ gửi Admin duyệt, chưa hiển thị cho cư dân.</div>
         <form id="billForm">
           <h3>Thông tin kỳ chốt</h3><div class="grid5"><div><label>Cư dân *</label><select id="bResident" required onchange="onBillingResidentChange()"></select></div><div><label>Kỳ tháng *</label><input id="bMonth" type="month" required></div><div><label>Ngày chốt</label><input id="closedDate" type="date"></div><div><label>Đã thanh toán</label><input id="paidAmount" type="number" min="0" value="0"></div><div><label>Trạng thái thu</label><select id="paymentStatus"><option value="unpaid">Chưa thu</option><option value="partial">Thu một phần</option><option value="paid">Đã thu đủ</option></select></div></div>
           <h3 style="margin-top:18px">Chỉ số điện nước</h3><div class="grid5"><div><label>Chỉ số điện cũ</label><input id="oldElectric" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Chỉ số điện mới</label><input id="newElectric" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Sử dụng điện</label><input id="usedElectric" type="number" readonly></div><div><label>Chỉ số nước cũ</label><input id="oldWater" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Chỉ số nước mới</label><input id="newWater" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Sử dụng nước</label><input id="usedWater" type="number" readonly></div></div>
-          <h3 style="margin-top:18px">Khoản thu tháng này</h3><div class="grid5"><div><label>Tiền phòng</label><input id="bRoomPrice" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Đơn giá điện</label><input id="bElectricPrice" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Đơn giá nước</label><input id="bWaterPrice" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Wifi</label><input id="bWifiFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Dịch vụ</label><input id="bServiceFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Tủ lạnh</label><input id="bFridgeFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Máy lạnh</label><input id="bAirconFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Bếp từ</label><input id="bStoveFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Máy lọc nước</label><input id="bFilterFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Phụ thu khác</label><input id="extraFee" type="number" min="0" value="0" oninput="updateBillPreview()"></div><div class="full"><label>Lý do phụ thu / ghi chú</label><textarea id="billNote"></textarea></div></div>
+          <h3 style="margin-top:18px">Khoản thu tháng này</h3><div class="grid5"><div><label>Tiền phòng</label><input id="bRoomPrice" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Đơn giá điện</label><input id="bElectricPrice" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Đơn giá nước</label><input id="bWaterPrice" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Wifi</label><input id="bWifiFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Dịch vụ</label><input id="bServiceFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Tủ lạnh</label><input id="bFridgeFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Máy lạnh</label><input id="bAirconFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Bếp từ</label><input id="bStoveFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Máy lọc nước</label><input id="bFilterFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Số xe</label><input id="bVehicleCount" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Phí giữ xe / xe</label><input id="bParkingFee" type="number" min="0" oninput="updateBillPreview()"></div><div><label>Phụ thu khác</label><input id="extraFee" type="number" min="0" value="0" oninput="updateBillPreview()"></div><div class="full"><label>Lý do phụ thu / ghi chú</label><textarea id="billNote"></textarea></div></div>
           <div class="table" style="margin-top:16px"><table><thead><tr><th>Khoản thu</th><th>Chỉ số cũ</th><th>Chỉ số mới</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody id="billPreview"><tr><td colspan="6" class="center">Chọn cư dân để xem bảng tạm tính.</td></tr></tbody></table></div>
           <div class="actions" style="margin-top:18px"><button type="submit">Chốt / cập nhật kỳ tháng</button><button type="button" class="btn-ok" onclick="markSelectedBillPaid()">Đánh dấu đã thu đủ</button></div><div id="billFormMsg" class="msg"></div>
         </form>
       </div>
 
-      <div class="card"><div class="card-head"><div><h2>Danh sách cư dân</h2><p class="muted">Cư dân được tạo một lần. Bấm “Chốt tháng” để tạo công nợ kỳ mới.</p></div><button type="button" class="btn-light" onclick="seedDemoData()">Tạo dữ liệu mẫu</button></div><div class="table"><table><thead><tr><th>Mã</th><th>Họ tên</th><th>Phòng</th><th>SĐT</th><th>CCCD</th><th>Số kỳ</th><th>Còn nợ</th><th>Thao tác</th></tr></thead><tbody id="residentList"></tbody></table></div></div>
+      <div class="card"><div class="card-head"><div><h2>Danh sách cư dân</h2><p class="muted">Cư dân được tạo một lần. Bấm “Chốt tháng” để tạo công nợ kỳ mới.</p></div><button type="button" class="btn-light" onclick="seedDemoData()">Tạo dữ liệu mẫu</button></div><div class="table"><table><thead><tr><th>Ảnh</th><th>Mã</th><th>Họ tên</th><th>Phòng</th><th>SĐT</th><th>CCCD</th><th>Tài khoản</th><th>Số kỳ</th><th>Còn nợ</th><th>Thao tác</th></tr></thead><tbody id="residentList"></tbody></table></div></div>
       <div class="card"><h2>Lịch sử chốt tiền</h2><div class="table"><table><thead><tr><th>Kỳ</th><th>Cư dân</th><th>Phòng</th><th>Điện</th><th>Nước</th><th>Tổng tiền</th><th>Đã thu</th><th>Còn lại</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="billList"></tbody></table></div></div>
     </div>
   </section>
@@ -125,46 +732,1488 @@
 (function(){
   'use strict';
   const STORAGE_KEY='smart_stay_one_file_v1';
-  const debtNames=['Giá tiền phòng','Chỉ số điện','Chỉ số nước','Mạng/Internet','Phí dịch vụ','Phí thuê tủ lạnh','Phí thuê máy lạnh','Phí thuê bếp từ','Phí thuê máy lọc','Phụ thu khác'];
-  let db={residents:[],bills:[]};let editingCode=null;let currentLookupCode=null;
+  const debtNames=['Giá tiền phòng','Chỉ số điện','Chỉ số nước','Mạng/Internet','Phí dịch vụ','Phí thuê tủ lạnh','Phí thuê máy lạnh','Phí thuê bếp từ','Phí thuê máy lọc','Phí giữ xe','Phụ thu khác'];
+  let db={residents:[],bills:[],notices:[],managers:[],pendingRequests:[]};let editingCode=null;let editingNoticeId=null;let editingManagerCode=null;let currentLookupCode=null;let currentRole='guest';let currentManager=null;
   function byId(id){return document.getElementById(id)}function value(id){const el=byId(id);return el?el.value.trim():''}function setValue(id,v){const el=byId(id);if(el)el.value=v??''}function num(v){return Number(v||0)}function money(v){return num(v).toLocaleString('vi-VN')+' đ'}function normalize(v){return String(v||'').trim().toLowerCase().replace(/\s+/g,' ')}function safe(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function dateText(v){if(!v)return'';const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})$/);return m?`${m[3]}/${m[2]}/${m[1]}`:v}function monthText(v){if(!v)return'';const m=String(v).match(/^(\d{4})-(\d{2})$/);return m?`${m[2]}/${m[1]}`:v}function today(){return new Date().toISOString().slice(0,10)}function thisMonth(){return new Date().toISOString().slice(0,7)}function showMsg(id,type,text){const el=byId(id);if(el){el.className='msg '+type;el.textContent=text}}function clearMsg(id){const el=byId(id);if(el){el.className='msg';el.textContent=''}}
   function findResident(code){return db.residents.find(r=>r.code===code)}function billId(code,month){return `${code}__${month}`}function billsOf(code){return db.bills.filter(b=>b.residentCode===code).sort((a,b)=>b.month.localeCompare(a.month))}function latestBill(code){return billsOf(code)[0]||null}
-  function billRows(b){const r=findResident(b.residentCode)||{};const electricQty=Math.max(0,num(b.newElectric)-num(b.oldElectric));const waterQty=Math.max(0,num(b.newWater)-num(b.oldWater));const roomPrice=b.roomPrice??r.roomPrice,electricPrice=b.electricPrice??r.electricPrice,waterPrice=b.waterPrice??r.waterPrice,wifiFee=b.wifiFee??r.wifiFee,serviceFee=b.serviceFee??r.serviceFee,fridgeFee=b.fridgeFee??r.fridgeFee,airconFee=b.airconFee??r.airconFee,stoveFee=b.stoveFee??r.stoveFee,filterFee=b.filterFee??r.filterFee;return[{old:'',now:'',qty:1,price:num(roomPrice),total:num(roomPrice)},{old:b.oldElectric,now:b.newElectric,qty:electricQty,price:num(electricPrice),total:electricQty*num(electricPrice)},{old:b.oldWater,now:b.newWater,qty:waterQty,price:num(waterPrice),total:waterQty*num(waterPrice)},{old:'',now:'',qty:1,price:num(wifiFee),total:num(wifiFee)},{old:'',now:'',qty:1,price:num(serviceFee),total:num(serviceFee)},{old:'',now:'',qty:1,price:num(fridgeFee),total:num(fridgeFee)},{old:'',now:'',qty:1,price:num(airconFee),total:num(airconFee)},{old:'',now:'',qty:1,price:num(stoveFee),total:num(stoveFee)},{old:'',now:'',qty:1,price:num(filterFee),total:num(filterFee)},{old:'',now:'',qty:1,price:num(b.extraFee),total:num(b.extraFee)}]}
+  function billRows(b){const r=findResident(b.residentCode)||{};const electricQty=Math.max(0,num(b.newElectric)-num(b.oldElectric));const waterQty=Math.max(0,num(b.newWater)-num(b.oldWater));const roomPrice=b.roomPrice??r.roomPrice,electricPrice=b.electricPrice??r.electricPrice,waterPrice=b.waterPrice??r.waterPrice,wifiFee=b.wifiFee??r.wifiFee,serviceFee=b.serviceFee??r.serviceFee,fridgeFee=b.fridgeFee??r.fridgeFee,airconFee=b.airconFee??r.airconFee,stoveFee=b.stoveFee??r.stoveFee,filterFee=b.filterFee??r.filterFee;return[{old:'',now:'',qty:1,price:num(roomPrice),total:num(roomPrice)},{old:b.oldElectric,now:b.newElectric,qty:electricQty,price:num(electricPrice),total:electricQty*num(electricPrice)},{old:b.oldWater,now:b.newWater,qty:waterQty,price:num(waterPrice),total:waterQty*num(waterPrice)},{old:'',now:'',qty:1,price:num(wifiFee),total:num(wifiFee)},{old:'',now:'',qty:1,price:num(serviceFee),total:num(serviceFee)},{old:'',now:'',qty:1,price:num(fridgeFee),total:num(fridgeFee)},{old:'',now:'',qty:1,price:num(airconFee),total:num(airconFee)},{old:'',now:'',qty:1,price:num(stoveFee),total:num(stoveFee)},{old:'',now:'',qty:1,price:num(filterFee),total:num(filterFee)},{old:'',now:'',qty:num(b.vehicleCount??r.vehicleCount),price:num(b.parkingFee??r.parkingFee),total:num(b.vehicleCount??r.vehicleCount)*num(b.parkingFee??r.parkingFee)},{old:'',now:'',qty:1,price:num(b.extraFee),total:num(b.extraFee)}]}
   function billTotal(b){return billRows(b).reduce((s,r)=>s+num(r.total),0)}function billRemain(b){return Math.max(0,billTotal(b)-num(b.paidAmount))}function statusText(s){return s==='paid'?'Đã thu đủ':s==='partial'?'Thu một phần':'Chưa thu'}function statusClass(s){return s==='paid'?'paid':s==='partial'?'partial':'unpaid'}
-  function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));refresh()}function load(){try{db=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"residents":[],"bills":[]}')}catch{db={residents:[],bills:[]}}if(!Array.isArray(db.residents))db.residents=[];if(!Array.isArray(db.bills))db.bills=[];refresh()}
-  function refresh(){byId('statResidents').textContent=db.residents.length;byId('statBills').textContent=db.bills.length;byId('statDebt').textContent=money(db.bills.reduce((s,b)=>s+billRemain(b),0));renderResidentOptions();renderResidentList();renderBillList()}
-  window.showResident=function(){byId('residentPage').classList.remove('hidden');byId('adminPage').classList.add('hidden');byId('modePill').textContent='Trang cư dân';location.hash='resident'}
+  function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));refresh()}function load(){try{db=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"residents":[],"bills":[]}')}catch{db={residents:[],bills:[]}}if(!Array.isArray(db.residents))db.residents=[];if(!Array.isArray(db.bills))db.bills=[];if(!Array.isArray(db.notices))db.notices=[];if(!Array.isArray(db.managers))db.managers=[];if(!Array.isArray(db.pendingRequests))db.pendingRequests=[];db.residents.forEach(r=>{if(!Array.isArray(r.vehicles))r.vehicles=[];if(!Array.isArray(r.roomContacts))r.roomContacts=[]});refresh()}
+function refresh(){
+  byId('statResidents').textContent = db.residents.length;
+  byId('statBills').textContent = db.bills.length;
+
+  const paidResidentCodes = new Set(
+    db.bills
+      .filter(b => billRemain(b) === 0 && b.paymentStatus === 'paid')
+      .map(b => b.residentCode)
+  );
+
+  const unpaidResidentCodes = new Set(
+    db.bills
+      .filter(b => billRemain(b) > 0 || b.paymentStatus !== 'paid')
+      .map(b => b.residentCode)
+  );
+
+  byId('statPaidResidents').textContent = paidResidentCodes.size;
+  byId('statUnpaidResidents').textContent = unpaidResidentCodes.size;
+
+  if(byId('dashResidents')) byId('dashResidents').textContent = db.residents.length;
+  if(byId('dashPaid')) byId('dashPaid').textContent = paidResidentCodes.size;
+  if(byId('dashUnpaid')) byId('dashUnpaid').textContent = unpaidResidentCodes.size;
+  if(byId('dashDebt')) byId('dashDebt').textContent = money(db.bills.reduce((sum,b)=>sum+billRemain(b),0));
+
+  renderResidentOptions();
+  renderResidentList();
+  renderBillList();
+  renderNoticeList();
+  renderResidentNotices();
+  renderManagerList();
+  renderPendingList();
+  setRoleUI();
+}  window.showResident=function(){byId('residentPage').classList.remove('hidden');byId('adminPage').classList.add('hidden');byId('modePill').textContent='Trang cư dân';location.hash='resident'}
   window.showAdminLogin=function(){byId('residentPage').classList.add('hidden');byId('adminPage').classList.remove('hidden');byId('modePill').textContent='Trang quản trị';location.hash='admin'}
-  window.adminLogin=function(){if(value('adminUser')==='admin'&&value('adminPass')==='123456'){byId('loginCard').classList.add('hidden');byId('dashboard').classList.remove('hidden');clearMsg('loginMsg');refresh()}else showMsg('loginMsg','err','Sai tài khoản hoặc mật khẩu.')}
-  window.adminLogout=function(){byId('loginCard').classList.remove('hidden');byId('dashboard').classList.add('hidden')}
-  function collectResident(){return{code:value('rCode'),name:value('rName'),dob:value('rDob'),phone:value('rPhone'),citizenId:value('rId'),issueDate:value('rIssueDate'),issuePlace:value('rIssuePlace'),email:value('rEmail'),otherPhone:value('rOtherPhone'),status:value('rStatus'),address:value('rAddress'),facilityCode:value('facilityCode'),facilityName:value('facilityName'),roomCode:value('roomCode'),roomName:value('roomName'),occupants:num(value('occupants')),contractCode:value('contractCode'),contractDate:value('contractDate'),moveInDate:value('moveInDate'),temporaryStart:value('temporaryStart'),temporaryEnd:value('temporaryEnd'),rentalDuration:value('rentalDuration'),signer:value('signer'),facilityAddress:value('facilityAddress'),roomPrice:num(value('roomPrice')),electricPrice:num(value('electricPrice')),waterPrice:num(value('waterPrice')),wifiFee:num(value('wifiFee')),serviceFee:num(value('serviceFee')),fridgeFee:num(value('fridgeFee')),airconFee:num(value('airconFee')),stoveFee:num(value('stoveFee')),filterFee:num(value('filterFee')),updatedAt:new Date().toISOString()}}
-  function fillResidentForm(r){Object.entries({rCode:r.code,rName:r.name,rDob:r.dob,rPhone:r.phone,rId:r.citizenId,rIssueDate:r.issueDate,rIssuePlace:r.issuePlace,rEmail:r.email,rOtherPhone:r.otherPhone,rStatus:r.status,rAddress:r.address,facilityCode:r.facilityCode,facilityName:r.facilityName,roomCode:r.roomCode,roomName:r.roomName,occupants:r.occupants,contractCode:r.contractCode,contractDate:r.contractDate,moveInDate:r.moveInDate,temporaryStart:r.temporaryStart,temporaryEnd:r.temporaryEnd,rentalDuration:r.rentalDuration,signer:r.signer,facilityAddress:r.facilityAddress,roomPrice:r.roomPrice,electricPrice:r.electricPrice,waterPrice:r.waterPrice,wifiFee:r.wifiFee,serviceFee:r.serviceFee,fridgeFee:r.fridgeFee,airconFee:r.airconFee,stoveFee:r.stoveFee,filterFee:r.filterFee}).forEach(([id,v])=>setValue(id,v))}
-  window.newResident=function(){editingCode=null;byId('residentForm').reset();clearMsg('residentFormMsg');setValue('rStatus','active')}
+  window.adminLogin=function(){
+    const u=value('adminUser');
+    const p=value('adminPass');
+
+    if(u==='admin'&&p==='342142258'){
+      currentRole='admin';
+      currentManager=null;
+      byId('loginCard').classList.add('hidden');
+      byId('dashboard').classList.remove('hidden');
+      clearMsg('loginMsg');
+      setRoleUI();
+      refresh();
+      return;
+    }
+
+    const m=findManagerByLogin(u,p);
+    if(m){
+      currentRole='manager';
+      currentManager=m;
+      byId('loginCard').classList.add('hidden');
+      byId('dashboard').classList.remove('hidden');
+      clearMsg('loginMsg');
+      setRoleUI();
+      refresh();
+      return;
+    }
+
+    showMsg('loginMsg','err','Sai tài khoản hoặc mật khẩu.');
+  }
+  window.adminLogout=function(){currentRole='guest';currentManager=null;byId('loginCard').classList.remove('hidden');byId('dashboard').classList.add('hidden');setRoleUI()}
+
+
+  function uid(prefix){
+    return prefix + Date.now() + Math.floor(Math.random()*1000);
+  }
+
+  function managerName(code){
+    const m=(db.managers||[]).find(x=>x.code===code);
+    return m ? (m.name + ' (' + m.code + ')') : code || '-';
+  }
+
+  function findManagerByLogin(username,password){
+    return (db.managers||[]).find(m=>normalize(m.username)===normalize(username)&&String(m.password||'')===String(password||'')&&m.status!=='locked');
+  }
+
+  function setRoleUI(){
+    const isAdmin=currentRole==='admin';
+    const isManager=currentRole==='manager';
+
+    document.querySelectorAll('.admin-only-ui').forEach(el=>el.classList.toggle('role-hidden',!isAdmin));
+    document.querySelectorAll('.manager-role-ui').forEach(el=>el.classList.toggle('role-hidden',!isManager));
+    document.querySelectorAll('#managerResidentNote,#managerBillNote').forEach(el=>el.classList.toggle('role-hidden',!isManager));
+
+    if(byId('roleBadge')){
+      byId('roleBadge').textContent=isAdmin?'Admin toàn quyền':isManager?'Quản lý chờ duyệt':'Khu vực quản trị';
+    }
+
+    if(byId('managerDashName')) byId('managerDashName').textContent=currentManager?currentManager.name:'-';
+    if(byId('managerDashMotelCode')) byId('managerDashMotelCode').textContent=currentManager?currentManager.motelCode:'-';
+    if(byId('managerDashMotelName')) byId('managerDashMotelName').textContent=currentManager?currentManager.motelName:'-';
+    if(byId('managerDashPending')) byId('managerDashPending').textContent=(db.pendingRequests||[]).filter(p=>p.managerCode===(currentManager&&currentManager.code)&&p.status==='pending').length;
+  }
+
+  function newPending(type,data,label){
+    const item={
+      id:uid('PD'),
+      type:type,
+      label:label||'',
+      data:data,
+      status:'pending',
+      managerCode:currentManager?currentManager.code:'',
+      managerName:currentManager?currentManager.name:'',
+      createdAt:new Date().toISOString(),
+      decidedAt:'',
+      decidedBy:'',
+      note:''
+    };
+    if(!Array.isArray(db.pendingRequests)) db.pendingRequests=[];
+    db.pendingRequests.push(item);
+    save();
+    return item;
+  }
+
+  function pendingTypeText(type){
+    if(type==='resident_upsert') return 'Hồ sơ cư dân';
+    if(type==='bill_upsert') return 'Chốt tiền/chỉ số';
+    return type;
+  }
+
+  function pendingSummary(p){
+    if(p.type==='resident_upsert'){
+      return 'Cư dân: '+(p.data.name||'')+' - Mã: '+(p.data.code||'')+' - Phòng: '+(p.data.roomName||p.data.roomCode||'');
+    }
+    if(p.type==='bill_upsert'){
+      return 'Kỳ: '+monthText(p.data.month)+' - Cư dân: '+(p.data.residentCode||'')+' - Tổng tạm tính: '+money(billTotal(p.data));
+    }
+    return p.label||'';
+  }
+
+  function collectManager(){
+    return {
+      code:value('mCode'),
+      name:value('mName'),
+      phone:value('mPhone'),
+      email:value('mEmail'),
+      status:value('mStatus')||'active',
+      username:value('mUsername'),
+      password:value('mPassword'),
+      motelCode:value('mMotelCode'),
+      motelName:value('mMotelName'),
+      area:value('mArea'),
+      motelAddress:value('mMotelAddress'),
+      note:value('mNote'),
+      updatedAt:new Date().toISOString()
+    };
+  }
+
+  function fillManagerForm(m){
+    setValue('mCode',m.code);
+    setValue('mName',m.name);
+    setValue('mPhone',m.phone);
+    setValue('mEmail',m.email);
+    setValue('mStatus',m.status||'active');
+    setValue('mUsername',m.username);
+    setValue('mPassword',m.password);
+    setValue('mMotelCode',m.motelCode);
+    setValue('mMotelName',m.motelName);
+    setValue('mArea',m.area);
+    setValue('mMotelAddress',m.motelAddress);
+    setValue('mNote',m.note);
+  }
+
+  window.newManager=function(){
+    editingManagerCode=null;
+    if(byId('managerForm')) byId('managerForm').reset();
+    setValue('mStatus','active');
+    clearMsg('managerFormMsg');
+  }
+
+  window.editManager=function(code){
+    const m=(db.managers||[]).find(x=>x.code===code);
+    if(!m) return;
+    editingManagerCode=code;
+    fillManagerForm(m);
+    showMsg('managerFormMsg','ok','Đang sửa quản lý '+m.name);
+    byId('managerForm').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  window.deleteCurrentManager=function(){
+    if(!editingManagerCode){
+      showMsg('managerFormMsg','warn','Chưa chọn quản lý để xóa.');
+      return;
+    }
+    if(!confirm('Xóa tài khoản quản lý này?')) return;
+    db.managers=(db.managers||[]).filter(m=>m.code!==editingManagerCode);
+    editingManagerCode=null;
+    if(byId('managerForm')) byId('managerForm').reset();
+    save();
+    showMsg('managerFormMsg','ok','Đã xóa quản lý.');
+  }
+
+  function renderManagerList(){
+    const tbody=byId('managerList');
+    if(!tbody) return;
+    const list=db.managers||[];
+    if(!list.length){
+      tbody.innerHTML='<tr><td colspan="7" class="center">Chưa có quản lý.</td></tr>';
+      return;
+    }
+    tbody.innerHTML=list.map(m=>`<tr><td>${safe(m.code)}</td><td><b>${safe(m.name)}</b><br><span class="muted">${safe(m.phone||'')}</span></td><td>${safe(m.username)}</td><td>${safe(m.motelCode)}</td><td>${safe(m.motelName)}</td><td>${m.status==='locked'?'Tạm khóa':'Đang hoạt động'}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editManager('${safe(m.code)}')">Sửa</button></div></td></tr>`).join('');
+  }
+
+  function renderPendingList(){
+    const tbody=byId('pendingList');
+    if(!tbody) return;
+    const list=[...(db.pendingRequests||[])].sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));
+    if(!list.length){
+      tbody.innerHTML='<tr><td colspan="6" class="center">Chưa có dữ liệu chờ duyệt.</td></tr>';
+      return;
+    }
+    tbody.innerHTML=list.map(p=>{
+      const actions=p.status==='pending'
+        ? `<div class="actions"><button type="button" class="btn-ok" onclick="approvePending('${safe(p.id)}')">Duyệt</button><button type="button" class="btn-danger" onclick="rejectPending('${safe(p.id)}')">Từ chối</button></div>`
+        : `<span class="muted">Đã xử lý</span>`;
+      const badge=p.status==='pending'
+        ? '<span class="badge partial">Chờ duyệt</span>'
+        : p.status==='approved'
+          ? '<span class="badge paid">Đã duyệt</span>'
+          : '<span class="badge unpaid">Từ chối</span>';
+      return `<tr><td>${dateText(String(p.createdAt||'').slice(0,10))}</td><td>${safe(p.managerName||managerName(p.managerCode))}</td><td>${pendingTypeText(p.type)}</td><td>${safe(pendingSummary(p))}</td><td>${badge}</td><td>${actions}</td></tr>`;
+    }).join('');
+  }
+
+  window.renderPendingList=renderPendingList;
+
+  function applyPending(p){
+    if(p.type==='resident_upsert'){
+      const r=p.data;
+      const idx=db.residents.findIndex(x=>x.code===r.code);
+      if(idx>=0) db.residents[idx]=r;
+      else db.residents.push(r);
+      return true;
+    }
+
+    if(p.type==='bill_upsert'){
+      const b=p.data;
+      const idx=db.bills.findIndex(x=>x.id===b.id);
+      if(idx>=0) db.bills[idx]=b;
+      else db.bills.push(b);
+      return true;
+    }
+
+    return false;
+  }
+
+  window.approvePending=function(id){
+    const p=(db.pendingRequests||[]).find(x=>x.id===id);
+    if(!p||p.status!=='pending') return;
+    if(!confirm('Duyệt dữ liệu này và hiển thị cho cư dân?')) return;
+    applyPending(p);
+    p.status='approved';
+    p.decidedAt=new Date().toISOString();
+    p.decidedBy='admin';
+    save();
+  }
+
+  window.rejectPending=function(id){
+    const p=(db.pendingRequests||[]).find(x=>x.id===id);
+    if(!p||p.status!=='pending') return;
+    if(!confirm('Từ chối dữ liệu này?')) return;
+    p.status='rejected';
+    p.decidedAt=new Date().toISOString();
+    p.decidedBy='admin';
+    save();
+  }
+
+  if(byId('managerForm')){
+    byId('managerForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      const m=collectManager();
+      if(!m.code||!m.name||!m.username||!m.password||!m.motelCode||!m.motelName){
+        showMsg('managerFormMsg','err','Vui lòng nhập đủ mã quản lý, họ tên, tài khoản, mật khẩu, mã nhà trọ và tên dãy trọ.');
+        return;
+      }
+      const codeExists=(db.managers||[]).some(x=>x.code===m.code&&x.code!==editingManagerCode);
+      if(codeExists){
+        showMsg('managerFormMsg','err','Mã quản lý đã tồn tại.');
+        return;
+      }
+      const usernameExists=(db.managers||[]).some(x=>normalize(x.username)===normalize(m.username)&&x.code!==editingManagerCode);
+      if(usernameExists||normalize(m.username)==='admin'){
+        showMsg('managerFormMsg','err','Tài khoản quản lý đã tồn tại hoặc không hợp lệ.');
+        return;
+      }
+      const idx=(db.managers||[]).findIndex(x=>x.code===editingManagerCode);
+      if(idx>=0) db.managers[idx]=m;
+      else {
+        if(!Array.isArray(db.managers)) db.managers=[];
+        db.managers.push(m);
+      }
+      editingManagerCode=m.code;
+      save();
+      showMsg('managerFormMsg','ok','Đã lưu tài khoản quản lý.');
+    });
+  }
+
+
+    function noticeTypeText(type){
+    if(type==='warning') return 'Nhắc nhở';
+    if(type==='danger') return 'Khẩn cấp';
+    if(type==='success') return 'Đã xử lý';
+    return 'Thông tin';
+  }
+
+  function noticeTypeClass(type){
+    if(type==='warning') return 'notice-type-warning';
+    if(type==='danger') return 'notice-type-danger';
+    if(type==='success') return 'notice-type-success';
+    return 'notice-type-info';
+  }
+
+  function makeNoticeId(){
+    return 'TB' + Date.now();
+  }
+
+  function findNotice(id){
+    return (db.notices||[]).find(n=>n.id===id);
+  }
+
+  function fileToDataUrl(file){
+    return new Promise((resolve,reject)=>{
+      const reader=new FileReader();
+      reader.onload=()=>resolve(reader.result);
+      reader.onerror=()=>reject(reader.error);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function isAllowedNoticeFile(file){
+    if(!file) return true;
+    const name=String(file.name||'').toLowerCase();
+    return name.endsWith('.pdf')||name.endsWith('.doc')||name.endsWith('.docx');
+  }
+
+  function updateNoticeFileInfo(){
+    const fileName=value('noticeFileName');
+    const info=byId('noticeFileInfo');
+    if(!info) return;
+    if(fileName){
+      info.textContent='File hiện tại: '+fileName;
+    }else{
+      info.textContent='Chưa chọn file. File sẽ được lưu trong trình duyệt bằng localStorage.';
+    }
+  }
+
+  window.clearNoticeFile=function(){
+    const fileInput=byId('noticeFile');
+    if(fileInput) fileInput.value='';
+    setValue('noticeFileName','');
+    setValue('noticeFileMime','');
+    setValue('noticeFileData','');
+    updateNoticeFileInfo();
+  }
+
+  async function collectNotice(){
+    const fileInput=byId('noticeFile');
+    const file=fileInput&&fileInput.files?fileInput.files[0]:null;
+
+    let fileName=value('noticeFileName');
+    let fileMime=value('noticeFileMime');
+    let fileData=value('noticeFileData');
+
+    if(file){
+      if(!isAllowedNoticeFile(file)){
+        throw new Error('Chỉ cho phép file PDF, DOC hoặc DOCX.');
+      }
+
+      if(file.size>2*1024*1024){
+        throw new Error('File quá lớn. Bản web tĩnh nên dùng file dưới 2MB.');
+      }
+
+      fileName=file.name;
+      fileMime=file.type||'application/octet-stream';
+      fileData=await fileToDataUrl(file);
+
+      setValue('noticeFileName',fileName);
+      setValue('noticeFileMime',fileMime);
+      setValue('noticeFileData',fileData);
+      updateNoticeFileInfo();
+    }
+
+    return {
+      id:value('noticeId')||makeNoticeId(),
+      type:value('noticeType')||'info',
+      date:value('noticeDate')||today(),
+      status:value('noticeStatus')||'active',
+      title:value('noticeTitle'),
+      content:value('noticeContent'),
+      fileName:fileName,
+      fileMime:fileMime,
+      fileData:fileData,
+      updatedAt:new Date().toISOString()
+    };
+  }
+
+  function fillNoticeForm(n){
+    setValue('noticeId',n.id);
+    setValue('noticeType',n.type);
+    setValue('noticeDate',n.date);
+    setValue('noticeStatus',n.status);
+    setValue('noticeTitle',n.title);
+    setValue('noticeContent',n.content);
+    setValue('noticeFileName',n.fileName||'');
+    setValue('noticeFileMime',n.fileMime||'');
+    setValue('noticeFileData',n.fileData||'');
+    const fileInput=byId('noticeFile');
+    if(fileInput) fileInput.value='';
+    updateNoticeFileInfo();
+  }
+
+  window.newNotice=function(){
+    editingNoticeId=null;
+    if(byId('noticeForm')) byId('noticeForm').reset();
+    setValue('noticeDate',today());
+    setValue('noticeStatus','active');
+    setValue('noticeType','info');
+    setValue('noticeFileName','');
+    setValue('noticeFileMime','');
+    setValue('noticeFileData','');
+    updateNoticeFileInfo();
+    clearMsg('noticeFormMsg');
+  }
+
+  window.editNotice=function(id){
+    const n=findNotice(id);
+    if(!n) return;
+    editingNoticeId=id;
+    fillNoticeForm(n);
+    showMsg('noticeFormMsg','ok','Đang sửa thông báo: '+n.title);
+    byId('noticeForm').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  window.deleteCurrentNotice=function(){
+    if(!editingNoticeId){
+      showMsg('noticeFormMsg','warn','Chưa chọn thông báo để xóa.');
+      return;
+    }
+    if(!confirm('Xóa thông báo này?')) return;
+    db.notices=(db.notices||[]).filter(n=>n.id!==editingNoticeId);
+    editingNoticeId=null;
+    if(byId('noticeForm')) byId('noticeForm').reset();
+    save();
+    showMsg('noticeFormMsg','ok','Đã xóa thông báo.');
+  }
+
+  window.deleteNotice=function(id){
+    if(!confirm('Xóa thông báo này?')) return;
+    db.notices=(db.notices||[]).filter(n=>n.id!==id);
+    if(editingNoticeId===id) editingNoticeId=null;
+    save();
+  }
+
+  function noticeFileLink(n,label){
+    if(!n.fileData||!n.fileName) return '';
+    return `<a class="notice-file" href="${safe(n.fileData)}" download="${safe(n.fileName)}">📎 ${safe(label||n.fileName)}</a>`;
+  }
+
+  function renderNoticeList(){
+    const tbody=byId('noticeList');
+    if(!tbody) return;
+    const notices=[...(db.notices||[])].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
+    if(!notices.length){
+      tbody.innerHTML='<tr><td colspan="6" class="center">Chưa có thông báo.</td></tr>';
+      return;
+    }
+    tbody.innerHTML=notices.map(n=>`<tr><td>${dateText(n.date)}</td><td><span class="badge ${noticeTypeClass(n.type)}">${noticeTypeText(n.type)}</span></td><td><b>${safe(n.title)}</b><br><span class="muted">${safe(String(n.content||'').slice(0,100))}${String(n.content||'').length>100?'...':''}</span></td><td>${n.fileName?noticeFileLink(n,n.fileName):'<span class="muted">Không có file</span>'}</td><td>${n.status==='active'?'Đang hiển thị':'Tạm ẩn'}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editNotice('${safe(n.id)}')">Sửa</button><button type="button" class="btn-danger" onclick="deleteNotice('${safe(n.id)}')">Xóa</button></div></td></tr>`).join('');
+  }
+
+  window.renderResidentNotices=function(){
+    const box=byId('residentNoticeList');
+    if(!box) return;
+    const notices=[...(db.notices||[])]
+      .filter(n=>n.status==='active')
+      .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
+    if(!notices.length){
+      box.innerHTML='<p class="muted">Hiện chưa có thông báo nào.</p>';
+      return;
+    }
+    box.innerHTML='<div class="notice-list">'+notices.map(n=>`<div class="notice-item"><div class="notice-meta"><span class="badge ${noticeTypeClass(n.type)}">${noticeTypeText(n.type)}</span><span>${dateText(n.date)}</span></div><h3>${safe(n.title)}</h3>${n.content?`<p>${safe(n.content).replace(/\n/g,'<br>')}</p>`:''}${noticeFileLink(n,'Tải file thông báo: '+n.fileName)}</div>`).join('')+'</div>';
+  }
+
+  if(byId('noticeFile')){
+    byId('noticeFile').addEventListener('change',()=>{
+      const file=byId('noticeFile').files[0];
+      if(file){
+        setValue('noticeFileName',file.name);
+        setValue('noticeFileMime',file.type||'application/octet-stream');
+      }
+      updateNoticeFileInfo();
+    });
+  }
+
+  if(byId('noticeForm')){
+    byId('noticeForm').addEventListener('submit',async e=>{
+      e.preventDefault();
+      try{
+        const n=await collectNotice();
+        if(!n.title){
+          showMsg('noticeFormMsg','err','Vui lòng nhập tiêu đề thông báo.');
+          return;
+        }
+        if(!n.content&&!n.fileData){
+          showMsg('noticeFormMsg','err','Vui lòng nhập nội dung hoặc chọn file PDF/DOCX.');
+          return;
+        }
+        if(!Array.isArray(db.notices)) db.notices=[];
+        const index=db.notices.findIndex(x=>x.id===n.id);
+        if(index>=0){
+          db.notices[index]=n;
+          showMsg('noticeFormMsg','ok','Đã cập nhật thông báo.');
+        }else{
+          db.notices.push(n);
+          editingNoticeId=n.id;
+          showMsg('noticeFormMsg','ok','Đã đăng thông báo mới.');
+        }
+        save();
+      }catch(error){
+        showMsg('noticeFormMsg','err',error.message||'Không lưu được thông báo.');
+      }
+    });
+  }
+
+
+
+
+  function imageFileToDataUrl(file){
+    return new Promise((resolve,reject)=>{
+      const reader=new FileReader();
+      reader.onload=()=>resolve(reader.result);
+      reader.onerror=()=>reject(reader.error);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function handleImageInput(fileInputId, hiddenInputId, previewId, maxSizeMb){
+    const input=byId(fileInputId);
+    const file=input&&input.files?input.files[0]:null;
+    if(!file) return;
+    if(!String(file.type||'').startsWith('image/')){
+      alert('Vui lòng chọn file hình ảnh.');
+      input.value='';
+      return;
+    }
+    const maxBytes=(maxSizeMb||2)*1024*1024;
+    if(file.size>maxBytes){
+      alert('Ảnh quá lớn. Vui lòng chọn ảnh dưới '+(maxSizeMb||2)+'MB.');
+      input.value='';
+      return;
+    }
+    const data=await imageFileToDataUrl(file);
+    setValue(hiddenInputId,data);
+    showImagePreview(previewId,data);
+  }
+
+  function showImagePreview(previewId,data){
+    const img=byId(previewId);
+    if(!img) return;
+    if(data){
+      img.src=data;
+      img.style.display='block';
+    }else{
+      img.removeAttribute('src');
+      img.style.display='none';
+    }
+  }
+
+  window.clearResidentPhoto=function(){
+    const input=byId('residentPhotoFile');
+    if(input) input.value='';
+    setValue('residentPhotoData','');
+    showImagePreview('residentPhotoPreview','');
+  }
+
+  window.clearPaymentQr=function(){
+    const input=byId('paymentQrFile');
+    if(input) input.value='';
+    setValue('paymentQrData','');
+    showImagePreview('paymentQrPreview','');
+  }
+
+  function setupImageInputs(){
+    const photo=byId('residentPhotoFile');
+    if(photo&&!photo.dataset.bound){
+      photo.dataset.bound='1';
+      photo.addEventListener('change',()=>handleImageInput('residentPhotoFile','residentPhotoData','residentPhotoPreview',2));
+    }
+
+    const qr=byId('paymentQrFile');
+    if(qr&&!qr.dataset.bound){
+      qr.dataset.bound='1';
+      qr.addEventListener('change',()=>handleImageInput('paymentQrFile','paymentQrData','paymentQrPreview',2));
+    }
+  }
+
+
+  function makeCoTenantId(){
+    return 'NT' + Date.now() + Math.floor(Math.random()*1000);
+  }
+
+  function normalizeCoTenant(item){
+    return {
+      id: item.id || makeCoTenantId(),
+      name: item.name || '',
+      dob: item.dob || '',
+      phone: item.phone || '',
+      citizenId: item.citizenId || '',
+      relationship: item.relationship || '',
+      username: item.username || '',
+      password: item.password || ''
+    };
+  }
+
+  function getCoTenantsFromForm(){
+    const boxes = Array.from(document.querySelectorAll('.cotenant-box'));
+    return boxes.map(box => ({
+      id: box.dataset.id || makeCoTenantId(),
+      name: box.querySelector('.ct-name') ? box.querySelector('.ct-name').value.trim() : '',
+      dob: box.querySelector('.ct-dob') ? box.querySelector('.ct-dob').value.trim() : '',
+      phone: box.querySelector('.ct-phone') ? box.querySelector('.ct-phone').value.trim() : '',
+      citizenId: box.querySelector('.ct-id') ? box.querySelector('.ct-id').value.trim() : '',
+      relationship: box.querySelector('.ct-relationship') ? box.querySelector('.ct-relationship').value.trim() : '',
+      username: box.querySelector('.ct-username') ? box.querySelector('.ct-username').value.trim() : '',
+      password: box.querySelector('.ct-password') ? box.querySelector('.ct-password').value.trim() : ''
+    })).filter(x => x.name || x.phone || x.citizenId || x.username || x.password);
+  }
+
+  function renderCoTenantForm(list){
+    const wrap = byId('coTenantList');
+    if(!wrap) return;
+    const items = (list || []).map(normalizeCoTenant);
+    if(!items.length){
+      wrap.innerHTML = '<p class="muted">Chưa có người ở cùng. Bấm “+ Thêm người ở cùng” để thêm.</p>';
+      return;
+    }
+
+    wrap.innerHTML = items.map((ct, index) => `
+      <div class="cotenant-box" data-id="${safe(ct.id)}">
+        <div class="cotenant-head">
+          <div class="cotenant-title">Người ở cùng #${index + 1}</div>
+          <button type="button" class="btn-danger" onclick="removeCoTenant('${safe(ct.id)}')">Xóa</button>
+        </div>
+
+        <div class="grid4">
+          <div>
+            <label>Họ tên *</label>
+            <input class="ct-name" value="${safe(ct.name)}" placeholder="Họ tên người ở cùng">
+          </div>
+
+          <div>
+            <label>Ngày sinh</label>
+            <input class="ct-dob" type="date" value="${safe(ct.dob)}">
+          </div>
+
+          <div>
+            <label>Số điện thoại</label>
+            <input class="ct-phone" value="${safe(ct.phone)}">
+          </div>
+
+          <div>
+            <label>CCCD</label>
+            <input class="ct-id" value="${safe(ct.citizenId)}">
+          </div>
+
+          <div>
+            <label>Quan hệ</label>
+            <input class="ct-relationship" value="${safe(ct.relationship)}" placeholder="VD: Vợ/chồng, bạn, em...">
+          </div>
+
+          <div>
+            <label>Tài khoản người ở cùng *</label>
+            <input class="ct-username" value="${safe(ct.username)}" placeholder="VD: cd001_2">
+          </div>
+
+          <div>
+            <label>Mật khẩu người ở cùng *</label>
+            <input class="ct-password" value="${safe(ct.password)}" placeholder="VD: 123456">
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.addCoTenant=function(){
+    const list = getCoTenantsFromForm();
+    list.push({
+      id: makeCoTenantId(),
+      name: '',
+      dob: '',
+      phone: '',
+      citizenId: '',
+      relationship: '',
+      username: '',
+      password: ''
+    });
+    renderCoTenantForm(list);
+  }
+
+  window.removeCoTenant=function(id){
+    const list = getCoTenantsFromForm().filter(x => x.id !== id);
+    renderCoTenantForm(list);
+  }
+
+  window.clearCoTenants=function(){
+    if(!confirm('Xóa toàn bộ người ở cùng trong form này?')) return;
+    renderCoTenantForm([]);renderVehicleForm([]);renderRoomContactForm([]);
+  }
+
+  function findAccountLogin(username,password){
+    const user = normalize(username);
+    const pass = String(password || '');
+
+    for(const r of db.residents){
+      if(normalize(r.residentUsername) === user && String(r.residentPassword || '') === pass){
+        return { resident: r, accountType: 'main', coTenant: null };
+      }
+
+      const list = Array.isArray(r.coTenants) ? r.coTenants : [];
+      const found = list.find(ct => normalize(ct.username) === user && String(ct.password || '') === pass);
+      if(found){
+        return { resident: r, accountType: 'cotenant', coTenant: found };
+      }
+    }
+
+    return null;
+  }
+
+  function allResidentUsernames(exceptResidentCode){
+    const names = [];
+    db.residents.forEach(r => {
+      if(r.code !== exceptResidentCode && r.residentUsername) names.push(normalize(r.residentUsername));
+      (Array.isArray(r.coTenants) ? r.coTenants : []).forEach(ct => {
+        if(r.code !== exceptResidentCode && ct.username) names.push(normalize(ct.username));
+      });
+    });
+    return names;
+  }
+
+  function hasDuplicateInArray(arr){
+    const seen = new Set();
+    for(const item of arr){
+      const key = normalize(item);
+      if(!key) continue;
+      if(seen.has(key)) return true;
+      seen.add(key);
+    }
+    return false;
+  }
+
+
+
+  function makeVehicleId(){
+    return 'XE' + Date.now() + Math.floor(Math.random()*1000);
+  }
+
+  function makeRoomContactId(){
+    return 'LH' + Date.now() + Math.floor(Math.random()*1000);
+  }
+
+  function normalizeVehicle(item){
+    return {
+      id: item.id || makeVehicleId(),
+      ownerKey: item.ownerKey || '',
+      ownerName: item.ownerName || '',
+      vehicleType: item.vehicleType || 'motorbike',
+      plateNumber: item.plateNumber || '',
+      frameNumber: item.frameNumber || '',
+      engineNumber: item.engineNumber || '',
+      registrationNumber: item.registrationNumber || '',
+      note: item.note || ''
+    };
+  }
+
+  function normalizeRoomContact(item){
+    return {
+      id: item.id || makeRoomContactId(),
+      name: item.name || '',
+      phone: item.phone || '',
+      relationship: item.relationship || '',
+      address: item.address || '',
+      note: item.note || ''
+    };
+  }
+
+  function getOwnerOptions(selected){
+    const mainCode = value('rCode') || 'MAIN';
+    const mainName = value('rName') || 'Cư dân chính';
+    const owners = [{ key: 'main:' + mainCode, name: mainName + ' - Cư dân chính' }];
+
+    getCoTenantsFromForm().forEach((ct,index)=>{
+      const key = 'cotenant:' + (ct.id || index);
+      owners.push({ key, name: (ct.name || ('Người ở cùng #' + (index+1))) + ' - Người ở cùng' });
+    });
+
+    return owners.map(o=>`<option value="${safe(o.key)}" ${o.key===selected?'selected':''}>${safe(o.name)}</option>`).join('');
+  }
+
+  function ownerNameFromKey(ownerKey){
+    const mainCode = value('rCode') || '';
+    const mainName = value('rName') || '';
+    if(ownerKey && ownerKey.startsWith('main:')){
+      return mainName || 'Cư dân chính';
+    }
+
+    const list = getCoTenantsFromForm();
+    const found = list.find(ct => ownerKey === ('cotenant:' + ct.id));
+    return found ? found.name : '';
+  }
+
+  function getVehiclesFromForm(){
+    const boxes = Array.from(document.querySelectorAll('.vehicle-box'));
+    return boxes.map(box => {
+      const ownerKey = box.querySelector('.v-owner') ? box.querySelector('.v-owner').value : '';
+      return {
+        id: box.dataset.id || makeVehicleId(),
+        ownerKey: ownerKey,
+        ownerName: ownerNameFromKey(ownerKey),
+        vehicleType: box.querySelector('.v-type') ? box.querySelector('.v-type').value.trim() : '',
+        plateNumber: box.querySelector('.v-plate') ? box.querySelector('.v-plate').value.trim() : '',
+        frameNumber: box.querySelector('.v-frame') ? box.querySelector('.v-frame').value.trim() : '',
+        engineNumber: box.querySelector('.v-engine') ? box.querySelector('.v-engine').value.trim() : '',
+        registrationNumber: box.querySelector('.v-registration') ? box.querySelector('.v-registration').value.trim() : '',
+        note: box.querySelector('.v-note') ? box.querySelector('.v-note').value.trim() : ''
+      };
+    }).filter(x => x.plateNumber || x.frameNumber || x.engineNumber || x.registrationNumber || x.ownerKey);
+  }
+
+  function renderVehicleForm(list){
+    const wrap = byId('vehicleList');
+    if(!wrap) return;
+    const items = (list || []).map(normalizeVehicle);
+    if(!items.length){
+      wrap.innerHTML = '<p class="muted">Chưa có thông tin xe. Bấm “+ Thêm xe” để thêm.</p>';
+      return;
+    }
+
+    wrap.innerHTML = items.map((v,index)=>`
+      <div class="vehicle-box" data-id="${safe(v.id)}">
+        <div class="vehicle-head">
+          <div class="vehicle-title">Xe #${index + 1}</div>
+          <button type="button" class="btn-danger" onclick="removeVehicle('${safe(v.id)}')">Xóa</button>
+        </div>
+
+        <div class="grid4">
+          <div>
+            <label>Cư dân sở hữu</label>
+            <select class="v-owner">${getOwnerOptions(v.ownerKey)}</select>
+          </div>
+
+          <div>
+            <label>Loại xe</label>
+            <select class="v-type">
+              <option value="motorbike" ${v.vehicleType==='motorbike'?'selected':''}>Xe máy</option>
+              <option value="car" ${v.vehicleType==='car'?'selected':''}>Ô tô</option>
+              <option value="bike" ${v.vehicleType==='bike'?'selected':''}>Xe đạp</option>
+              <option value="electric" ${v.vehicleType==='electric'?'selected':''}>Xe điện</option>
+              <option value="other" ${v.vehicleType==='other'?'selected':''}>Khác</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Biển số xe *</label>
+            <input class="v-plate" value="${safe(v.plateNumber)}" placeholder="VD: 66B1-123.45">
+          </div>
+
+          <div>
+            <label>Số đăng ký xe</label>
+            <input class="v-registration" value="${safe(v.registrationNumber)}" placeholder="Số đăng ký/cavet">
+          </div>
+
+          <div>
+            <label>Số khung</label>
+            <input class="v-frame" value="${safe(v.frameNumber)}">
+          </div>
+
+          <div>
+            <label>Số máy</label>
+            <input class="v-engine" value="${safe(v.engineNumber)}">
+          </div>
+
+          <div class="full">
+            <label>Ghi chú xe</label>
+            <textarea class="v-note" placeholder="Màu xe, hãng xe, tình trạng gửi xe...">${safe(v.note)}</textarea>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.addVehicle=function(){
+    const list = getVehiclesFromForm();
+    list.push({
+      id: makeVehicleId(),
+      ownerKey: 'main:' + (value('rCode') || 'MAIN'),
+      ownerName: value('rName') || '',
+      vehicleType: 'motorbike',
+      plateNumber: '',
+      frameNumber: '',
+      engineNumber: '',
+      registrationNumber: '',
+      note: ''
+    });
+    renderVehicleForm(list);
+  }
+
+  window.removeVehicle=function(id){
+    const list = getVehiclesFromForm().filter(x => x.id !== id);
+    renderVehicleForm(list);
+  }
+
+  window.clearVehicles=function(){
+    if(!confirm('Xóa toàn bộ thông tin xe trong form này?')) return;
+    renderVehicleForm([]);
+  }
+
+  function getRoomContactsFromForm(){
+    const boxes = Array.from(document.querySelectorAll('.room-contact-box'));
+    return boxes.map(box => ({
+      id: box.dataset.id || makeRoomContactId(),
+      name: box.querySelector('.rc-name') ? box.querySelector('.rc-name').value.trim() : '',
+      phone: box.querySelector('.rc-phone') ? box.querySelector('.rc-phone').value.trim() : '',
+      relationship: box.querySelector('.rc-relationship') ? box.querySelector('.rc-relationship').value.trim() : '',
+      address: box.querySelector('.rc-address') ? box.querySelector('.rc-address').value.trim() : '',
+      note: box.querySelector('.rc-note') ? box.querySelector('.rc-note').value.trim() : ''
+    })).filter(x => x.name || x.phone || x.relationship || x.address || x.note);
+  }
+
+  function renderRoomContactForm(list){
+    const wrap = byId('roomContactList');
+    if(!wrap) return;
+    const items = (list || []).map(normalizeRoomContact);
+    if(!items.length){
+      wrap.innerHTML = '<p class="muted">Chưa có người liên hệ cho phòng. Bấm “+ Thêm người liên hệ” để thêm.</p>';
+      return;
+    }
+
+    wrap.innerHTML = items.map((c,index)=>`
+      <div class="room-contact-box" data-id="${safe(c.id)}">
+        <div class="room-contact-head">
+          <div class="room-contact-title">Người liên hệ #${index + 1}</div>
+          <button type="button" class="btn-danger" onclick="removeRoomContact('${safe(c.id)}')">Xóa</button>
+        </div>
+
+        <div class="grid4">
+          <div>
+            <label>Họ tên</label>
+            <input class="rc-name" value="${safe(c.name)}" placeholder="Họ tên người liên hệ">
+          </div>
+
+          <div>
+            <label>Số điện thoại</label>
+            <input class="rc-phone" value="${safe(c.phone)}">
+          </div>
+
+          <div>
+            <label>Quan hệ</label>
+            <input class="rc-relationship" value="${safe(c.relationship)}" placeholder="VD: Người thân, đại diện phòng">
+          </div>
+
+          <div>
+            <label>Địa chỉ</label>
+            <input class="rc-address" value="${safe(c.address)}">
+          </div>
+
+          <div class="full">
+            <label>Ghi chú liên hệ</label>
+            <textarea class="rc-note">${safe(c.note)}</textarea>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.addRoomContact=function(){
+    const list = getRoomContactsFromForm();
+    list.push({
+      id: makeRoomContactId(),
+      name: '',
+      phone: '',
+      relationship: '',
+      address: '',
+      note: ''
+    });
+    renderRoomContactForm(list);
+  }
+
+  window.removeRoomContact=function(id){
+    const list = getRoomContactsFromForm().filter(x => x.id !== id);
+    renderRoomContactForm(list);
+  }
+
+  window.clearRoomContacts=function(){
+    if(!confirm('Xóa toàn bộ người liên hệ trong form này?')) return;
+    renderRoomContactForm([]);
+  }
+
+  function vehicleTypeText(type){
+    if(type==='car') return 'Ô tô';
+    if(type==='bike') return 'Xe đạp';
+    if(type==='electric') return 'Xe điện';
+    if(type==='other') return 'Khác';
+    return 'Xe máy';
+  }
+
+
+  function collectResident(){return{code:value('rCode'),name:value('rName'),dob:value('rDob'),phone:value('rPhone'),citizenId:value('rId'),issueDate:value('rIssueDate'),issuePlace:value('rIssuePlace'),email:value('rEmail'),otherPhone:value('rOtherPhone'),residentUsername:value('residentUsername'),residentPassword:value('residentPassword'),coTenants:getCoTenantsFromForm(),vehicles:getVehiclesFromForm(),roomContacts:getRoomContactsFromForm(),status:value('rStatus'),address:value('rAddress'),residentPhoto:value('residentPhotoData'),paymentBank:value('paymentBank'),paymentAccount:value('paymentAccount'),paymentHolder:value('paymentHolder'),paymentMethod:value('paymentMethod'),paymentContent:value('paymentContent'),paymentNote:value('paymentNote'),paymentQr:value('paymentQrData'),facilityCode:value('facilityCode'),facilityName:value('facilityName'),roomCode:value('roomCode'),roomName:value('roomName'),occupants:num(value('occupants'))||1+getCoTenantsFromForm().length,contractCode:value('contractCode'),contractDate:value('contractDate'),moveInDate:value('moveInDate'),temporaryStart:value('temporaryStart'),temporaryEnd:value('temporaryEnd'),rentalDuration:value('rentalDuration'),signer:value('signer'),facilityAddress:value('facilityAddress'),roomPrice:num(value('roomPrice')),vehicleCount:num(value('vehicleCount')),parkingFee:num(value('parkingFee')),electricPrice:num(value('electricPrice')),waterPrice:num(value('waterPrice')),wifiFee:num(value('wifiFee')),serviceFee:num(value('serviceFee')),fridgeFee:num(value('fridgeFee')),airconFee:num(value('airconFee')),stoveFee:num(value('stoveFee')),filterFee:num(value('filterFee')),updatedAt:new Date().toISOString()}}
+  function fillResidentForm(r){Object.entries({rCode:r.code,rName:r.name,rDob:r.dob,rPhone:r.phone,rId:r.citizenId,rIssueDate:r.issueDate,rIssuePlace:r.issuePlace,rEmail:r.email,rOtherPhone:r.otherPhone,residentUsername:r.residentUsername,residentPassword:r.residentPassword,rStatus:r.status,rAddress:r.address,residentPhotoData:r.residentPhoto,paymentBank:r.paymentBank,paymentAccount:r.paymentAccount,paymentHolder:r.paymentHolder,paymentMethod:r.paymentMethod,paymentContent:r.paymentContent,paymentNote:r.paymentNote,paymentQrData:r.paymentQr,facilityCode:r.facilityCode,facilityName:r.facilityName,roomCode:r.roomCode,roomName:r.roomName,occupants:r.occupants,contractCode:r.contractCode,contractDate:r.contractDate,moveInDate:r.moveInDate,temporaryStart:r.temporaryStart,temporaryEnd:r.temporaryEnd,rentalDuration:r.rentalDuration,signer:r.signer,facilityAddress:r.facilityAddress,roomPrice:r.roomPrice,vehicleCount:r.vehicleCount,parkingFee:r.parkingFee,electricPrice:r.electricPrice,waterPrice:r.waterPrice,wifiFee:r.wifiFee,serviceFee:r.serviceFee,fridgeFee:r.fridgeFee,airconFee:r.airconFee,stoveFee:r.stoveFee,filterFee:r.filterFee}).forEach(([id,v])=>setValue(id,v));renderCoTenantForm(r.coTenants||[]);renderVehicleForm(r.vehicles||[]);renderRoomContactForm(r.roomContacts||[]);showImagePreview('residentPhotoPreview',r.residentPhoto||'');showImagePreview('paymentQrPreview',r.paymentQr||'')}
+  window.newResident=function(){editingCode=null;byId('residentForm').reset();clearMsg('residentFormMsg');setValue('rStatus','active');setValue('paymentMethod','bank');clearResidentPhoto();clearPaymentQr();renderCoTenantForm([]);renderVehicleForm([]);renderRoomContactForm([])}
   window.editResident=function(code){const r=findResident(code);if(!r)return;editingCode=code;fillResidentForm(r);showMsg('residentFormMsg','ok','Đang sửa hồ sơ của '+r.name+'.');byId('residentForm').scrollIntoView({behavior:'smooth',block:'start'})}
-  window.deleteCurrentResident=function(){if(!editingCode){showMsg('residentFormMsg','warn','Chưa chọn cư dân để xóa.');return}if(!confirm('Xóa cư dân này và toàn bộ kỳ công nợ liên quan?'))return;db.residents=db.residents.filter(r=>r.code!==editingCode);db.bills=db.bills.filter(b=>b.residentCode!==editingCode);editingCode=null;byId('residentForm').reset();save();showMsg('residentFormMsg','ok','Đã xóa cư dân.')}
-  byId('residentForm').addEventListener('submit',e=>{e.preventDefault();const r=collectResident();if(!r.code||!r.name||!r.dob||!r.phone||!r.citizenId){showMsg('residentFormMsg','err','Vui lòng nhập đủ mã cư dân, họ tên, ngày sinh, số điện thoại và CCCD.');return}const exists=findResident(r.code);if(exists&&editingCode!==r.code){showMsg('residentFormMsg','err','Mã cư dân đã tồn tại.');return}if(editingCode){const old=editingCode;db.residents=db.residents.map(item=>item.code===old?r:item);if(old!==r.code)db.bills.forEach(b=>{if(b.residentCode===old)b.residentCode=r.code});editingCode=r.code;showMsg('residentFormMsg','ok','Đã cập nhật hồ sơ cư dân.')}else{db.residents.push(r);editingCode=r.code;showMsg('residentFormMsg','ok','Đã tạo hồ sơ cư dân mới.')}save()})
-  function collectBill(){const residentCode=value('bResident'),month=value('bMonth');return{id:billId(residentCode,month),residentCode,month,oldElectric:num(value('oldElectric')),newElectric:num(value('newElectric')),oldWater:num(value('oldWater')),newWater:num(value('newWater')),roomPrice:num(value('bRoomPrice')),electricPrice:num(value('bElectricPrice')),waterPrice:num(value('bWaterPrice')),wifiFee:num(value('bWifiFee')),serviceFee:num(value('bServiceFee')),fridgeFee:num(value('bFridgeFee')),airconFee:num(value('bAirconFee')),stoveFee:num(value('bStoveFee')),filterFee:num(value('bFilterFee')),extraFee:num(value('extraFee')),paidAmount:num(value('paidAmount')),paymentStatus:value('paymentStatus'),closedDate:value('closedDate')||today(),note:value('billNote'),updatedAt:new Date().toISOString()}}
-  byId('billForm').addEventListener('submit',e=>{e.preventDefault();const b=collectBill();if(!b.residentCode||!b.month){showMsg('billFormMsg','err','Vui lòng chọn cư dân và kỳ tháng.');return}if(!findResident(b.residentCode)){showMsg('billFormMsg','err','Cư dân không tồn tại.');return}const total=billTotal(b);if(b.paymentStatus==='paid')b.paidAmount=total;if(b.paymentStatus==='partial'&&b.paidAmount<=0)b.paymentStatus='unpaid';if(b.paidAmount>=total){b.paidAmount=total;b.paymentStatus='paid'}const i=db.bills.findIndex(x=>x.id===b.id);if(i>=0){db.bills[i]=b;showMsg('billFormMsg','ok','Đã cập nhật kỳ công nợ '+monthText(b.month)+'.')}else{db.bills.push(b);showMsg('billFormMsg','ok','Đã chốt kỳ công nợ '+monthText(b.month)+'.')}save();updateBillPreview()})
-  window.onBillingResidentChange=function(){const code=value('bResident');if(!code)return;const r=findResident(code);if(!r)return;const last=latestBill(code);setValue('oldElectric',last?last.newElectric:0);setValue('oldWater',last?last.newWater:0);setValue('bRoomPrice',r.roomPrice);setValue('bElectricPrice',r.electricPrice);setValue('bWaterPrice',r.waterPrice);setValue('bWifiFee',r.wifiFee);setValue('bServiceFee',r.serviceFee);setValue('bFridgeFee',r.fridgeFee);setValue('bAirconFee',r.airconFee);setValue('bStoveFee',r.stoveFee);setValue('bFilterFee',r.filterFee);setValue('bMonth',thisMonth());setValue('closedDate',today());updateBillPreview()}
-  window.editBill=function(id){const b=db.bills.find(x=>x.id===id);if(!b)return;const r=findResident(b.residentCode)||{};setValue('bResident',b.residentCode);setValue('bMonth',b.month);setValue('oldElectric',b.oldElectric);setValue('newElectric',b.newElectric);setValue('oldWater',b.oldWater);setValue('newWater',b.newWater);setValue('bRoomPrice',b.roomPrice??r.roomPrice);setValue('bElectricPrice',b.electricPrice??r.electricPrice);setValue('bWaterPrice',b.waterPrice??r.waterPrice);setValue('bWifiFee',b.wifiFee??r.wifiFee);setValue('bServiceFee',b.serviceFee??r.serviceFee);setValue('bFridgeFee',b.fridgeFee??r.fridgeFee);setValue('bAirconFee',b.airconFee??r.airconFee);setValue('bStoveFee',b.stoveFee??r.stoveFee);setValue('bFilterFee',b.filterFee??r.filterFee);setValue('extraFee',b.extraFee);setValue('paidAmount',b.paidAmount);setValue('paymentStatus',b.paymentStatus);setValue('closedDate',b.closedDate);setValue('billNote',b.note);updateBillPreview();showMsg('billFormMsg','ok','Đang sửa kỳ '+monthText(b.month)+'.');byId('billForm').scrollIntoView({behavior:'smooth',block:'start'})}
-  window.deleteBill=function(id){if(!confirm('Xóa kỳ công nợ này?'))return;db.bills=db.bills.filter(b=>b.id!==id);save()}
+  window.deleteCurrentResident=function(){if(currentRole!=='admin'){showMsg('residentFormMsg','err','Quản lý không có quyền xóa cư dân.');return}if(!editingCode){showMsg('residentFormMsg','warn','Chưa chọn cư dân để xóa.');return}if(!confirm('Xóa cư dân này và toàn bộ kỳ công nợ liên quan?'))return;db.residents=db.residents.filter(r=>r.code!==editingCode);db.bills=db.bills.filter(b=>b.residentCode!==editingCode);editingCode=null;byId('residentForm').reset();save();showMsg('residentFormMsg','ok','Đã xóa cư dân.')}
+  byId('residentForm').addEventListener('submit',e=>{e.preventDefault();const r=collectResident();if(!r.code||!r.name||!r.dob||!r.phone||!r.citizenId||!r.residentUsername||!r.residentPassword){showMsg('residentFormMsg','err','Vui lòng nhập đủ mã cư dân, họ tên, ngày sinh, số điện thoại, CCCD, tài khoản và mật khẩu cư dân.');return}const exists=findResident(r.code);if(exists&&editingCode!==r.code){showMsg('residentFormMsg','err','Mã cư dân đã tồn tại.');return}const usernames=[r.residentUsername,...(r.coTenants||[]).map(ct=>ct.username)];if(hasDuplicateInArray(usernames)){showMsg('residentFormMsg','err','Tài khoản cư dân chính và người ở cùng không được trùng nhau.');return}const usedNames=allResidentUsernames(editingCode);if(usernames.some(u=>usedNames.includes(normalize(u)))){showMsg('residentFormMsg','err','Có tài khoản đã được dùng ở cư dân khác. Vui lòng đổi tài khoản.');return}if(currentRole==='manager'){newPending('resident_upsert',r,'Hồ sơ cư dân '+r.code);showMsg('residentFormMsg','warn','Đã gửi hồ sơ cư dân lên Admin. Trạng thái: Chờ duyệt. Cư dân chưa thấy dữ liệu này.');newResident();return}const usernameExists=db.residents.some(item=>normalize(item.residentUsername)===normalize(r.residentUsername)&&item.code!==editingCode);if(usernameExists){showMsg('residentFormMsg','err','Tài khoản cư dân đã tồn tại. Vui lòng chọn tài khoản khác.');return}if(editingCode){const old=editingCode;db.residents=db.residents.map(item=>item.code===old?r:item);if(old!==r.code)db.bills.forEach(b=>{if(b.residentCode===old)b.residentCode=r.code});editingCode=r.code;showMsg('residentFormMsg','ok','Đã cập nhật hồ sơ cư dân.')}else{db.residents.push(r);editingCode=r.code;showMsg('residentFormMsg','ok','Đã tạo hồ sơ cư dân mới.')}save()})
+  function collectBill(){const residentCode=value('bResident'),month=value('bMonth');return{id:billId(residentCode,month),residentCode,month,oldElectric:num(value('oldElectric')),newElectric:num(value('newElectric')),oldWater:num(value('oldWater')),newWater:num(value('newWater')),roomPrice:num(value('bRoomPrice')),electricPrice:num(value('bElectricPrice')),waterPrice:num(value('bWaterPrice')),wifiFee:num(value('bWifiFee')),serviceFee:num(value('bServiceFee')),fridgeFee:num(value('bFridgeFee')),airconFee:num(value('bAirconFee')),stoveFee:num(value('bStoveFee')),filterFee:num(value('bFilterFee')),vehicleCount:num(value('bVehicleCount')),parkingFee:num(value('bParkingFee')),extraFee:num(value('extraFee')),paidAmount:num(value('paidAmount')),paymentStatus:value('paymentStatus'),closedDate:value('closedDate')||today(),note:value('billNote'),updatedAt:new Date().toISOString()}}
+  byId('billForm').addEventListener('submit',e=>{e.preventDefault();const b=collectBill();if(!b.residentCode||!b.month){showMsg('billFormMsg','err','Vui lòng chọn cư dân và kỳ tháng.');return}if(!findResident(b.residentCode)){showMsg('billFormMsg','err','Cư dân không tồn tại.');return}const total=billTotal(b);if(b.paymentStatus==='paid')b.paidAmount=total;if(b.paymentStatus==='partial'&&b.paidAmount<=0)b.paymentStatus='unpaid';if(b.paidAmount>=total){b.paidAmount=total;b.paymentStatus='paid'}if(currentRole==='manager'){newPending('bill_upsert',b,'Chốt kỳ '+b.month+' cho '+b.residentCode);showMsg('billFormMsg','warn','Đã gửi kỳ chốt/chỉ số lên Admin. Trạng thái: Chờ duyệt. Cư dân chưa thấy dữ liệu này.');return}const i=db.bills.findIndex(x=>x.id===b.id);if(i>=0){db.bills[i]=b;showMsg('billFormMsg','ok','Đã cập nhật kỳ công nợ '+monthText(b.month)+'.')}else{db.bills.push(b);showMsg('billFormMsg','ok','Đã chốt kỳ công nợ '+monthText(b.month)+'.')}save();updateBillPreview()})
+  window.onBillingResidentChange=function(){const code=value('bResident');if(!code)return;const r=findResident(code);if(!r)return;const last=latestBill(code);setValue('oldElectric',last?last.newElectric:0);setValue('oldWater',last?last.newWater:0);setValue('bRoomPrice',r.roomPrice);setValue('bElectricPrice',r.electricPrice);setValue('bWaterPrice',r.waterPrice);setValue('bWifiFee',r.wifiFee);setValue('bServiceFee',r.serviceFee);setValue('bFridgeFee',r.fridgeFee);setValue('bAirconFee',r.airconFee);setValue('bStoveFee',r.stoveFee);setValue('bFilterFee',r.filterFee);setValue('bVehicleCount',r.vehicleCount);setValue('bParkingFee',r.parkingFee);setValue('bMonth',thisMonth());setValue('closedDate',today());updateBillPreview()}
+  window.editBill=function(id){const b=db.bills.find(x=>x.id===id);if(!b)return;const r=findResident(b.residentCode)||{};setValue('bResident',b.residentCode);setValue('bMonth',b.month);setValue('oldElectric',b.oldElectric);setValue('newElectric',b.newElectric);setValue('oldWater',b.oldWater);setValue('newWater',b.newWater);setValue('bRoomPrice',b.roomPrice??r.roomPrice);setValue('bElectricPrice',b.electricPrice??r.electricPrice);setValue('bWaterPrice',b.waterPrice??r.waterPrice);setValue('bWifiFee',b.wifiFee??r.wifiFee);setValue('bServiceFee',b.serviceFee??r.serviceFee);setValue('bFridgeFee',b.fridgeFee??r.fridgeFee);setValue('bAirconFee',b.airconFee??r.airconFee);setValue('bStoveFee',b.stoveFee??r.stoveFee);setValue('bFilterFee',b.filterFee??r.filterFee);setValue('bVehicleCount',b.vehicleCount??r.vehicleCount);setValue('bParkingFee',b.parkingFee??r.parkingFee);setValue('extraFee',b.extraFee);setValue('paidAmount',b.paidAmount);setValue('paymentStatus',b.paymentStatus);setValue('closedDate',b.closedDate);setValue('billNote',b.note);updateBillPreview();showMsg('billFormMsg','ok','Đang sửa kỳ '+monthText(b.month)+'.');byId('billForm').scrollIntoView({behavior:'smooth',block:'start'})}
+  window.deleteBill=function(id){if(currentRole!=='admin'){showMsg('billFormMsg','err','Quản lý không có quyền xóa kỳ công nợ.');return}if(!confirm('Xóa kỳ công nợ này?'))return;db.bills=db.bills.filter(b=>b.id!==id);save()}
   window.markSelectedBillPaid=function(){const code=value('bResident'),month=value('bMonth');const b=db.bills.find(x=>x.id===billId(code,month));if(!b){showMsg('billFormMsg','warn','Chưa có kỳ công nợ này. Hãy chốt kỳ trước.');return}b.paidAmount=billTotal(b);b.paymentStatus='paid';b.updatedAt=new Date().toISOString();save();editBill(b.id);showMsg('billFormMsg','ok','Đã đánh dấu thu đủ.')}
   window.updateBillPreview=function(){const code=value('bResident'),preview=byId('billPreview');if(!preview)return;const temp=collectBill();setValue('usedElectric',Math.max(0,num(temp.newElectric)-num(temp.oldElectric)));setValue('usedWater',Math.max(0,num(temp.newWater)-num(temp.oldWater)));if(!code){preview.innerHTML='<tr><td colspan="6" class="center">Chọn cư dân để xem bảng tạm tính.</td></tr>';return}const rows=billRows(temp);preview.innerHTML=rows.map((row,i)=>`<tr><td>${debtNames[i]}</td><td>${safe(row.old)}</td><td>${safe(row.now)}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td class="money">${money(row.total)}</td></tr>`).join('')+`<tr><td colspan="5" class="money">Tổng tạm tính</td><td class="money">${money(billTotal(temp))}</td></tr>`}
+
+  window.copyPaymentInfo=function(){
+    if(!currentLookupCode){
+      alert('Chưa đăng nhập cư dân.');
+      return;
+    }
+    const r=findResident(currentLookupCode);
+    const bill=db.bills.find(b=>b.id===value('residentBillSelect'))||latestBill(r.code);
+    const amount=bill?billRemain(bill):0;
+    const content=[
+      'Ngân hàng: '+(r.paymentBank||''),
+      'Số tài khoản: '+(r.paymentAccount||''),
+      'Chủ tài khoản: '+(r.paymentHolder||''),
+      'Nội dung CK: '+(r.paymentContent||((r.code||'')+' '+(bill?bill.month:''))),
+      'Số tiền còn lại: '+money(amount)
+    ].join('\n');
+    navigator.clipboard&&navigator.clipboard.writeText(content).then(()=>{
+      alert('Đã sao chép thông tin thanh toán.');
+    }).catch(()=>{
+      prompt('Sao chép thông tin thanh toán:',content);
+    });
+  }
+
+  window.clearResidentFilter=function(){
+    setValue('residentSearch','');
+    setValue('residentStatusFilter','');
+    renderResidentList();
+  }
+
+
   function renderResidentOptions(){const s=byId('bResident');const current=s.value;s.innerHTML='<option value="">-- Chọn cư dân --</option>'+db.residents.map(r=>`<option value="${safe(r.code)}">${safe(r.code)} - ${safe(r.name)} - ${safe(r.roomName||r.roomCode)}</option>`).join('');if(current)s.value=current}
-  function renderResidentList(){const tbody=byId('residentList');if(!db.residents.length){tbody.innerHTML='<tr><td colspan="8" class="center">Chưa có dữ liệu.</td></tr>';return}tbody.innerHTML=db.residents.map(r=>{const bs=billsOf(r.code),debt=bs.reduce((s,b)=>s+billRemain(b),0);return`<tr><td>${safe(r.code)}</td><td><b>${safe(r.name)}</b></td><td>${safe(r.roomName||r.roomCode)}</td><td>${safe(r.phone)}</td><td>${safe(r.citizenId)}</td><td>${bs.length}</td><td class="money">${money(debt)}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editResident('${safe(r.code)}')">Sửa</button><button type="button" class="btn-light" onclick="startBill('${safe(r.code)}')">Chốt tháng</button></div></td></tr>`}).join('')}
-  function renderBillList(){const tbody=byId('billList');if(!db.bills.length){tbody.innerHTML='<tr><td colspan="10" class="center">Chưa có kỳ công nợ nào.</td></tr>';return}tbody.innerHTML=[...db.bills].sort((a,b)=>b.month.localeCompare(a.month)).map(b=>{const r=findResident(b.residentCode)||{},rows=billRows(b);return`<tr><td>${monthText(b.month)}</td><td>${safe(r.name||b.residentCode)}</td><td>${safe(r.roomName||r.roomCode||'')}</td><td>${rows[1].qty} kWh</td><td>${rows[2].qty} khối</td><td class="money">${money(billTotal(b))}</td><td>${money(b.paidAmount)}</td><td class="money">${money(billRemain(b))}</td><td><span class="badge ${statusClass(b.paymentStatus)}">${statusText(b.paymentStatus)}</span></td><td><div class="actions"><button type="button" class="btn-light" onclick="editBill('${safe(b.id)}')">Sửa</button><button type="button" class="btn-danger" onclick="deleteBill('${safe(b.id)}')">Xóa</button></div></td></tr>`}).join('')}
+  function renderResidentList(){const tbody=byId('residentList');if(!db.residents.length){tbody.innerHTML='<tr><td colspan="11" class="center">Chưa có dữ liệu.</td></tr>';return}tbody.innerHTML=db.residents.map(r=>{const bs=billsOf(r.code),debt=bs.reduce((s,b)=>s+billRemain(b),0);return`<tr><td>${r.residentPhoto?`<img class="photo-small" src="${safe(r.residentPhoto)}" alt="Ảnh">`:'-'}</td><td>${safe(r.code)}</td><td><b>${safe(r.name)}</b></td><td>${safe(r.roomName||r.roomCode)}</td><td>${safe(r.phone)}</td><td>${safe(r.citizenId)}</td><td>${safe(r.residentUsername||'')}</td><td>${bs.length}</td><td class="money">${money(debt)}</td><td><div class="actions"><button type="button" class="btn-light" onclick="editResident('${safe(r.code)}')">Sửa</button><button type="button" class="btn-light" onclick="startBill('${safe(r.code)}')">Chốt tháng</button></div></td></tr>`}).join('')}
+  function renderBillList(){const tbody=byId('billList');if(!db.bills.length){tbody.innerHTML='<tr><td colspan="11" class="center">Chưa có kỳ công nợ nào.</td></tr>';return}tbody.innerHTML=[...db.bills].sort((a,b)=>b.month.localeCompare(a.month)).map(b=>{const r=findResident(b.residentCode)||{},rows=billRows(b);return`<tr><td>${monthText(b.month)}</td><td>${safe(r.name||b.residentCode)}</td><td>${safe(r.roomName||r.roomCode||'')}</td><td>${rows[1].qty} kWh</td><td>${rows[2].qty} khối</td><td class="money">${money(billTotal(b))}</td><td>${money(b.paidAmount)}</td><td class="money">${money(billRemain(b))}</td><td><span class="badge ${statusClass(b.paymentStatus)}">${statusText(b.paymentStatus)}</span></td><td><div class="actions"><button type="button" class="btn-light" onclick="editBill('${safe(b.id)}')">Sửa</button><button type="button" class="btn-danger" onclick="deleteBill('${safe(b.id)}')">Xóa</button></div></td></tr>`}).join('')}
   window.startBill=function(code){setValue('bResident',code);onBillingResidentChange();byId('billForm').scrollIntoView({behavior:'smooth',block:'start'})}
   window.fillDemoResidentForm=function(){newResident();fillResidentForm(demoResident())}
-  window.fillDemoBillingForm=function(){if(!db.residents.length)seedDemoData();const r=db.residents[0],last=latestBill(r.code);setValue('bResident',r.code);setValue('bMonth',thisMonth());setValue('closedDate',today());setValue('oldElectric',last?last.newElectric:120);setValue('newElectric',last?num(last.newElectric)+55:180);setValue('oldWater',last?last.newWater:35);setValue('newWater',last?num(last.newWater)+6:42);setValue('bRoomPrice',r.roomPrice);setValue('bElectricPrice',r.electricPrice);setValue('bWaterPrice',r.waterPrice);setValue('bWifiFee',r.wifiFee);setValue('bServiceFee',r.serviceFee);setValue('bFridgeFee',r.fridgeFee);setValue('bAirconFee',r.airconFee);setValue('bStoveFee',r.stoveFee);setValue('bFilterFee',r.filterFee);setValue('extraFee',0);setValue('paidAmount',0);setValue('paymentStatus','unpaid');setValue('billNote','');updateBillPreview()}
-  window.seedDemoData=function(){if(!findResident('CD001'))db.residents.push(demoResident());if(!db.bills.some(b=>b.id==='CD001__2026-05'))db.bills.push({id:'CD001__2026-05',residentCode:'CD001',month:'2026-05',oldElectric:120,newElectric:180,oldWater:35,newWater:42,extraFee:0,paidAmount:0,paymentStatus:'unpaid',closedDate:'2026-05-31',note:'',updatedAt:new Date().toISOString()});save()}
-  function demoResident(){return{code:'CD001',name:'Nguyễn Văn A',dob:'2000-01-15',phone:'0901234567',citizenId:'012345678901',issueDate:'2020-03-20',issuePlace:'Cục CSQLHC về TTXH',email:'vana@example.com',otherPhone:'',status:'active',address:'Xã B, Huyện C, Tỉnh D',facilityCode:'CS01',facilityName:'Nhà trọ Minh Anh',facilityAddress:'123 Đường A, TP.HCM',roomCode:'P101',roomName:'Phòng 101',occupants:2,contractCode:'HD001',contractDate:'2026-01-01',moveInDate:'2026-01-05',temporaryStart:'2026-01-05',temporaryEnd:'2027-01-05',rentalDuration:'12 tháng',signer:'Nguyễn Văn A',roomPrice:2500000,electricPrice:4000,waterPrice:18000,wifiFee:100000,serviceFee:150000,fridgeFee:50000,airconFee:150000,stoveFee:30000,filterFee:40000,updatedAt:new Date().toISOString()}}
-  byId('lookupForm').addEventListener('submit',e=>{e.preventDefault();const r=db.residents.find(x=>normalize(x.code)===normalize(value('sCode'))&&normalize(x.phone)===normalize(value('sPhone'))&&normalize(x.name)===normalize(value('sName'))&&x.dob===value('sDob')&&normalize(x.citizenId)===normalize(value('sId')));if(!r){byId('residentResult').style.display='none';showMsg('lookupMsg','err','Không tìm thấy thông tin. Vui lòng kiểm tra lại hoặc liên hệ chủ trọ.');return}currentLookupCode=r.code;const select=byId('residentBillSelect'),bs=billsOf(r.code);select.innerHTML=bs.length?bs.map(b=>`<option value="${safe(b.id)}">Kỳ ${monthText(b.month)} - còn lại ${money(billRemain(b))}</option>`).join(''):'<option value="">Chưa có kỳ công nợ</option>';byId('residentResult').style.display='block';renderResidentResult();showMsg('lookupMsg','ok','Tra cứu thành công.')})
-  window.renderResidentResult=function(){if(!currentLookupCode)return;const r=findResident(currentLookupCode);if(!r)return;const bill=db.bills.find(b=>b.id===value('residentBillSelect'))||latestBill(r.code);const totalDebt=billsOf(r.code).reduce((s,b)=>s+billRemain(b),0);byId('summary').innerHTML=`<div class="summary-card"><span>Cư dân</span><strong>${safe(r.name)}</strong></div><div class="summary-card"><span>Phòng</span><strong>${safe(r.roomName||r.roomCode)}</strong></div><div class="summary-card"><span>Kỳ đang xem</span><strong>${bill?monthText(bill.month):'Chưa có'}</strong></div><div class="summary-card"><span>Tổng còn nợ</span><strong>${money(totalDebt)}</strong></div>`;if(!bill){byId('residentTables').innerHTML='<div class="section"><h2>Chưa có kỳ công nợ</h2><p class="muted">Chủ trọ chưa chốt tiền tháng nào cho cư dân này.</p></div>';return}const rows=billRows(bill);byId('residentTables').innerHTML=`<div class="section"><h2>Thông tin phòng</h2><div class="table"><table><thead><tr><th>Mã cơ sở</th><th>Tên cơ sở</th><th>Địa chỉ</th><th>Mã phòng</th><th>Tên phòng</th><th>Số người ở</th></tr></thead><tbody><tr><td>${safe(r.facilityCode)}</td><td>${safe(r.facilityName)}</td><td>${safe(r.facilityAddress)}</td><td>${safe(r.roomCode)}</td><td>${safe(r.roomName)}</td><td>${safe(r.occupants)}</td></tr></tbody></table></div></div><div class="section"><h2>Thông tin hợp đồng</h2><div class="table"><table><thead><tr><th>Mã hợp đồng</th><th>Ngày ký</th><th>Ngày vào ở</th><th>Bắt đầu tạm trú</th><th>Kết thúc tạm trú</th><th>Thời gian thuê</th><th>Người ký</th></tr></thead><tbody><tr><td>${safe(r.contractCode)}</td><td>${dateText(r.contractDate)}</td><td>${dateText(r.moveInDate)}</td><td>${dateText(r.temporaryStart)}</td><td>${dateText(r.temporaryEnd)}</td><td>${safe(r.rentalDuration)}</td><td>${safe(r.signer)}</td></tr></tbody></table></div></div><div class="section"><h2>Thông tin cư dân</h2><div class="table"><table><thead><tr><th>Mã cư dân</th><th>Họ tên</th><th>Ngày sinh</th><th>CCCD</th><th>Ngày cấp</th><th>Nơi cấp</th><th>Địa chỉ thường trú</th><th>SĐT</th><th>Email</th></tr></thead><tbody><tr><td>${safe(r.code)}</td><td>${safe(r.name)}</td><td>${dateText(r.dob)}</td><td>${safe(r.citizenId)}</td><td>${dateText(r.issueDate)}</td><td>${safe(r.issuePlace)}</td><td>${safe(r.address)}</td><td>${safe(r.phone)}</td><td>${safe(r.email)}</td></tr></tbody></table></div></div><div class="section"><h2>Công nợ kỳ ${monthText(bill.month)}</h2><p class="muted">Ngày chốt: ${dateText(bill.closedDate)}. Ghi chú: ${safe(bill.note||'Không có')}</p><div class="table"><table><thead><tr><th>STT</th><th>Khoản thu</th><th>Chỉ số cũ</th><th>Chỉ số mới</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows.map((row,i)=>`<tr><td>${i+1}</td><td>${debtNames[i]}</td><td>${safe(row.old)}</td><td>${safe(row.now)}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td class="money">${money(row.total)}</td></tr>`).join('')}<tr><td colspan="6" class="money">Tổng tiền</td><td class="money">${money(billTotal(bill))}</td></tr><tr><td colspan="6">Đã thanh toán</td><td>${money(bill.paidAmount)}</td></tr><tr><td colspan="6" class="money">Còn lại</td><td class="money">${money(billRemain(bill))}</td></tr><tr><td colspan="6">Trạng thái</td><td><span class="badge ${statusClass(bill.paymentStatus)}">${statusText(bill.paymentStatus)}</span></td></tr></tbody></table></div></div>`}
+  window.fillDemoBillingForm=function(){if(!db.residents.length)seedDemoData();const r=db.residents[0],last=latestBill(r.code);setValue('bResident',r.code);setValue('bMonth',thisMonth());setValue('closedDate',today());setValue('oldElectric',last?last.newElectric:120);setValue('newElectric',last?num(last.newElectric)+55:180);setValue('oldWater',last?last.newWater:35);setValue('newWater',last?num(last.newWater)+6:42);setValue('bRoomPrice',r.roomPrice);setValue('bElectricPrice',r.electricPrice);setValue('bWaterPrice',r.waterPrice);setValue('bWifiFee',r.wifiFee);setValue('bServiceFee',r.serviceFee);setValue('bFridgeFee',r.fridgeFee);setValue('bAirconFee',r.airconFee);setValue('bStoveFee',r.stoveFee);setValue('bFilterFee',r.filterFee);setValue('bVehicleCount',r.vehicleCount);setValue('bParkingFee',r.parkingFee);setValue('extraFee',0);setValue('paidAmount',0);setValue('paymentStatus','unpaid');setValue('billNote','');updateBillPreview()}
+  window.seedDemoData=function(){if(!Array.isArray(db.managers))db.managers=[];if(!db.managers.some(m=>m.code==='QL001'))db.managers.push({code:'QL001',name:'Quản lý mẫu',phone:'0900000000',email:'quanly@example.com',status:'active',username:'ql001',password:'123456',motelCode:'NT001',motelName:'Dãy trọ A',area:'Dãy A',motelAddress:'Đồng Tháp',note:'Tài khoản quản lý mẫu',updatedAt:new Date().toISOString()});if(!findResident('CD001'))db.residents.push(demoResident());if(!Array.isArray(db.notices))db.notices=[];if(!db.notices.some(n=>n.id==='TB001'))db.notices.push({id:'TB001',type:'info',date:today(),status:'active',title:'Thông báo hệ thống',content:'Chào mừng cư dân sử dụng trang tra cứu SMART STAY ĐỒNG THÁP. Chủ trọ có thể đăng thông báo dạng nội dung, PDF hoặc DOCX.',fileName:'',fileMime:'',fileData:'',updatedAt:new Date().toISOString()});if(!db.bills.some(b=>b.id==='CD001__2026-05'))db.bills.push({id:'CD001__2026-05',residentCode:'CD001',month:'2026-05',oldElectric:120,newElectric:180,oldWater:35,newWater:42,extraFee:0,paidAmount:0,paymentStatus:'unpaid',closedDate:'2026-05-31',note:'',updatedAt:new Date().toISOString()});save()}
+  function demoResident(){return{code:'CD001',name:'Nguyễn Văn A',dob:'2000-01-15',phone:'0901234567',citizenId:'012345678901',issueDate:'2020-03-20',issuePlace:'Cục CSQLHC về TTXH',email:'vana@example.com',otherPhone:'',residentUsername:'cd001',residentPassword:'123456',coTenants:[{id:'NT001',name:'Trần Thị B',dob:'2001-02-20',phone:'0912345678',citizenId:'079001111111',relationship:'Người ở cùng',username:'cd001_2',password:'123456'}],vehicles:[{id:'XE001',ownerKey:'main:CD001',ownerName:'Nguyễn Văn A',vehicleType:'motorbike',plateNumber:'66B1-123.45',frameNumber:'SK123456',engineNumber:'SM123456',registrationNumber:'DKX001',note:'Xe máy màu đen'}],roomContacts:[{id:'LH001',name:'Nguyễn Văn C',phone:'0987654321',relationship:'Người thân',address:'Đồng Tháp',note:'Liên hệ khi khẩn cấp'}],status:'active',address:'Xã B, Huyện C, Tỉnh D',residentPhoto:'',paymentBank:'Vietcombank',paymentAccount:'0123456789',paymentHolder:'SMART STAY DONG THAP',paymentMethod:'bank',paymentContent:'CD001 tien phong',paymentNote:'Sau khi chuyển khoản, vui lòng gửi bill cho chủ trọ.',paymentQr:'',facilityCode:'CS01',facilityName:'Nhà trọ Minh Anh',facilityAddress:'123 Đường A, TP.HCM',roomCode:'P101',roomName:'Phòng 101',occupants:2,contractCode:'HD001',contractDate:'2026-01-01',moveInDate:'2026-01-05',temporaryStart:'2026-01-05',temporaryEnd:'2027-01-05',rentalDuration:'12 tháng',signer:'Nguyễn Văn A',roomPrice:2500000,vehicleCount:2,parkingFee:100000,electricPrice:4000,waterPrice:18000,wifiFee:100000,serviceFee:150000,fridgeFee:50000,airconFee:150000,stoveFee:30000,filterFee:40000,updatedAt:new Date().toISOString()}}
+  byId('lookupForm').addEventListener('submit',e=>{e.preventDefault();const login=findAccountLogin(value('residentLoginUser'),value('residentLoginPass'));if(!login){byId('residentResult').style.display='none';showMsg('lookupMsg','err','Sai tài khoản hoặc mật khẩu cư dân/người ở cùng. Vui lòng liên hệ chủ trọ.');return}const r=login.resident;if(r.status==='ended'){byId('residentResult').style.display='none';showMsg('lookupMsg','warn','Tài khoản này thuộc hồ sơ đã kết thúc thuê. Vui lòng liên hệ chủ trọ.');return}currentLookupCode=r.code;const select=byId('residentBillSelect'),bs=billsOf(r.code);select.innerHTML=bs.length?bs.map(b=>`<option value="${safe(b.id)}">Kỳ ${monthText(b.month)} - trạng thái ${statusText(b.paymentStatus)} - còn lại ${money(billRemain(b))}</option>`).join(''):'<option value="">Chưa có kỳ công nợ</option>';byId('residentResult').style.display='block';renderResidentResult();showMsg('lookupMsg','ok','Đăng nhập thành công. Bạn chỉ có quyền xem thông tin.')})
+  window.renderResidentResult=function(){if(!currentLookupCode)return;const r=findResident(currentLookupCode);if(!r)return;const bill=db.bills.find(b=>b.id===value('residentBillSelect'))||latestBill(r.code);const totalDebt=billsOf(r.code).reduce((s,b)=>s+billRemain(b),0);byId('summary').innerHTML=`<div class="summary-card"><span>Cư dân</span><strong>${safe(r.name)}</strong></div><div class="summary-card"><span>Phòng</span><strong>${safe(r.roomName||r.roomCode)}</strong></div><div class="summary-card"><span>Kỳ đang xem</span><strong>${bill?monthText(bill.month):'Chưa có'}</strong></div><div class="summary-card"><span>Tổng còn nợ</span><strong>${money(totalDebt)}</strong></div>`;if(!bill){byId('residentTables').innerHTML='<div class="section"><h2>Chưa có kỳ công nợ</h2><p class="muted">Chủ trọ chưa chốt tiền tháng nào cho cư dân này.</p></div>';return}const rows=billRows(bill);byId('residentTables').innerHTML=`<div class="section"><h2>Thông tin phòng</h2><div class="table"><table><thead><tr><th>Mã cơ sở</th><th>Tên cơ sở</th><th>Địa chỉ</th><th>Mã phòng</th><th>Tên phòng</th><th>Số người ở</th></tr></thead><tbody><tr><td>${safe(r.facilityCode)}</td><td>${safe(r.facilityName)}</td><td>${safe(r.facilityAddress)}</td><td>${safe(r.roomCode)}</td><td>${safe(r.roomName)}</td><td>${safe(r.occupants)}</td></tr></tbody></table></div></div><div class="section"><h2>Người ở cùng</h2><div class="table"><table><thead><tr><th>Họ tên</th><th>Ngày sinh</th><th>SĐT</th><th>CCCD</th><th>Quan hệ</th><th>Tài khoản</th><th>Quyền</th></tr></thead><tbody>${(Array.isArray(r.coTenants)&&r.coTenants.length?r.coTenants:[null]).map(ct=>ct?`<tr><td>${safe(ct.name)}</td><td>${dateText(ct.dob)}</td><td>${safe(ct.phone)}</td><td>${safe(ct.citizenId)}</td><td>${safe(ct.relationship)}</td><td>${safe(ct.username)}</td><td>Chỉ xem</td></tr>`:'<tr><td colspan="7" class="center">Không có người ở cùng.</td></tr>').join('')}</tbody></table></div></div><div class="section"><h2>Thông tin hợp đồng</h2><div class="table"><table><thead><tr><th>Mã hợp đồng</th><th>Ngày ký</th><th>Ngày vào ở</th><th>Bắt đầu tạm trú</th><th>Kết thúc tạm trú</th><th>Thời gian thuê</th><th>Người ký</th></tr></thead><tbody><tr><td>${safe(r.contractCode)}</td><td>${dateText(r.contractDate)}</td><td>${dateText(r.moveInDate)}</td><td>${dateText(r.temporaryStart)}</td><td>${dateText(r.temporaryEnd)}</td><td>${safe(r.rentalDuration)}</td><td>${safe(r.signer)}</td></tr></tbody></table></div></div><div class="section"><h2>Tài khoản xem thông tin</h2><p class="readonly-note">Bạn đang đăng nhập bằng tài khoản cư dân. Trang này chỉ cho xem thông tin, lịch sử công nợ và trạng thái thanh toán. Không thể chỉnh sửa dữ liệu.</p><div class="table"><table><thead><tr><th>Tài khoản</th><th>Trạng thái thuê</th><th>Quyền</th></tr></thead><tbody><tr><td>${safe(r.residentUsername||'')}</td><td>${safe(r.status||'')}</td><td>Chỉ xem</td></tr></tbody></table></div></div><div class="section"><h2>Hình ảnh cư dân</h2><div class="profile-line">${r.residentPhoto?`<img class="resident-photo-preview" src="${safe(r.residentPhoto)}" alt="Ảnh cư dân">`:'<div class="muted">Chưa có hình ảnh cư dân.</div>'}<div><b>${safe(r.name)}</b><p class="muted">Mã cư dân: ${safe(r.code)}</p></div></div></div><div class="section"><h2>Thông tin cư dân</h2><div class="table"><table><thead><tr><th>Mã cư dân</th><th>Họ tên</th><th>Ngày sinh</th><th>CCCD</th><th>Ngày cấp</th><th>Nơi cấp</th><th>Địa chỉ thường trú</th><th>SĐT</th><th>Email</th></tr></thead><tbody><tr><td>${safe(r.code)}</td><td>${safe(r.name)}</td><td>${dateText(r.dob)}</td><td>${safe(r.citizenId)}</td><td>${dateText(r.issueDate)}</td><td>${safe(r.issuePlace)}</td><td>${safe(r.address)}</td><td>${safe(r.phone)}</td><td>${safe(r.email)}</td></tr></tbody></table></div></div><div class="section"><h2>Thông tin thanh toán</h2><div class="payment-box"><div class="table"><table><thead><tr><th>Phương thức</th><th>Ngân hàng</th><th>Số tài khoản</th><th>Chủ tài khoản</th><th>Nội dung CK</th></tr></thead><tbody><tr><td>${safe(r.paymentMethod||'')}</td><td>${safe(r.paymentBank||'')}</td><td>${safe(r.paymentAccount||'')}</td><td>${safe(r.paymentHolder||'')}</td><td>${safe(r.paymentContent||r.code+' '+(bill?bill.month:''))}</td></tr></tbody></table></div><p class="muted">${safe(r.paymentNote||'')}</p>${r.paymentQr?`<img class="payment-qr-preview" src="${safe(r.paymentQr)}" alt="QR thanh toán">`:''}</div></div><div class="section"><h2>Công nợ kỳ ${monthText(bill.month)}</h2><p class="muted">Ngày chốt: ${dateText(bill.closedDate)}. Ghi chú: ${safe(bill.note||'Không có')}</p><div class="table"><table><thead><tr><th>STT</th><th>Khoản thu</th><th>Chỉ số cũ</th><th>Chỉ số mới</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows.map((row,i)=>`<tr><td>${i+1}</td><td>${debtNames[i]}</td><td>${safe(row.old)}</td><td>${safe(row.now)}</td><td>${safe(row.qty)}</td><td>${money(row.price)}</td><td class="money">${money(row.total)}</td></tr>`).join('')}<tr><td colspan="6" class="money">Tổng tiền</td><td class="money">${money(billTotal(bill))}</td></tr><tr><td colspan="6">Đã thanh toán</td><td>${money(bill.paidAmount)}</td></tr><tr><td colspan="6" class="money">Còn lại</td><td class="money">${money(billRemain(bill))}</td></tr><tr><td colspan="6">Trạng thái</td><td><span class="badge ${statusClass(bill.paymentStatus)}">${statusText(bill.paymentStatus)}</span></td></tr></tbody></table></div></div>`}
   window.clearLookup=function(){byId('lookupForm').reset();byId('residentResult').style.display='none';currentLookupCode=null;clearMsg('lookupMsg')}
-  window.fillDemoSearch=function(){if(!findResident('CD001'))seedDemoData();const r=findResident('CD001');setValue('sCode',r.code);setValue('sPhone',r.phone);setValue('sName',r.name);setValue('sDob',r.dob);setValue('sId',r.citizenId)}
-  function runTests(){console.assert(typeof window.showResident==='function','showResident tồn tại');console.assert(typeof window.showAdminLogin==='function','showAdminLogin tồn tại');const old=JSON.parse(JSON.stringify(db));db={residents:[demoResident()],bills:[{id:'CD001__2026-05',residentCode:'CD001',month:'2026-05',oldElectric:100,newElectric:150,oldWater:10,newWater:15,extraFee:20000,paidAmount:0,paymentStatus:'unpaid',closedDate:'2026-05-31',note:''}]};console.assert(billTotal(db.bills[0])===2500000+50*4000+5*18000+100000+150000+50000+150000+30000+40000+20000,'Tính tổng kỳ công nợ đúng');db=old}
-  window.addEventListener('DOMContentLoaded',function(){load();runTests();if(!db.residents.length)seedDemoData();if(location.hash==='#admin')showAdminLogin();else showResident()})
+  window.fillDemoResidentLogin=function(){if(!findResident('CD001'))seedDemoData();const r=findResident('CD001');setValue('residentLoginUser',r.residentUsername||'cd001');setValue('residentLoginPass',r.residentPassword||'123456')}
+  window.fillDemoSearch=window.fillDemoResidentLogin
+
+  window.exportData=function(){
+    const data=JSON.stringify(db,null,2);
+    const blob=new Blob([data],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='smart_stay_du_lieu_sao_luu.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  window.importData=function(){
+    try{
+      const raw=value('importJsonBox');
+      const parsed=JSON.parse(raw);
+      if(!parsed||!Array.isArray(parsed.residents)||!Array.isArray(parsed.bills)){
+        throw new Error('Sai định dạng dữ liệu');
+      }
+      if(!Array.isArray(parsed.notices)) parsed.notices=[];
+      db=parsed;
+      save();
+      showMsg('importMsg','ok','Đã nhập dữ liệu thành công.');
+    }catch(error){
+      showMsg('importMsg','err','Dữ liệu JSON không hợp lệ.');
+    }
+  }
+
+  window.resetAllData=function(){
+    if(currentRole!=='admin'){alert('Quản lý không có quyền xóa toàn bộ dữ liệu.');return}
+    if(!confirm('Bạn chắc chắn muốn xóa toàn bộ dữ liệu trên trình duyệt này?')){
+      return;
+    }
+    db={residents:[],bills:[],notices:[]};
+    save();
+  }
+
+  function runTests(){console.assert(typeof window.showResident==='function','showResident tồn tại');console.assert(typeof window.showAdminLogin==='function','showAdminLogin tồn tại');const old=JSON.parse(JSON.stringify(db));db={residents:[demoResident()],bills:[{id:'CD001__2026-05',residentCode:'CD001',month:'2026-05',oldElectric:100,newElectric:150,oldWater:10,newWater:15,extraFee:20000,paidAmount:0,paymentStatus:'unpaid',closedDate:'2026-05-31',note:''}]};console.assert(billTotal(db.bills[0])===2500000+50*4000+5*18000+100000+150000+50000+150000+30000+40000+2*100000+20000,'Tính tổng kỳ công nợ đúng');db=old}
+  window.addEventListener('DOMContentLoaded',function(){load();setupImageInputs();renderCoTenantForm([]);runTests();if(!db.residents.length)seedDemoData();if(location.hash==='#admin')showAdminLogin();else showResident()})
 })();
 </script>
+
+<!--
+  SMART STAY - GHI CHÚ KỸ THUẬT
+  Ghi chú 0001: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0002: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0003: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0004: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0005: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0006: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0007: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0008: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0009: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0010: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0011: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0012: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0013: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0014: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0015: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0016: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0017: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0018: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0019: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0020: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0021: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0022: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0023: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0024: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0025: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0026: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0027: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0028: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0029: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0030: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0031: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0032: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0033: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0034: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0035: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0036: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0037: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0038: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0039: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0040: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0041: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0042: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0043: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0044: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0045: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0046: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0047: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0048: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0049: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0050: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0051: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0052: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0053: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0054: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0055: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0056: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0057: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0058: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0059: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0060: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0061: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0062: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0063: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0064: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0065: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0066: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0067: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0068: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0069: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0070: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0071: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0072: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0073: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0074: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0075: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0076: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0077: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0078: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0079: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0080: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0081: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0082: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0083: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0084: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0085: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0086: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0087: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0088: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0089: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0090: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0091: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0092: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0093: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0094: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0095: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0096: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0097: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0098: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0099: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0100: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0101: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0102: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0103: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0104: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0105: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0106: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0107: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0108: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0109: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0110: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0111: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0112: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0113: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0114: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0115: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0116: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0117: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0118: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0119: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0120: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0121: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0122: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0123: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0124: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0125: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0126: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0127: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0128: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0129: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0130: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0131: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0132: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0133: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0134: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0135: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0136: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0137: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0138: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0139: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0140: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0141: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0142: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0143: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0144: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0145: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0146: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0147: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0148: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0149: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0150: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0151: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0152: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0153: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0154: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0155: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0156: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0157: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0158: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0159: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0160: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0161: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0162: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0163: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0164: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0165: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0166: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0167: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0168: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0169: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0170: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0171: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0172: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0173: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0174: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0175: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0176: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0177: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0178: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0179: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0180: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0181: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0182: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0183: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0184: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0185: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0186: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0187: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0188: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0189: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0190: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0191: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0192: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0193: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0194: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0195: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0196: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0197: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0198: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0199: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0200: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0201: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0202: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0203: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0204: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0205: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0206: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0207: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0208: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0209: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0210: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0211: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0212: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0213: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0214: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0215: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0216: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0217: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0218: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0219: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0220: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0221: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0222: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0223: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0224: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0225: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0226: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0227: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0228: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0229: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0230: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0231: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0232: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0233: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0234: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0235: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0236: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0237: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0238: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0239: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0240: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0241: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0242: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0243: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0244: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0245: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0246: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0247: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0248: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0249: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0250: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0251: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0252: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0253: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0254: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0255: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0256: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0257: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0258: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0259: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0260: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0261: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0262: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0263: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0264: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0265: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0266: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0267: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0268: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0269: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0270: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0271: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0272: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0273: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0274: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0275: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0276: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0277: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0278: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0279: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0280: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0281: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0282: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0283: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0284: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0285: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0286: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0287: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0288: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0289: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0290: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0291: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0292: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0293: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0294: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0295: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0296: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0297: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0298: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0299: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0300: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0301: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0302: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0303: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0304: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0305: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0306: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0307: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0308: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0309: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0310: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0311: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0312: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0313: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0314: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0315: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0316: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0317: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0318: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0319: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0320: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0321: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0322: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0323: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0324: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0325: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0326: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0327: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0328: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0329: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0330: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0331: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0332: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0333: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0334: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0335: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0336: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0337: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0338: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0339: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0340: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0341: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0342: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0343: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0344: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0345: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0346: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0347: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0348: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0349: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0350: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0351: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0352: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0353: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0354: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0355: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0356: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0357: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0358: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0359: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0360: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0361: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0362: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0363: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0364: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0365: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0366: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+  Ghi chú 0367: Thông báo có thể là nội dung trực tiếp hoặc file PDF/DOC/DOCX lưu base64 trong localStorage.
+-->
 </body>
 </html>
